@@ -8,7 +8,7 @@ Welcome to my GitHub profile! Here's a little bit about me:
 - 🌱 I’m currently learning advanced machine learning techniques.
 - 👯 I’m looking to collaborate on innovative AI projects.
 - 💬 Ask me about Python, Machine Learning, and Open Source.
-- 📫 How to reach me: [dinesh@example.com](mailto:dineshddawo@gmail.com)
+- 📫 How to reach me: [dineshddawo@gmail.com](mailto:dineshddawo@gmail.com)
 - 😄 Pronouns: He/Him
 - ⚡ Fun fact: I love to build fun stuff.
 
