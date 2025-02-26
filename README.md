@@ -18,6 +18,3 @@ Welcome to my GitHub profile! Here's a little bit about me:
 - **Frameworks:** TensorFlow, PyTorch, Django, React
 - **Tools:** Git, Docker, Kubernetes, AWS
 
-## 📈 GitHub Stats
-
-![Dinesh's GitHub stats](https://github-readme-stats.vercel.app/api?username=dinesh-git17&show_icons=true&theme=radical)
