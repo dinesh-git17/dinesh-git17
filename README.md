@@ -14,11 +14,19 @@
 
 ### About
 
-I build scalable software systems and intelligent applications. Currently exploring the intersection of distributed systems and machine learning, with a focus on building production-grade AI solutions.
+Data Engineer by day, full-stack builder by night. 4 years turning messy data into insights, and countless late nights shipping AI-powered side projects.
 
-- 🔬 Working on **open-source ML tooling** and **cloud-native applications**
-- 📚 Deep diving into **MLOps**, **system design**, and **large-scale distributed systems**
-- 🤝 Open to collaborating on **impactful AI/ML projects**
+Currently building **[Debate Lab](https://github.com/dinesh-git17/debate-lab)** — a platform that puts AI models against each other in structured debates. ChatGPT vs Grok, with Claude as the moderator. 🎙️
+
+| 💼 Work | 🚀 Side Projects |
+|---------|------------------|
+| Python · SQL · Data Pipelines · ETL | Next.js · TypeScript · React · AI/ML |
+
+**What drives me:** Complex logical problems and building algorithms that push AI to its limits.
+
+📚 Currently exploring: AI research, LLM applications, and advanced data science
+
+💬 Open to job opportunities, collaborations, and interesting conversations — let's connect!
 
 ---
 
