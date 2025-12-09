@@ -20,20 +20,6 @@ Currently building **[Debate Lab](https://github.com/dinesh-git17/debate-lab)** 
 
 
 
-
-
-<div align="center">
-
-| 💼 Work | 🚀 Side Projects |
-|---------|------------------|
-| Python · SQL · Data Pipelines · ETL | Next.js · TypeScript · React · AI/ML |
-
-</div>
-
-
-
-
-
 **What drives me:** Complex logical problems and building algorithms that push AI to its limits.
 
 📚 Currently exploring: AI research, LLM applications, and advanced data science
