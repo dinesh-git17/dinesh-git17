@@ -77,7 +77,7 @@ I build scalable software systems and intelligent applications. Currently explor
 ### Recent Activity
 
 <!--START_SECTION:activity-->
-<!-- GitHub Activity will auto-populate here if you set up the GitHub Activity README action -->
+1. ❌ Merged PR [#2](undefined) in [dinesh-git17/dinesh-git17](https://github.com/dinesh-git17/dinesh-git17)
 <!--END_SECTION:activity-->
 
 ---
