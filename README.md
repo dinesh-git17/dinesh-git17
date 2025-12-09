@@ -61,6 +61,13 @@ I build scalable software systems and intelligent applications. Currently explor
 
 <div align="center">
 
+<img height="180em" src="https://github-readme-stats-q0yxljr2a-dineshs-projects-e0ddfd9f.vercel.app/api?username=dinesh-git17&show_icons=true&theme=github_dark&hide_border=true&count_private=true" />
+<img height="180em" src="https://github-readme-stats-q0yxljr2a-dineshs-projects-e0ddfd9f.vercel.app/api/top-langs/?username=dinesh-git17&layout=compact&theme=github_dark&hide_border=true" />
+
+</div>
+
+<div align="center">
+
 ![GitHub Streak](https://github-readme-streak-stats.herokuapp.com/?user=dinesh-git17&theme=github-dark-blue&hide_border=true)
 
 </div>
