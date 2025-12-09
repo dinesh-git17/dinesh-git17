@@ -17,4 +17,13 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GH_USERNAME: dinesh-git17
-          COMMIT_MSG: "Update README with recent activity"
+          MAX_LINES: 5
+
+      - name: Commit and push if changed
+        run: |
+          git diff --quiet && exit 0
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add README.md
+          git commit -m ":zap: Update README with the recent activity"
+          git push
