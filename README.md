@@ -105,7 +105,7 @@ Currently building **[Debate Lab](https://github.com/dinesh-git17/debate-lab)** 
 ### Recent Activity
 
 <!--START_SECTION:activity-->
-1. 💪 Opened PR [#41191](undefined) in [supabase/supabase](https://github.com/supabase/supabase)
+1. 💪 Opened PR [#63309](undefined) in [pandas-dev/pandas](https://github.com/pandas-dev/pandas)
 <!--END_SECTION:activity-->
 
 ---
