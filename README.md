@@ -1,8 +1,8 @@
 <div align="center">
 
-# Dinesh
+<img src="banner.png" alt="Dinesh" width="600"/>
 
-**Software Engineer · Machine Learning Enthusiast · Open Source Contributor**
+**Data Engineer · Full-Stack Builder · AI Tinkerer**
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/dineshsdawonauth/)
 [![Email](https://img.shields.io/badge/Email-EA4335?style=for-the-badge&logo=gmail&logoColor=white)](mailto:dineshddawo@gmail.com)
