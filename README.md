@@ -96,7 +96,7 @@ Currently building **[Debate Lab](https://github.com/dinesh-git17/debate-lab)** 
 
 <div align="center">
 
-![GitHub Streak](https://github-readme-streak-stats-lilac-pi-24.vercel.app/?user=dinesh-git17&theme=github-dark-blue&hide_border=true)
+![GitHub Streak](https://github-readme-streak-stats-ivory-eta-73.vercel.app/?user=dinesh-git17&theme=github-dark-blue&hide_border=true)
 
 </div>
 
