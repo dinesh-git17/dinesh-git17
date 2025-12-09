@@ -18,9 +18,13 @@ Data Engineer by day, full-stack builder by night. 4 years turning messy data in
 
 Currently building **[Debate Lab](https://github.com/dinesh-git17/debate-lab)** — a platform that puts AI models against each other in structured debates. ChatGPT vs Grok, with Claude as the moderator. 🎙️
 
+<div align="center">
+
 | 💼 Work | 🚀 Side Projects |
 |---------|------------------|
 | Python · SQL · Data Pipelines · ETL | Next.js · TypeScript · React · AI/ML |
+
+</div>
 
 **What drives me:** Complex logical problems and building algorithms that push AI to its limits.
 
