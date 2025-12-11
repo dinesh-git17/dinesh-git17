@@ -105,11 +105,11 @@ Currently building **[Debate Lab](https://github.com/dinesh-git17/debate-lab)** 
 ### Recent Activity
 
 <!--START_SECTION:activity-->
-1. ❌ Merged PR [#8](undefined) in [dinesh-git17/debate-lab](https://github.com/dinesh-git17/debate-lab)
-2. 💪 Opened PR [#8](undefined) in [dinesh-git17/debate-lab](https://github.com/dinesh-git17/debate-lab)
-3. ❌ Merged PR [#41187](undefined) in [supabase/supabase](https://github.com/supabase/supabase)
-4. ❌ Merged PR [#12](undefined) in [dinesh-git17/dinesh-git17](https://github.com/dinesh-git17/dinesh-git17)
-5. 💪 Opened PR [#12](undefined) in [dinesh-git17/dinesh-git17](https://github.com/dinesh-git17/dinesh-git17)
+1. 💪 Opened PR [#9](undefined) in [dinesh-git17/debate-lab](https://github.com/dinesh-git17/debate-lab)
+2. ❌ Merged PR [#8](undefined) in [dinesh-git17/debate-lab](https://github.com/dinesh-git17/debate-lab)
+3. 💪 Opened PR [#8](undefined) in [dinesh-git17/debate-lab](https://github.com/dinesh-git17/debate-lab)
+4. ❌ Merged PR [#41187](undefined) in [supabase/supabase](https://github.com/supabase/supabase)
+5. ❌ Merged PR [#12](undefined) in [dinesh-git17/dinesh-git17](https://github.com/dinesh-git17/dinesh-git17)
 <!--END_SECTION:activity-->
 
 ---
