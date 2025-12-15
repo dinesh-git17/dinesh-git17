@@ -105,11 +105,11 @@ Currently building **[Debate Lab](https://github.com/dinesh-git17/debate-lab)** 
 ### Recent Activity
 
 <!--START_SECTION:activity-->
-1. 🗣 Commented on [#47](https://github.com/dinesh-git17/my-progress-planner/pull/47#issuecomment-3651936108) in [dinesh-git17/my-progress-planner](https://github.com/dinesh-git17/my-progress-planner)
-2. ❌ Closed PR [#14](undefined) in [dinesh-git17/debate-lab](https://github.com/dinesh-git17/debate-lab)
-3. 💪 Opened PR [#14](undefined) in [dinesh-git17/debate-lab](https://github.com/dinesh-git17/debate-lab)
-4. ❌ Merged PR [#13](undefined) in [dinesh-git17/debate-lab](https://github.com/dinesh-git17/debate-lab)
-5. 💪 Opened PR [#13](undefined) in [dinesh-git17/debate-lab](https://github.com/dinesh-git17/debate-lab)
+1. ❌ Merged PR [#2](undefined) in [dinesh-git17/passfx](https://github.com/dinesh-git17/passfx)
+2. 💪 Opened PR [#2](undefined) in [dinesh-git17/passfx](https://github.com/dinesh-git17/passfx)
+3. ❌ Merged PR [#1](undefined) in [dinesh-git17/passfx](https://github.com/dinesh-git17/passfx)
+4. 💪 Opened PR [#1](undefined) in [dinesh-git17/passfx](https://github.com/dinesh-git17/passfx)
+5. 🗣 Commented on [#47](https://github.com/dinesh-git17/my-progress-planner/pull/47#issuecomment-3651936108) in [dinesh-git17/my-progress-planner](https://github.com/dinesh-git17/my-progress-planner)
 <!--END_SECTION:activity-->
 
 ---
