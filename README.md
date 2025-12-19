@@ -105,11 +105,11 @@ Currently building **[Debate Lab](https://github.com/dinesh-git17/debate-lab)** 
 ### Recent Activity
 
 <!--START_SECTION:activity-->
-1. ❌ Merged PR [#77](undefined) in [dinesh-git17/passfx](https://github.com/dinesh-git17/passfx)
-2. 💪 Opened PR [#77](undefined) in [dinesh-git17/passfx](https://github.com/dinesh-git17/passfx)
-3. ❌ Merged PR [#76](undefined) in [dinesh-git17/passfx](https://github.com/dinesh-git17/passfx)
-4. 💪 Opened PR [#76](undefined) in [dinesh-git17/passfx](https://github.com/dinesh-git17/passfx)
-5. ❌ Merged PR [#75](undefined) in [dinesh-git17/passfx](https://github.com/dinesh-git17/passfx)
+1. ❌ Merged PR [#79](undefined) in [dinesh-git17/passfx](https://github.com/dinesh-git17/passfx)
+2. 💪 Opened PR [#79](undefined) in [dinesh-git17/passfx](https://github.com/dinesh-git17/passfx)
+3. ❌ Merged PR [#78](undefined) in [dinesh-git17/passfx](https://github.com/dinesh-git17/passfx)
+4. 💪 Opened PR [#78](undefined) in [dinesh-git17/passfx](https://github.com/dinesh-git17/passfx)
+5. ❌ Merged PR [#77](undefined) in [dinesh-git17/passfx](https://github.com/dinesh-git17/passfx)
 <!--END_SECTION:activity-->
 
 ---
