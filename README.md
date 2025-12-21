@@ -105,11 +105,11 @@ Currently building **[Debate Lab](https://github.com/dinesh-git17/debate-lab)** 
 ### Recent Activity
 
 <!--START_SECTION:activity-->
-1. ❌ Merged PR [#125](undefined) in [dinesh-git17/passfx](https://github.com/dinesh-git17/passfx)
-2. 💪 Opened PR [#125](undefined) in [dinesh-git17/passfx](https://github.com/dinesh-git17/passfx)
-3. ❌ Merged PR [#124](undefined) in [dinesh-git17/passfx](https://github.com/dinesh-git17/passfx)
-4. 💪 Opened PR [#124](undefined) in [dinesh-git17/passfx](https://github.com/dinesh-git17/passfx)
-5. ❌ Merged PR [#123](undefined) in [dinesh-git17/passfx](https://github.com/dinesh-git17/passfx)
+1. 🚀 Published release [v1.0.2 - Release Polish](https://github.com/dinesh-git17/passfx/releases/tag/v1.0.2) in [dinesh-git17/passfx](https://github.com/dinesh-git17/passfx)
+2. ❌ Merged PR [#126](undefined) in [dinesh-git17/passfx](https://github.com/dinesh-git17/passfx)
+3. 💪 Opened PR [#126](undefined) in [dinesh-git17/passfx](https://github.com/dinesh-git17/passfx)
+4. ❌ Merged PR [#125](undefined) in [dinesh-git17/passfx](https://github.com/dinesh-git17/passfx)
+5. 💪 Opened PR [#125](undefined) in [dinesh-git17/passfx](https://github.com/dinesh-git17/passfx)
 <!--END_SECTION:activity-->
 
 ---
