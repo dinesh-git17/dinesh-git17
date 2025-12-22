@@ -14,17 +14,17 @@
 
 ### About
 
-Data Engineer by day, full-stack builder by night. 4 years turning messy data into insights, and countless late nights shipping AI-powered side projects.
+I spend my days turning raw data into something useful and my nights building side projects I swear are “almost done.” Most of my work lives at the intersection of data engineering, full-stack development, and AI systems that keep me asking why a lot.
 
-Currently building **[Debate Lab](https://github.com/dinesh-git17/debate-lab)** — a platform that puts AI models against each other in structured debates. ChatGPT vs Grok, with Claude as the moderator. 🎙️
+Currently building **[Debate Lab](https://github.com/dinesh-git17/debate-lab)**, where AI models argue under strict structure, and **[PassFX](https://github.com/dinesh-git17/passfx)**, a security-first password manager built with the assumption that everything will eventually break.
 
 
 
-**What drives me:** Complex logical problems and building algorithms that push AI to its limits.
+**What drives me:** Tackling hard problems at the intersection of data, systems, and AI, and building algorithms that scale intelligently.
 
-📚 Currently exploring: AI research, LLM applications, and advanced data science
+📚 **Currently exploring:** LLM architectures, applied AI research, and advanced data science workflows.
 
-💬 Open to job opportunities, collaborations, and interesting conversations — let's connect!
+💬 **Open to:** Full-time roles, collaborations, and deep technical discussions — let’s connect.
 
 ---
 
