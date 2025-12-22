@@ -105,11 +105,11 @@ Currently building **[Debate Lab](https://github.com/dinesh-git17/debate-lab)**,
 ### Recent Activity
 
 <!--START_SECTION:activity-->
-1. ❌ Merged PR [#7](undefined) in [dinesh-git17/links](https://github.com/dinesh-git17/links)
-2. 💪 Opened PR [#7](undefined) in [dinesh-git17/links](https://github.com/dinesh-git17/links)
-3. ❌ Merged PR [#6](undefined) in [dinesh-git17/links](https://github.com/dinesh-git17/links)
-4. 💪 Opened PR [#6](undefined) in [dinesh-git17/links](https://github.com/dinesh-git17/links)
-5. ❌ Merged PR [#5](undefined) in [dinesh-git17/links](https://github.com/dinesh-git17/links)
+1. ❌ Merged PR [#8](undefined) in [dinesh-git17/links](https://github.com/dinesh-git17/links)
+2. 💪 Opened PR [#8](undefined) in [dinesh-git17/links](https://github.com/dinesh-git17/links)
+3. ❌ Merged PR [#7](undefined) in [dinesh-git17/links](https://github.com/dinesh-git17/links)
+4. 💪 Opened PR [#7](undefined) in [dinesh-git17/links](https://github.com/dinesh-git17/links)
+5. ❌ Merged PR [#6](undefined) in [dinesh-git17/links](https://github.com/dinesh-git17/links)
 <!--END_SECTION:activity-->
 
 ---
