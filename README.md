@@ -107,11 +107,11 @@ _I’m currently building a small Christmas app for my beautiful girlfriend - a 
 ### Recent Activity
 
 <!--START_SECTION:activity-->
-1. ❌ Merged PR [#1](undefined) in [dinesh-git17/christmas-gift](https://github.com/dinesh-git17/christmas-gift)
-2. 💪 Opened PR [#1](undefined) in [dinesh-git17/christmas-gift](https://github.com/dinesh-git17/christmas-gift)
-3. 🚀 Published release [v1.0.3](https://github.com/dinesh-git17/passfx/releases/tag/v1.0.3) in [dinesh-git17/passfx](https://github.com/dinesh-git17/passfx)
-4. ❌ Merged PR [#144](undefined) in [dinesh-git17/passfx](https://github.com/dinesh-git17/passfx)
-5. 💪 Opened PR [#144](undefined) in [dinesh-git17/passfx](https://github.com/dinesh-git17/passfx)
+1. ❌ Merged PR [#2](undefined) in [dinesh-git17/christmas-gift](https://github.com/dinesh-git17/christmas-gift)
+2. 💪 Opened PR [#2](undefined) in [dinesh-git17/christmas-gift](https://github.com/dinesh-git17/christmas-gift)
+3. ❌ Merged PR [#1](undefined) in [dinesh-git17/christmas-gift](https://github.com/dinesh-git17/christmas-gift)
+4. 💪 Opened PR [#1](undefined) in [dinesh-git17/christmas-gift](https://github.com/dinesh-git17/christmas-gift)
+5. 🚀 Published release [v1.0.3](https://github.com/dinesh-git17/passfx/releases/tag/v1.0.3) in [dinesh-git17/passfx](https://github.com/dinesh-git17/passfx)
 <!--END_SECTION:activity-->
 
 ---
