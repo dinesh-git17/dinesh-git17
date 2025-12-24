@@ -107,11 +107,11 @@ _I’m currently building a small Christmas app for my beautiful girlfriend - a 
 ### Recent Activity
 
 <!--START_SECTION:activity-->
-1. ❌ Merged PR [#23](undefined) in [dinesh-git17/christmas-gift](https://github.com/dinesh-git17/christmas-gift)
-2. 💪 Opened PR [#23](undefined) in [dinesh-git17/christmas-gift](https://github.com/dinesh-git17/christmas-gift)
-3. ❌ Merged PR [#22](undefined) in [dinesh-git17/christmas-gift](https://github.com/dinesh-git17/christmas-gift)
-4. 💪 Opened PR [#22](undefined) in [dinesh-git17/christmas-gift](https://github.com/dinesh-git17/christmas-gift)
-5. ❌ Merged PR [#21](undefined) in [dinesh-git17/christmas-gift](https://github.com/dinesh-git17/christmas-gift)
+1. ❌ Merged PR [#24](undefined) in [dinesh-git17/christmas-gift](https://github.com/dinesh-git17/christmas-gift)
+2. 💪 Opened PR [#24](undefined) in [dinesh-git17/christmas-gift](https://github.com/dinesh-git17/christmas-gift)
+3. ❌ Merged PR [#23](undefined) in [dinesh-git17/christmas-gift](https://github.com/dinesh-git17/christmas-gift)
+4. 💪 Opened PR [#23](undefined) in [dinesh-git17/christmas-gift](https://github.com/dinesh-git17/christmas-gift)
+5. ❌ Merged PR [#22](undefined) in [dinesh-git17/christmas-gift](https://github.com/dinesh-git17/christmas-gift)
 <!--END_SECTION:activity-->
 
 ---
