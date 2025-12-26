@@ -107,11 +107,11 @@ _I’m currently building a small Christmas app for my beautiful girlfriend - a 
 ### Recent Activity
 
 <!--START_SECTION:activity-->
-1. 💪 Opened PR [#1](undefined) in [dinesh-git17/holiday-exe-demo](https://github.com/dinesh-git17/holiday-exe-demo)
-2.  Labeled issue [#145](https://github.com/dinesh-git17/passfx/issues/145) in [dinesh-git17/passfx](https://github.com/dinesh-git17/passfx)
-3. ❗ Opened issue [#145](https://github.com/dinesh-git17/passfx/issues/145) in [dinesh-git17/passfx](https://github.com/dinesh-git17/passfx)
-4. ❌ Merged PR [#25](undefined) in [dinesh-git17/christmas-gift](https://github.com/dinesh-git17/christmas-gift)
-5. 💪 Opened PR [#25](undefined) in [dinesh-git17/christmas-gift](https://github.com/dinesh-git17/christmas-gift)
+1. ❌ Merged PR [#2](undefined) in [dinesh-git17/holiday-exe-demo](https://github.com/dinesh-git17/holiday-exe-demo)
+2. 💪 Opened PR [#2](undefined) in [dinesh-git17/holiday-exe-demo](https://github.com/dinesh-git17/holiday-exe-demo)
+3. ❌ Merged PR [#1](undefined) in [dinesh-git17/holiday-exe-demo](https://github.com/dinesh-git17/holiday-exe-demo)
+4. 💪 Opened PR [#1](undefined) in [dinesh-git17/holiday-exe-demo](https://github.com/dinesh-git17/holiday-exe-demo)
+5.  Labeled issue [#145](https://github.com/dinesh-git17/passfx/issues/145) in [dinesh-git17/passfx](https://github.com/dinesh-git17/passfx)
 <!--END_SECTION:activity-->
 
 ---
