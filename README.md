@@ -24,8 +24,6 @@ Currently building **[Debate Lab](https://github.com/dinesh-git17/debate-lab)**,
 
 📚 **Currently exploring:** LLM architectures, applied AI research, and advanced data science workflows.
 
-_I’m currently building a small Christmas app for my beautiful girlfriend - a fun, personal project where I experiment with UI, animations, and Next.js patterns. Follow this [repo](https://github.com/dinesh-git17/christmas-gift) to track progress, explore commits, or grab ideas as it evolves._
-
 💬 **Open to:** Full-time roles, collaborations, and deep technical discussions — let’s connect.
 
 ---
