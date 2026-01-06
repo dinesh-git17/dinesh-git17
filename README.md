@@ -14,17 +14,23 @@
 
 ### About
 
-I spend my days turning raw data into something useful and my nights building side projects I swear are “almost done.” Most of my work lives at the intersection of data engineering, full-stack development, and AI systems that keep me asking why a lot.
+I spend my days turning raw data into something useful, and my nights building side projects that are either “almost done” or technically finished but still getting refactored. Occupational hazard.
 
-Currently building **[Debate Lab](https://github.com/dinesh-git17/debate-lab)**, where AI models argue under strict structure, and **[PassFX](https://github.com/dinesh-git17/passfx)**, a security-first password manager built with the assumption that everything will eventually break.
+Most of my work lives at the intersection of **data engineering, full-stack development, and AI systems**, where things are designed to scale, fail gracefully, and occasionally behave exactly as expected.
 
+**Currently building:**
+- **[Debate Lab](https://github.com/dinesh-git17/debate-lab)** — an ongoing experiment where AI models debate under strict structure, mostly to answer the question: can chaos be well-architected?
+- **[Yield](https://github.com/dinesh-git17/yield)** — an algorithm visualizer focused on making classic computer science concepts intuitive, interactive, and visually satisfying.
 
+**Completed (but never truly finished):**
+- **[PassFX](https://github.com/dinesh-git17/passfx)** — a security-first password manager built with the assumption that everything will eventually break, so it might as well fail responsibly.
 
-**What drives me:** Tackling hard problems at the intersection of data, systems, and AI, and building algorithms that scale intelligently.
+**What drives me:**  
+Solving hard problems at the intersection of data, systems, and AI, and building things that scale intelligently instead of just loudly.
 
-📚 **Currently exploring:** LLM architectures, applied AI research, and advanced data science workflows.
+**Currently exploring:** LLM architectures, applied AI research, advanced data workflows, and better ways to explain complex ideas without hand-waving.
 
-💬 **Open to:** Full-time roles, collaborations, and deep technical discussions — let’s connect.
+**Open to:** Full-time roles, collaborations, and technical discussions that start as a “quick question” and quietly turn into a deep dive.
 
 ---
 
