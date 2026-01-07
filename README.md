@@ -111,11 +111,11 @@ Solving hard problems at the intersection of data, systems, and AI, and building
 ### Recent Activity
 
 <!--START_SECTION:activity-->
-1. 💪 Opened PR [#60](https://github.com/dinesh-git17/yield/pull/60) in [dinesh-git17/yield](https://github.com/dinesh-git17/yield)
-2. 🎉 Merged PR [#59](https://github.com/dinesh-git17/yield/pull/59) in [dinesh-git17/yield](https://github.com/dinesh-git17/yield)
-3. 💪 Opened PR [#59](https://github.com/dinesh-git17/yield/pull/59) in [dinesh-git17/yield](https://github.com/dinesh-git17/yield)
-4. 🎉 Merged PR [#41191](https://github.com/supabase/supabase/pull/41191) in [supabase/supabase](https://github.com/supabase/supabase)
-5. 🎉 Merged PR [#58](https://github.com/dinesh-git17/yield/pull/58) in [dinesh-git17/yield](https://github.com/dinesh-git17/yield)
+1. 🎉 Merged PR [#60](https://github.com/dinesh-git17/yield/pull/60) in [dinesh-git17/yield](https://github.com/dinesh-git17/yield)
+2. 💪 Opened PR [#60](https://github.com/dinesh-git17/yield/pull/60) in [dinesh-git17/yield](https://github.com/dinesh-git17/yield)
+3. 🎉 Merged PR [#59](https://github.com/dinesh-git17/yield/pull/59) in [dinesh-git17/yield](https://github.com/dinesh-git17/yield)
+4. 💪 Opened PR [#59](https://github.com/dinesh-git17/yield/pull/59) in [dinesh-git17/yield](https://github.com/dinesh-git17/yield)
+5. 🎉 Merged PR [#41191](https://github.com/supabase/supabase/pull/41191) in [supabase/supabase](https://github.com/supabase/supabase)
 <!--END_SECTION:activity-->
 
 ---
