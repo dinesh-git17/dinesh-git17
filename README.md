@@ -111,11 +111,11 @@ Solving hard problems at the intersection of data, systems, and AI, and building
 ### Recent Activity
 
 <!--START_SECTION:activity-->
-1. 🎉 Merged PR [#15](https://github.com/dinesh-git17/debate-lab/pull/15) in [dinesh-git17/debate-lab](https://github.com/dinesh-git17/debate-lab)
-2. 💪 Opened PR [#15](https://github.com/dinesh-git17/debate-lab/pull/15) in [dinesh-git17/debate-lab](https://github.com/dinesh-git17/debate-lab)
-3. 🎉 Merged PR [#9](https://github.com/dinesh-git17/dinbuilds-portfolio/pull/9) in [dinesh-git17/dinbuilds-portfolio](https://github.com/dinesh-git17/dinbuilds-portfolio)
-4. 💪 Opened PR [#9](https://github.com/dinesh-git17/dinbuilds-portfolio/pull/9) in [dinesh-git17/dinbuilds-portfolio](https://github.com/dinesh-git17/dinbuilds-portfolio)
-5. 🎉 Merged PR [#8](https://github.com/dinesh-git17/dinbuilds-portfolio/pull/8) in [dinesh-git17/dinbuilds-portfolio](https://github.com/dinesh-git17/dinbuilds-portfolio)
+1. 🎉 Merged PR [#10](https://github.com/dinesh-git17/dinbuilds-portfolio/pull/10) in [dinesh-git17/dinbuilds-portfolio](https://github.com/dinesh-git17/dinbuilds-portfolio)
+2. 💪 Opened PR [#10](https://github.com/dinesh-git17/dinbuilds-portfolio/pull/10) in [dinesh-git17/dinbuilds-portfolio](https://github.com/dinesh-git17/dinbuilds-portfolio)
+3. 🎉 Merged PR [#15](https://github.com/dinesh-git17/debate-lab/pull/15) in [dinesh-git17/debate-lab](https://github.com/dinesh-git17/debate-lab)
+4. 💪 Opened PR [#15](https://github.com/dinesh-git17/debate-lab/pull/15) in [dinesh-git17/debate-lab](https://github.com/dinesh-git17/debate-lab)
+5. 🎉 Merged PR [#9](https://github.com/dinesh-git17/dinbuilds-portfolio/pull/9) in [dinesh-git17/dinbuilds-portfolio](https://github.com/dinesh-git17/dinbuilds-portfolio)
 <!--END_SECTION:activity-->
 
 ---
