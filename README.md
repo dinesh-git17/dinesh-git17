@@ -111,11 +111,11 @@ Solving hard problems at the intersection of data, systems, and AI, and building
 ### Recent Activity
 
 <!--START_SECTION:activity-->
-1. 💪 Opened PR [#7](https://github.com/dinesh-git17/techpulse/pull/7) in [dinesh-git17/techpulse](https://github.com/dinesh-git17/techpulse)
-2. 🎉 Merged PR [#6](https://github.com/dinesh-git17/techpulse/pull/6) in [dinesh-git17/techpulse](https://github.com/dinesh-git17/techpulse)
-3. 💪 Opened PR [#6](https://github.com/dinesh-git17/techpulse/pull/6) in [dinesh-git17/techpulse](https://github.com/dinesh-git17/techpulse)
-4. 🎉 Merged PR [#5](https://github.com/dinesh-git17/techpulse/pull/5) in [dinesh-git17/techpulse](https://github.com/dinesh-git17/techpulse)
-5. 💪 Opened PR [#5](https://github.com/dinesh-git17/techpulse/pull/5) in [dinesh-git17/techpulse](https://github.com/dinesh-git17/techpulse)
+1. 💪 Opened PR [#8](https://github.com/dinesh-git17/techpulse/pull/8) in [dinesh-git17/techpulse](https://github.com/dinesh-git17/techpulse)
+2. 🎉 Merged PR [#7](https://github.com/dinesh-git17/techpulse/pull/7) in [dinesh-git17/techpulse](https://github.com/dinesh-git17/techpulse)
+3. 🗣 Commented on [#53](https://github.com/dinesh-git17/dinbuilds-portfolio/pull/53#issuecomment-3738983111) in [dinesh-git17/dinbuilds-portfolio](https://github.com/dinesh-git17/dinbuilds-portfolio)
+4. 💪 Opened PR [#7](https://github.com/dinesh-git17/techpulse/pull/7) in [dinesh-git17/techpulse](https://github.com/dinesh-git17/techpulse)
+5. 🎉 Merged PR [#6](https://github.com/dinesh-git17/techpulse/pull/6) in [dinesh-git17/techpulse](https://github.com/dinesh-git17/techpulse)
 <!--END_SECTION:activity-->
 
 ---
