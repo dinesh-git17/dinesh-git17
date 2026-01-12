@@ -111,11 +111,11 @@ Solving hard problems at the intersection of data, systems, and AI, and building
 ### Recent Activity
 
 <!--START_SECTION:activity-->
-1. 🎉 Merged PR [#50](https://github.com/dinesh-git17/dinbuilds-portfolio/pull/50) in [dinesh-git17/dinbuilds-portfolio](https://github.com/dinesh-git17/dinbuilds-portfolio)
-2. 💪 Opened PR [#50](https://github.com/dinesh-git17/dinbuilds-portfolio/pull/50) in [dinesh-git17/dinbuilds-portfolio](https://github.com/dinesh-git17/dinbuilds-portfolio)
-3. 🎉 Merged PR [#49](https://github.com/dinesh-git17/dinbuilds-portfolio/pull/49) in [dinesh-git17/dinbuilds-portfolio](https://github.com/dinesh-git17/dinbuilds-portfolio)
-4. 💪 Opened PR [#49](https://github.com/dinesh-git17/dinbuilds-portfolio/pull/49) in [dinesh-git17/dinbuilds-portfolio](https://github.com/dinesh-git17/dinbuilds-portfolio)
-5. 🎉 Merged PR [#48](https://github.com/dinesh-git17/dinbuilds-portfolio/pull/48) in [dinesh-git17/dinbuilds-portfolio](https://github.com/dinesh-git17/dinbuilds-portfolio)
+1. ℹ️ Assigned PR [#2](https://github.com/dinesh-git17/techpulse/pull/2) in [dinesh-git17/techpulse](https://github.com/dinesh-git17/techpulse)
+2. 💪 Opened PR [#2](https://github.com/dinesh-git17/techpulse/pull/2) in [dinesh-git17/techpulse](https://github.com/dinesh-git17/techpulse)
+3. 🎉 Merged PR [#50](https://github.com/dinesh-git17/dinbuilds-portfolio/pull/50) in [dinesh-git17/dinbuilds-portfolio](https://github.com/dinesh-git17/dinbuilds-portfolio)
+4. 💪 Opened PR [#50](https://github.com/dinesh-git17/dinbuilds-portfolio/pull/50) in [dinesh-git17/dinbuilds-portfolio](https://github.com/dinesh-git17/dinbuilds-portfolio)
+5. 🎉 Merged PR [#49](https://github.com/dinesh-git17/dinbuilds-portfolio/pull/49) in [dinesh-git17/dinbuilds-portfolio](https://github.com/dinesh-git17/dinbuilds-portfolio)
 <!--END_SECTION:activity-->
 
 ---
