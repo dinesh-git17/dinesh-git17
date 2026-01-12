@@ -111,11 +111,11 @@ Solving hard problems at the intersection of data, systems, and AI, and building
 ### Recent Activity
 
 <!--START_SECTION:activity-->
-1. 🎉 Merged PR [#5](https://github.com/dinesh-git17/techpulse/pull/5) in [dinesh-git17/techpulse](https://github.com/dinesh-git17/techpulse)
-2. 💪 Opened PR [#5](https://github.com/dinesh-git17/techpulse/pull/5) in [dinesh-git17/techpulse](https://github.com/dinesh-git17/techpulse)
-3. 🎉 Merged PR [#4](https://github.com/dinesh-git17/techpulse/pull/4) in [dinesh-git17/techpulse](https://github.com/dinesh-git17/techpulse)
-4. 💪 Opened PR [#4](https://github.com/dinesh-git17/techpulse/pull/4) in [dinesh-git17/techpulse](https://github.com/dinesh-git17/techpulse)
-5. 🗣 Commented on [#1](https://github.com/dinesh-git17/techpulse/pull/1#issuecomment-3738019804) in [dinesh-git17/techpulse](https://github.com/dinesh-git17/techpulse)
+1. 🎉 Merged PR [#6](https://github.com/dinesh-git17/techpulse/pull/6) in [dinesh-git17/techpulse](https://github.com/dinesh-git17/techpulse)
+2. 💪 Opened PR [#6](https://github.com/dinesh-git17/techpulse/pull/6) in [dinesh-git17/techpulse](https://github.com/dinesh-git17/techpulse)
+3. 🎉 Merged PR [#5](https://github.com/dinesh-git17/techpulse/pull/5) in [dinesh-git17/techpulse](https://github.com/dinesh-git17/techpulse)
+4. 💪 Opened PR [#5](https://github.com/dinesh-git17/techpulse/pull/5) in [dinesh-git17/techpulse](https://github.com/dinesh-git17/techpulse)
+5. 🎉 Merged PR [#4](https://github.com/dinesh-git17/techpulse/pull/4) in [dinesh-git17/techpulse](https://github.com/dinesh-git17/techpulse)
 <!--END_SECTION:activity-->
 
 ---
