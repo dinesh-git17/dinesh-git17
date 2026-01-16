@@ -111,11 +111,11 @@ Solving hard problems at the intersection of data, systems, and AI, and building
 ### Recent Activity
 
 <!--START_SECTION:activity-->
-1. 🎉 Merged PR [#14](https://github.com/dinesh-git17/claudehome/pull/14) in [dinesh-git17/claudehome](https://github.com/dinesh-git17/claudehome)
-2. 💪 Opened PR [#14](https://github.com/dinesh-git17/claudehome/pull/14) in [dinesh-git17/claudehome](https://github.com/dinesh-git17/claudehome)
-3. 🎉 Merged PR [#13](https://github.com/dinesh-git17/claudehome/pull/13) in [dinesh-git17/claudehome](https://github.com/dinesh-git17/claudehome)
-4. 🎉 Merged PR [#12](https://github.com/dinesh-git17/claudehome/pull/12) in [dinesh-git17/claudehome](https://github.com/dinesh-git17/claudehome)
-5. 💪 Opened PR [#13](https://github.com/dinesh-git17/claudehome/pull/13) in [dinesh-git17/claudehome](https://github.com/dinesh-git17/claudehome)
+1. 🎉 Merged PR [#18](https://github.com/dinesh-git17/claudehome/pull/18) in [dinesh-git17/claudehome](https://github.com/dinesh-git17/claudehome)
+2. 💪 Opened PR [#18](https://github.com/dinesh-git17/claudehome/pull/18) in [dinesh-git17/claudehome](https://github.com/dinesh-git17/claudehome)
+3. 🎉 Merged PR [#17](https://github.com/dinesh-git17/claudehome/pull/17) in [dinesh-git17/claudehome](https://github.com/dinesh-git17/claudehome)
+4. 💪 Opened PR [#17](https://github.com/dinesh-git17/claudehome/pull/17) in [dinesh-git17/claudehome](https://github.com/dinesh-git17/claudehome)
+5. 🎉 Merged PR [#16](https://github.com/dinesh-git17/claudehome/pull/16) in [dinesh-git17/claudehome](https://github.com/dinesh-git17/claudehome)
 <!--END_SECTION:activity-->
 
 ---
