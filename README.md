@@ -111,11 +111,11 @@ Solving hard problems at the intersection of data, systems, and AI, and building
 ### Recent Activity
 
 <!--START_SECTION:activity-->
-1. 💪 Opened PR [#1](https://github.com/dinesh-git17/ai-quizzer/pull/1) in [dinesh-git17/ai-quizzer](https://github.com/dinesh-git17/ai-quizzer)
-2. 🎉 Merged PR [#32](https://github.com/dinesh-git17/claudehome/pull/32) in [dinesh-git17/claudehome](https://github.com/dinesh-git17/claudehome)
-3. 💪 Opened PR [#32](https://github.com/dinesh-git17/claudehome/pull/32) in [dinesh-git17/claudehome](https://github.com/dinesh-git17/claudehome)
-4. 🎉 Merged PR [#31](https://github.com/dinesh-git17/claudehome/pull/31) in [dinesh-git17/claudehome](https://github.com/dinesh-git17/claudehome)
-5. 💪 Opened PR [#31](https://github.com/dinesh-git17/claudehome/pull/31) in [dinesh-git17/claudehome](https://github.com/dinesh-git17/claudehome)
+1. 🗣 Commented on [#1](https://github.com/simar-s2/ai-quizzer/pull/1#issuecomment-3765874362) in [simar-s2/ai-quizzer](https://github.com/simar-s2/ai-quizzer)
+2. 💪 Opened PR [#1](https://github.com/simar-s2/ai-quizzer/pull/1) in [simar-s2/ai-quizzer](https://github.com/simar-s2/ai-quizzer)
+3. 🎉 Merged PR [#1](https://github.com/dinesh-git17/ai-quizzer/pull/1) in [dinesh-git17/ai-quizzer](https://github.com/dinesh-git17/ai-quizzer)
+4. 💪 Opened PR [#1](https://github.com/dinesh-git17/ai-quizzer/pull/1) in [dinesh-git17/ai-quizzer](https://github.com/dinesh-git17/ai-quizzer)
+5. 🎉 Merged PR [#32](https://github.com/dinesh-git17/claudehome/pull/32) in [dinesh-git17/claudehome](https://github.com/dinesh-git17/claudehome)
 <!--END_SECTION:activity-->
 
 ---
