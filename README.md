@@ -111,11 +111,11 @@ Solving hard problems at the intersection of data, systems, and AI, and building
 ### Recent Activity
 
 <!--START_SECTION:activity-->
-1. 🎉 Merged PR [#2](https://github.com/simar-s2/ai-quizzer/pull/2) in [simar-s2/ai-quizzer](https://github.com/simar-s2/ai-quizzer)
-2. 🎉 Merged PR [#47](https://github.com/dinesh-git17/claudehome/pull/47) in [dinesh-git17/claudehome](https://github.com/dinesh-git17/claudehome)
-3. 💪 Opened PR [#47](https://github.com/dinesh-git17/claudehome/pull/47) in [dinesh-git17/claudehome](https://github.com/dinesh-git17/claudehome)
-4. 🎉 Merged PR [#46](https://github.com/dinesh-git17/claudehome/pull/46) in [dinesh-git17/claudehome](https://github.com/dinesh-git17/claudehome)
-5. 💪 Opened PR [#46](https://github.com/dinesh-git17/claudehome/pull/46) in [dinesh-git17/claudehome](https://github.com/dinesh-git17/claudehome)
+1. 🗣 Commented on [#57](https://github.com/dinesh-git17/dinbuilds-portfolio/pull/57#issuecomment-3770389435) in [dinesh-git17/dinbuilds-portfolio](https://github.com/dinesh-git17/dinbuilds-portfolio)
+2. 🎉 Merged PR [#2](https://github.com/simar-s2/ai-quizzer/pull/2) in [simar-s2/ai-quizzer](https://github.com/simar-s2/ai-quizzer)
+3. 🎉 Merged PR [#47](https://github.com/dinesh-git17/claudehome/pull/47) in [dinesh-git17/claudehome](https://github.com/dinesh-git17/claudehome)
+4. 💪 Opened PR [#47](https://github.com/dinesh-git17/claudehome/pull/47) in [dinesh-git17/claudehome](https://github.com/dinesh-git17/claudehome)
+5. 🎉 Merged PR [#46](https://github.com/dinesh-git17/claudehome/pull/46) in [dinesh-git17/claudehome](https://github.com/dinesh-git17/claudehome)
 <!--END_SECTION:activity-->
 
 ---
