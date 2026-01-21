@@ -111,11 +111,11 @@ Open to full-time roles, collaborations, and technical conversations that start 
 ### Recent Activity
 
 <!--START_SECTION:activity-->
-1. 🎉 Merged PR [#63](https://github.com/dinesh-git17/claudehome/pull/63) in [dinesh-git17/claudehome](https://github.com/dinesh-git17/claudehome)
-2. 💪 Opened PR [#63](https://github.com/dinesh-git17/claudehome/pull/63) in [dinesh-git17/claudehome](https://github.com/dinesh-git17/claudehome)
-3. 🎉 Merged PR [#62](https://github.com/dinesh-git17/claudehome/pull/62) in [dinesh-git17/claudehome](https://github.com/dinesh-git17/claudehome)
-4. 💪 Opened PR [#62](https://github.com/dinesh-git17/claudehome/pull/62) in [dinesh-git17/claudehome](https://github.com/dinesh-git17/claudehome)
-5. 🎉 Merged PR [#61](https://github.com/dinesh-git17/claudehome/pull/61) in [dinesh-git17/claudehome](https://github.com/dinesh-git17/claudehome)
+1. 🗣 Commented on [#33](https://github.com/dinesh-git17/techpulse/pull/33#issuecomment-3779836852) in [dinesh-git17/techpulse](https://github.com/dinesh-git17/techpulse)
+2. 🎉 Merged PR [#4](https://github.com/dinesh-git17/resume-system/pull/4) in [dinesh-git17/resume-system](https://github.com/dinesh-git17/resume-system)
+3. 💪 Opened PR [#4](https://github.com/dinesh-git17/resume-system/pull/4) in [dinesh-git17/resume-system](https://github.com/dinesh-git17/resume-system)
+4. 🎉 Merged PR [#1](https://github.com/dinesh-git17/resume-system/pull/1) in [dinesh-git17/resume-system](https://github.com/dinesh-git17/resume-system)
+5. 🎉 Merged PR [#2](https://github.com/dinesh-git17/resume-system/pull/2) in [dinesh-git17/resume-system](https://github.com/dinesh-git17/resume-system)
 <!--END_SECTION:activity-->
 
 ---
