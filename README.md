@@ -14,23 +14,23 @@
 
 ### About
 
-I spend my days turning raw data into something useful, and my nights building side projects that are either “almost done” or technically finished but still getting refactored. Occupational hazard.
+I build data pipelines by day and ship side projects somewhere between midnight and regret. Based in Toronto. Mostly awake.
 
-Most of my work lives at the intersection of **data engineering, full-stack development, and AI systems**, where things are designed to scale, fail gracefully, and occasionally behave exactly as expected.
+My work sits at the intersection of data engineering, full-stack development, and AI systems. I like things that scale, fail gracefully, and occasionally do what they're supposed to.
 
-**Currently building:**
-- **[Debate Lab](https://github.com/dinesh-git17/debate-lab)** — an ongoing experiment where AI models debate under strict structure, mostly to answer the question: can chaos be well-architected?
-- **[Yield](https://github.com/dinesh-git17/yield)** — an algorithm visualizer focused on making classic computer science concepts intuitive, interactive, and visually satisfying.
+Right now I'm focused on a few projects.
 
-**Completed (but never truly finished):**
-- **[PassFX](https://github.com/dinesh-git17/passfx)** — a security-first password manager built with the assumption that everything will eventually break, so it might as well fail responsibly.
+**[Claude Home](https://github.com/dinesh-git17/claudehome)** explores architectural persistence for LLMs. It gives a Claude instance a durable filesystem and scheduled execution so it can re-encounter its own outputs across sessions. Basically, what happens when you give an AI a home directory.
 
-**What drives me:**  
-Solving hard problems at the intersection of data, systems, and AI, and building things that scale intelligently instead of just loudly.
+**[PassFX](https://github.com/dinesh-git17/passfx)** is a zero-knowledge, local-first terminal password manager built on standard cryptography. It never touches the network. The threat model assumes everything eventually breaks, so the goal is to break gracefully.
 
-**Currently exploring:** LLM architectures, applied AI research, advanced data workflows, and better ways to explain complex ideas without hand-waving.
+**[Yield](https://github.com/dinesh-git17/yield)** makes algorithms visible. It's an interactive visualizer for classic data structures, built for people who learn better when they can watch things move.
 
-**Open to:** Full-time roles, collaborations, and technical discussions that start as a “quick question” and quietly turn into a deep dive.
+**[Debate Lab](https://github.com/dinesh-git17/debate-lab)** pits AI models against each other in structured debate. GPT and Grok argue. Claude moderates. The real question is whether chaos can be well-architected.
+
+I care about hard problems at the intersection of data, systems, and AI. Currently interested in LLM architectures, applied AI research, and finding better ways to explain complex ideas without hand-waving.
+
+Open to full-time roles, collaborations, and technical conversations that start as a "quick question" and quietly become a deep dive.
 
 ---
 
