@@ -30,7 +30,7 @@ Right now I'm focused on a few projects.
 
 I care about hard problems at the intersection of data, systems, and AI. Currently interested in LLM architectures, applied AI research, and finding better ways to explain complex ideas without hand-waving.
 
-Open to full-time roles, collaborations, and technical conversations that start as a "quick question" and quietly become a deep dive.
+Open to full time roles, collaborations, and technical conversations that start as a "quick question" and quietly become a deep dive.
 
 ---
 
