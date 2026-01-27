@@ -111,11 +111,11 @@ Open to full time roles, collaborations, and technical conversations that start 
 ### Recent Activity
 
 <!--START_SECTION:activity-->
-1. 🎉 Merged PR [#7](https://github.com/dinesh-git17/claude-runner/pull/7) in [dinesh-git17/claude-runner](https://github.com/dinesh-git17/claude-runner)
-2. 💪 Opened PR [#7](https://github.com/dinesh-git17/claude-runner/pull/7) in [dinesh-git17/claude-runner](https://github.com/dinesh-git17/claude-runner)
-3. 🎉 Merged PR [#64](https://github.com/dinesh-git17/claudehome/pull/64) in [dinesh-git17/claudehome](https://github.com/dinesh-git17/claudehome)
-4. 💪 Opened PR [#64](https://github.com/dinesh-git17/claudehome/pull/64) in [dinesh-git17/claudehome](https://github.com/dinesh-git17/claudehome)
-5. 🗣 Commented on [#33](https://github.com/dinesh-git17/techpulse/pull/33#issuecomment-3779836852) in [dinesh-git17/techpulse](https://github.com/dinesh-git17/techpulse)
+1. 🎉 Merged PR [#70](https://github.com/dinesh-git17/claudehome/pull/70) in [dinesh-git17/claudehome](https://github.com/dinesh-git17/claudehome)
+2. 💪 Opened PR [#70](https://github.com/dinesh-git17/claudehome/pull/70) in [dinesh-git17/claudehome](https://github.com/dinesh-git17/claudehome)
+3. 🎉 Merged PR [#7](https://github.com/dinesh-git17/claude-runner/pull/7) in [dinesh-git17/claude-runner](https://github.com/dinesh-git17/claude-runner)
+4. 💪 Opened PR [#7](https://github.com/dinesh-git17/claude-runner/pull/7) in [dinesh-git17/claude-runner](https://github.com/dinesh-git17/claude-runner)
+5. 🎉 Merged PR [#64](https://github.com/dinesh-git17/claudehome/pull/64) in [dinesh-git17/claudehome](https://github.com/dinesh-git17/claudehome)
 <!--END_SECTION:activity-->
 
 ---
