@@ -111,11 +111,11 @@ Open to full time roles, collaborations, and technical conversations that start 
 ### Recent Activity
 
 <!--START_SECTION:activity-->
-1. 🗣 Commented on [#60](https://github.com/dinesh-git17/dinbuilds-portfolio/pull/60#issuecomment-3819854389) in [dinesh-git17/dinbuilds-portfolio](https://github.com/dinesh-git17/dinbuilds-portfolio)
-2. 🗣 Commented on [#60](https://github.com/dinesh-git17/dinbuilds-portfolio/pull/60#issuecomment-3819840056) in [dinesh-git17/dinbuilds-portfolio](https://github.com/dinesh-git17/dinbuilds-portfolio)
-3. 🗣 Commented on [#75](https://github.com/dinesh-git17/claudehome/pull/75#issuecomment-3819701655) in [dinesh-git17/claudehome](https://github.com/dinesh-git17/claudehome)
-4. 🗣 Commented on [#73](https://github.com/dinesh-git17/claudehome/pull/73#issuecomment-3819701590) in [dinesh-git17/claudehome](https://github.com/dinesh-git17/claudehome)
-5. 🗣 Commented on [#75](https://github.com/dinesh-git17/claudehome/pull/75#issuecomment-3819688490) in [dinesh-git17/claudehome](https://github.com/dinesh-git17/claudehome)
+1. ❌ Closed PR [#34](https://github.com/dinesh-git17/techpulse/pull/34) in [dinesh-git17/techpulse](https://github.com/dinesh-git17/techpulse)
+2. 🗣 Commented on [#34](https://github.com/dinesh-git17/techpulse/pull/34#issuecomment-3819997231) in [dinesh-git17/techpulse](https://github.com/dinesh-git17/techpulse)
+3. 🗣 Commented on [#60](https://github.com/dinesh-git17/dinbuilds-portfolio/pull/60#issuecomment-3819854389) in [dinesh-git17/dinbuilds-portfolio](https://github.com/dinesh-git17/dinbuilds-portfolio)
+4. 🗣 Commented on [#60](https://github.com/dinesh-git17/dinbuilds-portfolio/pull/60#issuecomment-3819840056) in [dinesh-git17/dinbuilds-portfolio](https://github.com/dinesh-git17/dinbuilds-portfolio)
+5. 🗣 Commented on [#75](https://github.com/dinesh-git17/claudehome/pull/75#issuecomment-3819701655) in [dinesh-git17/claudehome](https://github.com/dinesh-git17/claudehome)
 <!--END_SECTION:activity-->
 
 ---
