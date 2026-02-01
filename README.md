@@ -1,18 +1,18 @@
 <div align="center">
 
-<img src="assets/generated/terminal-header.svg" alt="Terminal showing: Data Engineer building things between midnight and regret" width="800"/>
+<img src="assets/generated/terminal-header.svg?v=cbf3bbf" alt="Terminal showing: Data Engineer building things between midnight and regret" width="800"/>
 
 <p>
-<a href="https://www.linkedin.com/in/dineshsdawonauth/"><img src="assets/generated/btn-linkedin.svg" alt="LinkedIn" height="28"/></a>
-<a href="mailto:info@dineshd.dev"><img src="assets/generated/btn-email.svg" alt="Email" height="28"/></a>
-<a href="https://www.dineshd.dev"><img src="assets/generated/btn-portfolio.svg" alt="Portfolio" height="28"/></a>
+<a href="https://www.linkedin.com/in/dineshsdawonauth/"><img src="assets/generated/btn-linkedin.svg?v=cbf3bbf" alt="LinkedIn" height="28"/></a>
+<a href="mailto:info@dineshd.dev"><img src="assets/generated/btn-email.svg?v=cbf3bbf" alt="Email" height="28"/></a>
+<a href="https://www.dineshd.dev"><img src="assets/generated/btn-portfolio.svg?v=cbf3bbf" alt="Portfolio" height="28"/></a>
 </p>
 
-<img src="assets/generated/now-coding.svg" alt="WakaTime coding statistics for the last 7 days" width="800"/>
+<img src="assets/generated/now-coding.svg?v=cbf3bbf" alt="WakaTime coding statistics for the last 7 days" width="800"/>
 
-<img src="assets/generated/activity-circuit.svg" alt="GitHub activity circuit board" width="800"/>
+<img src="assets/generated/activity-circuit.svg?v=cbf3bbf" alt="GitHub activity circuit board" width="800"/>
 
-<img src="assets/generated/project-grid.svg" alt="Featured projects: Claude Home, PassFX, Yield, Debate Lab" width="800"/>
+<img src="assets/generated/project-grid.svg?v=cbf3bbf" alt="Featured projects: Claude Home, PassFX, Yield, Debate Lab" width="800"/>
 
 </div>
 
@@ -27,6 +27,6 @@
 
 <div align="center">
 
-<img src="assets/generated/stack-ticker.svg" alt="Technology stack marquee" width="800"/>
+<img src="assets/generated/stack-ticker.svg?v=cbf3bbf" alt="Technology stack marquee" width="800"/>
 
 </div>
