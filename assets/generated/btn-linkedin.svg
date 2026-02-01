@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 36" role="img" aria-label="LinkedIn">
+  <title>LinkedIn</title>
+  <defs>
+    <style>
+      .btn-bg { fill: #44475a; }
+      .btn-border { fill: none; stroke: #6272a4; stroke-width: 1; }
+      .btn-icon { fill: #0A66C2; }
+      .btn-text { fill: #f8f8f2; font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; font-weight: bold; }
+      @media (prefers-color-scheme: light) {
+        .btn-bg { fill: #e0e0e0; }
+        .btn-text { fill: #282a36; }
+      }
+    </style>
+  </defs>
+  <rect class="btn-bg" x="0" y="0" width="120" height="36" rx="6"/>
+  <rect class="btn-border" x="0.5" y="0.5" width="119" height="35" rx="6"/>
+  <circle class="btn-icon" cx="22" cy="18" r="10"/>
+  <text fill="#fff" x="22" y="22" text-anchor="middle" font-size="12" font-weight="bold" font-family="Arial">in</text>
+  <text class="btn-text" x="42" y="22">LinkedIn</text>
+</svg>

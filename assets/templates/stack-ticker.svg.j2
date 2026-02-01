@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 50" role="img" aria-label="Technology stack: {{ technologies|map(attribute='name')|join(', ') }}">
+  <title>Tech Stack Marquee</title>
+  <defs>
+    <style>
+      /* Dracula Theme */
+      :root {
+        --bg: #282a36;
+        --fg: #f8f8f2;
+        --comment: #6272a4;
+      }
+
+      .ticker-bg {
+        fill: var(--bg);
+      }
+
+      .tech-text {
+        fill: var(--fg);
+        font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+        font-size: 14px;
+      }
+
+      .separator {
+        fill: var(--comment);
+        font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+        font-size: 14px;
+      }
+
+      /* Marquee animation - infinite horizontal scroll */
+      .marquee-group {
+        animation: scroll {{ scroll_duration }}s linear infinite;
+      }
+
+      @keyframes scroll {
+        from { transform: translateX(0); }
+        to { transform: translateX(-{{ half_width }}px); }
+      }
+
+      /* Light mode */
+      @media (prefers-color-scheme: light) {
+        .ticker-bg { fill: #f5f5f5; }
+        .tech-text { fill: #282a36; }
+      }
+
+      /* Reduced motion - stop animation */
+      @media (prefers-reduced-motion: reduce) {
+        .marquee-group {
+          animation: none;
+        }
+      }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect class="ticker-bg" x="0" y="0" width="800" height="50"/>
+
+  <!-- Marquee Container with clip path -->
+  <clipPath id="ticker-clip">
+    <rect x="0" y="0" width="800" height="50"/>
+  </clipPath>
+
+  <g clip-path="url(#ticker-clip)">
+    <g class="marquee-group">
+      <!-- First copy of items -->
+      {% for item in technologies %}
+      <text class="tech-text" x="{{ item.x }}" y="32">{{ item.name }}</text>
+      <text class="separator" x="{{ item.sep_x }}" y="32">//</text>
+      {% endfor %}
+
+      <!-- Second copy for seamless loop -->
+      {% for item in technologies %}
+      <text class="tech-text" x="{{ item.x + half_width }}" y="32">{{ item.name }}</text>
+      <text class="separator" x="{{ item.sep_x + half_width }}" y="32">//</text>
+      {% endfor %}
+    </g>
+  </g>
+</svg>

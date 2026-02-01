@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 140" role="img" aria-label="WakaTime coding statistics">
+  <title>Coding Stats - Last 7 Days</title>
+  <defs>
+    <style>
+      /* Dracula Theme */
+      :root {
+        --bg: #282a36;
+        --fg: #f8f8f2;
+        --accent: #ff79c6;
+        --comment: #6272a4;
+        --green: #50fa7b;
+        --purple: #bd93f9;
+        --cyan: #8be9fd;
+        --orange: #ffb86c;
+      }
+
+      .card-bg {
+        fill: var(--bg);
+      }
+
+      .card-border {
+        fill: none;
+        stroke: var(--comment);
+        stroke-width: 1;
+      }
+
+      .title {
+        fill: var(--accent);
+        font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+        font-size: 14px;
+        font-weight: bold;
+      }
+
+      .label {
+        fill: var(--fg);
+        font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+        font-size: 12px;
+      }
+
+      .bar-bg {
+        fill: #44475a;
+      }
+
+      .bar-fill-1 { fill: var(--cyan); }
+      .bar-fill-2 { fill: var(--purple); }
+      .bar-fill-3 { fill: var(--green); }
+
+      .hours {
+        fill: var(--comment);
+        font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+        font-size: 11px;
+      }
+
+      .total {
+        fill: var(--green);
+        font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+        font-size: 16px;
+        font-weight: bold;
+      }
+
+      .unavailable {
+        fill: var(--comment);
+        font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+        font-size: 12px;
+        font-style: italic;
+      }
+
+      /* Bar animation */
+      .bar-animated {
+        animation: growBar 1s ease-out forwards;
+        transform-origin: left;
+        transform: scaleX(0);
+      }
+
+      @keyframes growBar {
+        to { transform: scaleX(1); }
+      }
+
+      .bar-1 { animation-delay: 0.2s; }
+      .bar-2 { animation-delay: 0.4s; }
+      .bar-3 { animation-delay: 0.6s; }
+
+      /* Light mode */
+      @media (prefers-color-scheme: light) {
+        .card-bg { fill: #f5f5f5; }
+        .bar-bg { fill: #e0e0e0; }
+      }
+
+      /* Reduced motion */
+      @media (prefers-reduced-motion: reduce) {
+        .bar-animated {
+          animation: none;
+          transform: scaleX(1);
+        }
+      }
+    </style>
+  </defs>
+
+  <!-- Card Background -->
+  <rect class="card-bg" x="0" y="0" width="800" height="140" rx="8" ry="8"/>
+  <rect class="card-border" x="0.5" y="0.5" width="799" height="139" rx="8" ry="8"/>
+
+  <!-- Header -->
+  <text class="title" x="20" y="28">// now coding</text>
+  <text class="total" x="780" y="28" text-anchor="end">{{ total_hours }}h this week</text>
+
+  {% if status == "ok" and languages %}
+  <!-- Language Bars - Horizontal layout -->
+  <g transform="translate(20, 50)">
+    {% for lang in languages %}
+    <g transform="translate({{ loop.index0 * 255 }}, 0)">
+      <text class="label" x="0" y="12">{{ lang.name }}</text>
+      <text class="hours" x="230" y="12" text-anchor="end">{{ lang.hours }}h ({{ lang.percent }}%)</text>
+      <rect class="bar-bg" x="0" y="22" width="240" height="10" rx="5"/>
+      <rect class="bar-fill-{{ loop.index }} bar-animated bar-{{ loop.index }}" x="0" y="22" width="{{ (lang.percent / 100) * 240 }}" height="10" rx="5"/>
+    </g>
+    {% endfor %}
+  </g>
+  {% else %}
+  <!-- Unavailable State -->
+  <text class="unavailable" x="400" y="75" text-anchor="middle">// no coding data available</text>
+  <text class="unavailable" x="400" y="100" text-anchor="middle">// connect WakaTime to see your stats</text>
+  {% endif %}
+</svg>

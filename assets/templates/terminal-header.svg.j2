@@ -1,0 +1,174 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 200" role="img" aria-label="Terminal showing: {{ bio_text }}">
+  <title>Terminal Bio - {{ name }}</title>
+  <defs>
+    <style>
+      /* Dracula Theme */
+      :root {
+        --bg: #282a36;
+        --fg: #f8f8f2;
+        --accent: #ff79c6;
+        --comment: #6272a4;
+        --green: #50fa7b;
+        --purple: #bd93f9;
+        --cyan: #8be9fd;
+        --orange: #ffb86c;
+        --red: #ff5555;
+      }
+
+      .terminal-bg {
+        fill: var(--bg);
+      }
+
+      .terminal-border {
+        fill: none;
+        stroke: var(--comment);
+        stroke-width: 2;
+      }
+
+      .titlebar {
+        fill: #44475a;
+      }
+
+      .btn-close { fill: var(--red); }
+      .btn-minimize { fill: var(--orange); }
+      .btn-maximize { fill: var(--green); }
+
+      .title-text {
+        fill: var(--fg);
+        font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+        font-size: 12px;
+      }
+
+      .prompt {
+        fill: var(--green);
+        font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+        font-size: 14px;
+      }
+
+      .command {
+        fill: var(--cyan);
+        font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+        font-size: 14px;
+      }
+
+      .output {
+        fill: var(--fg);
+        font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+        font-size: 14px;
+      }
+
+      .highlight {
+        fill: var(--accent);
+      }
+
+      .comment-text {
+        fill: var(--comment);
+        font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+        font-size: 14px;
+      }
+
+      /* Typing animation */
+      .typing-line {
+        opacity: 0;
+        animation: fadeIn 0.1s forwards;
+      }
+
+      .line-1 { animation-delay: 0.3s; }
+      .line-2 { animation-delay: 0.8s; }
+      .line-3 { animation-delay: 1.3s; }
+      .line-4 { animation-delay: 1.8s; }
+      .line-5 { animation-delay: 2.3s; }
+      .line-6 { animation-delay: 2.8s; }
+
+      @keyframes fadeIn {
+        to { opacity: 1; }
+      }
+
+      /* Cursor blink */
+      .cursor {
+        fill: var(--fg);
+        animation: blink 1s step-end infinite;
+      }
+
+      @keyframes blink {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0; }
+      }
+
+      /* Light mode support */
+      @media (prefers-color-scheme: light) {
+        :root {
+          --bg: #f8f8f2;
+          --fg: #282a36;
+          --comment: #6272a4;
+        }
+        .terminal-bg { fill: #f5f5f5; }
+        .titlebar { fill: #e0e0e0; }
+      }
+
+      /* Reduced motion support */
+      @media (prefers-reduced-motion: reduce) {
+        .typing-line {
+          animation: none;
+          opacity: 1;
+        }
+        .cursor {
+          animation: none;
+          opacity: 1;
+        }
+      }
+    </style>
+  </defs>
+
+  <!-- Terminal Window -->
+  <rect class="terminal-bg" x="0" y="0" width="800" height="200" rx="10" ry="10"/>
+  <rect class="terminal-border" x="1" y="1" width="798" height="198" rx="10" ry="10"/>
+
+  <!-- Title Bar -->
+  <rect class="titlebar" x="0" y="0" width="800" height="30" rx="10" ry="10"/>
+  <rect class="titlebar" x="0" y="15" width="800" height="15"/>
+
+  <!-- Window Buttons -->
+  <circle class="btn-close" cx="20" cy="15" r="6"/>
+  <circle class="btn-minimize" cx="40" cy="15" r="6"/>
+  <circle class="btn-maximize" cx="60" cy="15" r="6"/>
+
+  <!-- Title -->
+  <text class="title-text" x="400" y="19" text-anchor="middle">{{ name }} ~ zsh</text>
+
+  <!-- Terminal Content -->
+  <g transform="translate(20, 50)">
+    <!-- Line 1: whoami -->
+    <g class="typing-line line-1">
+      <text class="prompt" x="0" y="0">$</text>
+      <text class="command" x="15" y="0">whoami</text>
+    </g>
+
+    <!-- Line 2: Output -->
+    <g class="typing-line line-2">
+      <text class="output" x="0" y="22">{{ role }}</text>
+    </g>
+
+    <!-- Line 3: cat bio.txt -->
+    <g class="typing-line line-3">
+      <text class="prompt" x="0" y="52">$</text>
+      <text class="command" x="15" y="52">cat bio.txt</text>
+    </g>
+
+    <!-- Line 4: Bio output -->
+    <g class="typing-line line-4">
+      <text class="output" x="0" y="74">{{ bio_line_1 }}</text>
+    </g>
+
+    <!-- Line 5: Bio continued -->
+    <g class="typing-line line-5">
+      <text class="output" x="0" y="96">{{ bio_line_2 }}</text>
+    </g>
+
+    <!-- Line 6: New prompt with cursor -->
+    <g class="typing-line line-6">
+      <text class="prompt" x="0" y="126">$</text>
+      <rect class="cursor" x="15" y="114" width="8" height="16"/>
+    </g>
+  </g>
+</svg>

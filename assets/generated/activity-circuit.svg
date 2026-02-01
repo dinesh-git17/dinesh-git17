@@ -1,0 +1,117 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 180" role="img" aria-label="GitHub activity circuit board showing 0 contributions">
+  <title>Activity Circuit - 0 contributions</title>
+  <defs>
+    <style>
+      /* Dracula Theme */
+      :root {
+        --bg: #282a36;
+        --fg: #f8f8f2;
+        --accent: #ff79c6;
+        --comment: #6272a4;
+        --green: #50fa7b;
+        --purple: #bd93f9;
+        --cyan: #8be9fd;
+      }
+
+      .circuit-bg {
+        fill: var(--bg);
+      }
+
+      .circuit-border {
+        fill: none;
+        stroke: var(--comment);
+        stroke-width: 1;
+      }
+
+      .title {
+        fill: var(--accent);
+        font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+        font-size: 12px;
+        font-weight: bold;
+      }
+
+      .total {
+        fill: var(--green);
+        font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+        font-size: 14px;
+        font-weight: bold;
+      }
+
+      .label {
+        fill: var(--comment);
+        font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+        font-size: 10px;
+      }
+
+      /* Circuit traces */
+      .trace {
+        stroke: #44475a;
+        stroke-width: 1;
+        fill: none;
+      }
+
+      .trace-active {
+        stroke: var(--purple);
+        stroke-width: 1;
+        fill: none;
+        opacity: 0.5;
+      }
+
+      /* Node levels */
+      .node-0 { fill: #44475a; }
+      .node-1 { fill: #6272a4; }
+      .node-2 { fill: var(--purple); }
+      .node-3 { fill: var(--cyan); }
+      .node-4 { fill: var(--green); }
+
+      /* Glow effect for active nodes */
+      .node-glow {
+        filter: drop-shadow(0 0 3px currentColor);
+      }
+
+      /* Pulse animation for high-activity nodes */
+      .pulse {
+        animation: pulse 2s ease-in-out infinite;
+      }
+
+      @keyframes pulse {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0.6; }
+      }
+
+      .unavailable {
+        fill: var(--comment);
+        font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+        font-size: 12px;
+        font-style: italic;
+      }
+
+      /* Light mode */
+      @media (prefers-color-scheme: light) {
+        .circuit-bg { fill: #f5f5f5; }
+        .node-0 { fill: #e0e0e0; }
+        .node-1 { fill: #bdbdbd; }
+        .trace { stroke: #e0e0e0; }
+      }
+
+      /* Reduced motion */
+      @media (prefers-reduced-motion: reduce) {
+        .pulse {
+          animation: none;
+        }
+      }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect class="circuit-bg" x="0" y="0" width="800" height="180" rx="8" ry="8"/>
+  <rect class="circuit-border" x="0.5" y="0.5" width="799" height="179" rx="8" ry="8"/>
+
+  <!-- Header -->
+  <text class="title" x="15" y="24">// activity_circuit</text>
+  <text class="total" x="785" y="24" text-anchor="end">0 commits</text>
+
+  <!-- Unavailable State -->
+  <text class="unavailable" x="400" y="90" text-anchor="middle">// activity data unavailable</text>
+  <text class="unavailable" x="400" y="110" text-anchor="middle">// check GITHUB_TOKEN</text>
+</svg>
