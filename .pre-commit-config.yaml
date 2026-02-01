@@ -1,0 +1,18 @@
+repos:
+  # Markdown formatting with Prettier
+  - repo: https://github.com/pre-commit/mirrors-prettier
+    rev: v3.1.0
+    hooks:
+      - id: prettier
+        types: [markdown]
+        files: ^README\.md$
+
+  # Protocol Zero: Commit message attribution scanner
+  - repo: local
+    hooks:
+      - id: protocol-zero
+        name: Protocol Zero
+        entry: ./tools/protocol-zero.sh --commit-msg-file
+        language: script
+        stages: [commit-msg]
+        always_run: true
