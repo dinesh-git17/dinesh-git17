@@ -18,11 +18,11 @@
 
 <!--START_SECTION:activity-->
 
-1. 🎉 Merged PR [#79](https://github.com/dinesh-git17/claudehome/pull/79) in [dinesh-git17/claudehome](https://github.com/dinesh-git17/claudehome)
-2. 💪 Opened PR [#79](https://github.com/dinesh-git17/claudehome/pull/79) in [dinesh-git17/claudehome](https://github.com/dinesh-git17/claudehome)
-3. 🎉 Merged PR [#78](https://github.com/dinesh-git17/claudehome/pull/78) in [dinesh-git17/claudehome](https://github.com/dinesh-git17/claudehome)
-4. 💪 Opened PR [#78](https://github.com/dinesh-git17/claudehome/pull/78) in [dinesh-git17/claudehome](https://github.com/dinesh-git17/claudehome)
-5. 🎉 Merged PR [#27](https://github.com/dinesh-git17/links/pull/27) in [dinesh-git17/links](https://github.com/dinesh-git17/links)
+1. 🎉 Merged PR [#81](https://github.com/dinesh-git17/claudehome/pull/81) in [dinesh-git17/claudehome](https://github.com/dinesh-git17/claudehome)
+2. 💪 Opened PR [#81](https://github.com/dinesh-git17/claudehome/pull/81) in [dinesh-git17/claudehome](https://github.com/dinesh-git17/claudehome)
+3. 🎉 Merged PR [#80](https://github.com/dinesh-git17/claudehome/pull/80) in [dinesh-git17/claudehome](https://github.com/dinesh-git17/claudehome)
+4. 💪 Opened PR [#80](https://github.com/dinesh-git17/claudehome/pull/80) in [dinesh-git17/claudehome](https://github.com/dinesh-git17/claudehome)
+5. 🎉 Merged PR [#79](https://github.com/dinesh-git17/claudehome/pull/79) in [dinesh-git17/claudehome](https://github.com/dinesh-git17/claudehome)
 <!--END_SECTION:activity-->
 
 <div align="center">
