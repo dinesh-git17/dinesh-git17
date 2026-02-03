@@ -102,27 +102,27 @@
 
   <!-- Header -->
   <text class="title" x="20" y="28">// now coding</text>
-  <text class="total" x="780" y="28" text-anchor="end">6.9h this week</text>
+  <text class="total" x="780" y="28" text-anchor="end">7.3h this week</text>
 
   <!-- Language Bars - Horizontal layout -->
   <g transform="translate(20, 50)">
     <g transform="translate(0, 0)">
       <text class="label" x="0" y="12">Markdown</text>
-      <text class="hours" x="230" y="12" text-anchor="end">2.6h (37.3%)</text>
+      <text class="hours" x="230" y="12" text-anchor="end">2.7h (37.4%)</text>
       <rect class="bar-bg" x="0" y="22" width="240" height="10" rx="5"/>
-      <rect class="bar-fill-1 bar-animated bar-1" x="0" y="22" width="89.52" height="10" rx="5"/>
+      <rect class="bar-fill-1 bar-animated bar-1" x="0" y="22" width="89.76" height="10" rx="5"/>
     </g>
     <g transform="translate(255, 0)">
       <text class="label" x="0" y="12">Other</text>
-      <text class="hours" x="230" y="12" text-anchor="end">1.2h (17.2%)</text>
+      <text class="hours" x="230" y="12" text-anchor="end">1.2h (16.5%)</text>
       <rect class="bar-bg" x="0" y="22" width="240" height="10" rx="5"/>
-      <rect class="bar-fill-2 bar-animated bar-2" x="0" y="22" width="41.279999999999994" height="10" rx="5"/>
+      <rect class="bar-fill-2 bar-animated bar-2" x="0" y="22" width="39.6" height="10" rx="5"/>
     </g>
     <g transform="translate(510, 0)">
       <text class="label" x="0" y="12">YAML</text>
-      <text class="hours" x="230" y="12" text-anchor="end">0.8h (12.0%)</text>
+      <text class="hours" x="230" y="12" text-anchor="end">0.8h (11.3%)</text>
       <rect class="bar-bg" x="0" y="22" width="240" height="10" rx="5"/>
-      <rect class="bar-fill-3 bar-animated bar-3" x="0" y="22" width="28.799999999999997" height="10" rx="5"/>
+      <rect class="bar-fill-3 bar-animated bar-3" x="0" y="22" width="27.12" height="10" rx="5"/>
     </g>
   </g>
 </svg>
