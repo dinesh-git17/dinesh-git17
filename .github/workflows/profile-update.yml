@@ -33,13 +33,18 @@ jobs:
           WAKATIME_API_KEY: ${{ secrets.WAKATIME_API_KEY }}
         run: python .github/scripts/generate_svgs.py
 
+      - name: Bust GitHub CDN cache
+        run: |
+          CACHE_BUST=$(date +%s | sha1sum | head -c 7)
+          sed -i "s/\?v=[a-f0-9]\{7\}/?v=${CACHE_BUST}/g" README.md
+
       - name: Commit and push if changed
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          git diff --quiet assets/generated/ && exit 0
+          git diff --quiet assets/generated/ README.md && exit 0
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add assets/generated/
-          git commit -m "feat(profile): update generated SVG assets"
+          git add assets/generated/ README.md
+          git commit -m ":zap: Update README with the recent activity"
           git push
