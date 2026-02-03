@@ -1,20 +1,26 @@
-"""Fetch WakaTime coding statistics for the last 7 days."""
+"""Fetch WakaTime coding statistics for the last 7 days via the Summaries API."""
 
 import os
 import base64
+from collections import defaultdict
+from datetime import datetime, timedelta, timezone
 from typing import Optional
+
 import requests
 
 
 def fetch_wakatime_stats(api_key: Optional[str] = None) -> dict:
     """
-    Fetch coding statistics from WakaTime API.
+    Fetch coding statistics from the WakaTime Summaries API.
+
+    Uses /summaries instead of /stats to avoid WakaTime's server-side
+    caching which can lag hours behind actual activity.
 
     Args:
         api_key: WakaTime API key. Falls back to WAKATIME_API_KEY env var.
 
     Returns:
-        Dictionary with languages, total_hours, and last_updated.
+        Dictionary with languages, total_hours, and status.
     """
     api_key = api_key or os.environ.get("WAKATIME_API_KEY")
 
@@ -25,9 +31,13 @@ def fetch_wakatime_stats(api_key: Optional[str] = None) -> dict:
         encoded_key = base64.b64encode(api_key.encode()).decode()
         headers = {"Authorization": f"Basic {encoded_key}"}
 
+        today = datetime.now(timezone.utc).date()
+        start = today - timedelta(days=6)
+
         response = requests.get(
-            "https://wakatime.com/api/v1/users/current/stats/last_7_days",
+            "https://wakatime.com/api/v1/users/current/summaries",
             headers=headers,
+            params={"start": str(start), "end": str(today)},
             timeout=30,
         )
 
@@ -40,23 +50,34 @@ def fetch_wakatime_stats(api_key: Optional[str] = None) -> dict:
         if response.status_code != 200:
             return _empty_stats(f"API error: {response.status_code}")
 
-        data = response.json().get("data", {})
+        payload = response.json()
+        days = payload.get("data", [])
 
+        # Aggregate language seconds across all days
+        lang_seconds = defaultdict(float)
+        total_seconds = 0.0
+
+        for day in days:
+            total_seconds += day.get("grand_total", {}).get("total_seconds", 0)
+            for lang in day.get("languages", []):
+                lang_seconds[lang["name"]] += lang.get("total_seconds", 0)
+
+        # Sort by total time descending, take top 3
+        sorted_langs = sorted(lang_seconds.items(), key=lambda x: x[1], reverse=True)
         languages = []
-        for lang in data.get("languages", [])[:3]:
+        for name, secs in sorted_langs[:3]:
+            pct = (secs / total_seconds * 100) if total_seconds > 0 else 0
             languages.append({
-                "name": lang.get("name", "Unknown"),
-                "hours": round(lang.get("total_seconds", 0) / 3600, 1),
-                "percent": round(lang.get("percent", 0), 1),
+                "name": name,
+                "hours": round(secs / 3600, 1),
+                "percent": round(pct, 1),
             })
 
-        total_seconds = data.get("total_seconds", 0)
         total_hours = round(total_seconds / 3600, 1)
 
         return {
             "languages": languages,
             "total_hours": total_hours,
-            "last_updated": data.get("modified_at", ""),
             "status": "ok",
         }
 
