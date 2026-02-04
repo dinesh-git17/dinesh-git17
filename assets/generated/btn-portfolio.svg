@@ -15,6 +15,6 @@
   <rect class="btn-bg" x="0" y="0" width="130" height="36" rx="6"/>
   <rect class="btn-border" x="0.5" y="0.5" width="129" height="35" rx="6"/>
   <circle class="btn-icon" cx="22" cy="18" r="10"/>
-  <text fill="#282a36" x="22" y="23" text-anchor="middle" font-size="14" font-weight="bold" font-family="Arial">▲</text>
+  <path fill="#282a36" d="M22 10a8 8 0 1 0 0 16 8 8 0 0 0 0-16zm-7 8h14M22 10.5c1.5 2 2.5 4.5 2.5 7.5s-1 5.5-2.5 7.5c-1.5-2-2.5-4.5-2.5-7.5s1-5.5 2.5-7.5z"/>
   <text class="btn-text" x="42" y="22">Portfolio</text>
 </svg>
