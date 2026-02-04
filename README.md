@@ -1,18 +1,18 @@
 <div align="center">
 
-<img src="assets/generated/terminal-header.svg?v=31e45ab" alt="Terminal showing: Data Engineer building things between midnight and regret" width="800"/>
+<img src="assets/generated/terminal-header.svg?v=aa4a715" alt="Terminal showing: Data Engineer building things between midnight and regret" width="800"/>
 
 <p>
-<a href="https://www.linkedin.com/in/dineshsdawonauth/"><img src="assets/generated/btn-linkedin.svg?v=31e45ab" alt="LinkedIn" height="28"/></a>
-<a href="mailto:info@dineshd.dev"><img src="assets/generated/btn-email.svg?v=31e45ab" alt="Email" height="28"/></a>
-<a href="https://www.dineshd.dev"><img src="assets/generated/btn-portfolio.svg?v=31e45ab" alt="Portfolio" height="28"/></a>
+<a href="https://www.linkedin.com/in/dineshsdawonauth/"><img src="assets/generated/btn-linkedin.svg?v=aa4a715" alt="LinkedIn" height="28"/></a>
+<a href="mailto:info@dineshd.dev"><img src="assets/generated/btn-email.svg?v=aa4a715" alt="Email" height="28"/></a>
+<a href="https://www.dineshd.dev"><img src="assets/generated/btn-portfolio.svg?v=aa4a715" alt="Portfolio" height="28"/></a>
 </p>
 
-<img src="assets/generated/now-coding.svg?v=31e45ab" alt="WakaTime coding statistics for the last 7 days" width="800"/>
+<img src="assets/generated/now-coding.svg?v=aa4a715" alt="WakaTime coding statistics for the last 7 days" width="800"/>
 
-<img src="assets/generated/activity-circuit.svg?v=31e45ab" alt="GitHub activity circuit board" width="800"/>
+<img src="assets/generated/activity-circuit.svg?v=aa4a715" alt="GitHub activity circuit board" width="800"/>
 
-<img src="assets/generated/project-grid.svg?v=31e45ab" alt="Featured projects: Claude Home, PassFX, Yield, Debate Lab" width="800"/>
+<img src="assets/generated/project-grid.svg?v=aa4a715" alt="Featured projects: Claude Home, PassFX, Yield, Debate Lab" width="800"/>
 
 </div>
 
@@ -27,6 +27,6 @@
 
 <div align="center">
 
-<img src="assets/generated/stack-ticker.svg?v=31e45ab" alt="Technology stack marquee" width="800"/>
+<img src="assets/generated/stack-ticker.svg?v=aa4a715" alt="Technology stack marquee" width="800"/>
 
 </div>
