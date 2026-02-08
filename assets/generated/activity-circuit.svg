@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 180" role="img" aria-label="GitHub activity circuit board showing 4058 contributions">
-  <title>Activity Circuit - 4058 contributions</title>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 180" role="img" aria-label="GitHub activity circuit board showing 4066 contributions">
+  <title>Activity Circuit - 4066 contributions</title>
   <defs>
     <style>
       /* Dracula Theme */
@@ -109,7 +109,7 @@
 
   <!-- Header -->
   <text class="title" x="15" y="24">// activity_circuit</text>
-  <text class="total" x="785" y="24" text-anchor="end">4058 commits</text>
+  <text class="total" x="785" y="24" text-anchor="end">4066 commits</text>
 
   <!-- Circuit Grid -->
   <g transform="translate(30, 40)">
@@ -186,31 +186,22 @@
       <circle class="node-1" cx="6" cy="15" r="1.5"/>
     </g>
     <g transform="translate(62, 0)">
-      <rect class="node-0" x="0" y="0" width="12" height="12" rx="2"/>
+      <rect class="node-1" x="0" y="0" width="12" height="12" rx="2"/>
+      <!-- Connection points -->
+      <circle class="node-1" cx="6" cy="-3" r="1.5"/>
+      <circle class="node-1" cx="6" cy="15" r="1.5"/>
     </g>
     <g transform="translate(62, 18)">
-      <rect class="node-1" x="0" y="0" width="12" height="12" rx="2"/>
-      <!-- Connection points -->
-      <circle class="node-1" cx="6" cy="-3" r="1.5"/>
-      <circle class="node-1" cx="6" cy="15" r="1.5"/>
+      <rect class="node-0" x="0" y="0" width="12" height="12" rx="2"/>
     </g>
     <g transform="translate(62, 36)">
-      <rect class="node-1" x="0" y="0" width="12" height="12" rx="2"/>
-      <!-- Connection points -->
-      <circle class="node-1" cx="6" cy="-3" r="1.5"/>
-      <circle class="node-1" cx="6" cy="15" r="1.5"/>
+      <rect class="node-0" x="0" y="0" width="12" height="12" rx="2"/>
     </g>
     <g transform="translate(62, 54)">
-      <rect class="node-1" x="0" y="0" width="12" height="12" rx="2"/>
-      <!-- Connection points -->
-      <circle class="node-1" cx="6" cy="-3" r="1.5"/>
-      <circle class="node-1" cx="6" cy="15" r="1.5"/>
+      <rect class="node-0" x="0" y="0" width="12" height="12" rx="2"/>
     </g>
     <g transform="translate(62, 72)">
-      <rect class="node-1" x="0" y="0" width="12" height="12" rx="2"/>
-      <!-- Connection points -->
-      <circle class="node-1" cx="6" cy="-3" r="1.5"/>
-      <circle class="node-1" cx="6" cy="15" r="1.5"/>
+      <rect class="node-0" x="0" y="0" width="12" height="12" rx="2"/>
     </g>
     <g transform="translate(62, 90)">
       <rect class="node-1" x="0" y="0" width="12" height="12" rx="2"/>
@@ -219,10 +210,10 @@
       <circle class="node-1" cx="6" cy="15" r="1.5"/>
     </g>
     <g transform="translate(62, 108)">
-      <rect class="node-1" x="0" y="0" width="12" height="12" rx="2"/>
+      <rect class="node-2" x="0" y="0" width="12" height="12" rx="2"/>
       <!-- Connection points -->
-      <circle class="node-1" cx="6" cy="-3" r="1.5"/>
-      <circle class="node-1" cx="6" cy="15" r="1.5"/>
+      <circle class="node-2" cx="6" cy="-3" r="1.5"/>
+      <circle class="node-2" cx="6" cy="15" r="1.5"/>
     </g>
     <g transform="translate(124, 0)">
       <rect class="node-1" x="0" y="0" width="12" height="12" rx="2"/>
@@ -231,16 +222,25 @@
       <circle class="node-1" cx="6" cy="15" r="1.5"/>
     </g>
     <g transform="translate(124, 18)">
-      <rect class="node-0" x="0" y="0" width="12" height="12" rx="2"/>
+      <rect class="node-1" x="0" y="0" width="12" height="12" rx="2"/>
+      <!-- Connection points -->
+      <circle class="node-1" cx="6" cy="-3" r="1.5"/>
+      <circle class="node-1" cx="6" cy="15" r="1.5"/>
     </g>
     <g transform="translate(124, 36)">
-      <rect class="node-0" x="0" y="0" width="12" height="12" rx="2"/>
+      <rect class="node-3 node-glow pulse" x="0" y="0" width="12" height="12" rx="2"/>
+      <!-- Connection points -->
+      <circle class="node-3" cx="6" cy="-3" r="1.5"/>
+      <circle class="node-3" cx="6" cy="15" r="1.5"/>
     </g>
     <g transform="translate(124, 54)">
       <rect class="node-0" x="0" y="0" width="12" height="12" rx="2"/>
     </g>
     <g transform="translate(124, 72)">
-      <rect class="node-0" x="0" y="0" width="12" height="12" rx="2"/>
+      <rect class="node-1" x="0" y="0" width="12" height="12" rx="2"/>
+      <!-- Connection points -->
+      <circle class="node-1" cx="6" cy="-3" r="1.5"/>
+      <circle class="node-1" cx="6" cy="15" r="1.5"/>
     </g>
     <g transform="translate(124, 90)">
       <rect class="node-1" x="0" y="0" width="12" height="12" rx="2"/>
@@ -249,10 +249,10 @@
       <circle class="node-1" cx="6" cy="15" r="1.5"/>
     </g>
     <g transform="translate(124, 108)">
-      <rect class="node-2" x="0" y="0" width="12" height="12" rx="2"/>
+      <rect class="node-1" x="0" y="0" width="12" height="12" rx="2"/>
       <!-- Connection points -->
-      <circle class="node-2" cx="6" cy="-3" r="1.5"/>
-      <circle class="node-2" cx="6" cy="15" r="1.5"/>
+      <circle class="node-1" cx="6" cy="-3" r="1.5"/>
+      <circle class="node-1" cx="6" cy="15" r="1.5"/>
     </g>
     <g transform="translate(186, 0)">
       <rect class="node-1" x="0" y="0" width="12" height="12" rx="2"/>
@@ -261,103 +261,94 @@
       <circle class="node-1" cx="6" cy="15" r="1.5"/>
     </g>
     <g transform="translate(186, 18)">
-      <rect class="node-1" x="0" y="0" width="12" height="12" rx="2"/>
+      <rect class="node-2" x="0" y="0" width="12" height="12" rx="2"/>
       <!-- Connection points -->
-      <circle class="node-1" cx="6" cy="-3" r="1.5"/>
-      <circle class="node-1" cx="6" cy="15" r="1.5"/>
+      <circle class="node-2" cx="6" cy="-3" r="1.5"/>
+      <circle class="node-2" cx="6" cy="15" r="1.5"/>
     </g>
     <g transform="translate(186, 36)">
-      <rect class="node-3 node-glow pulse" x="0" y="0" width="12" height="12" rx="2"/>
+      <rect class="node-1" x="0" y="0" width="12" height="12" rx="2"/>
       <!-- Connection points -->
-      <circle class="node-3" cx="6" cy="-3" r="1.5"/>
-      <circle class="node-3" cx="6" cy="15" r="1.5"/>
+      <circle class="node-1" cx="6" cy="-3" r="1.5"/>
+      <circle class="node-1" cx="6" cy="15" r="1.5"/>
     </g>
     <g transform="translate(186, 54)">
-      <rect class="node-0" x="0" y="0" width="12" height="12" rx="2"/>
+      <rect class="node-2" x="0" y="0" width="12" height="12" rx="2"/>
+      <!-- Connection points -->
+      <circle class="node-2" cx="6" cy="-3" r="1.5"/>
+      <circle class="node-2" cx="6" cy="15" r="1.5"/>
     </g>
     <g transform="translate(186, 72)">
-      <rect class="node-1" x="0" y="0" width="12" height="12" rx="2"/>
+      <rect class="node-4 node-glow pulse" x="0" y="0" width="12" height="12" rx="2"/>
       <!-- Connection points -->
-      <circle class="node-1" cx="6" cy="-3" r="1.5"/>
-      <circle class="node-1" cx="6" cy="15" r="1.5"/>
+      <circle class="node-4" cx="6" cy="-3" r="1.5"/>
+      <circle class="node-4" cx="6" cy="15" r="1.5"/>
     </g>
     <g transform="translate(186, 90)">
-      <rect class="node-1" x="0" y="0" width="12" height="12" rx="2"/>
+      <rect class="node-2" x="0" y="0" width="12" height="12" rx="2"/>
       <!-- Connection points -->
-      <circle class="node-1" cx="6" cy="-3" r="1.5"/>
-      <circle class="node-1" cx="6" cy="15" r="1.5"/>
+      <circle class="node-2" cx="6" cy="-3" r="1.5"/>
+      <circle class="node-2" cx="6" cy="15" r="1.5"/>
     </g>
     <g transform="translate(186, 108)">
-      <rect class="node-1" x="0" y="0" width="12" height="12" rx="2"/>
+      <rect class="node-3 node-glow pulse" x="0" y="0" width="12" height="12" rx="2"/>
       <!-- Connection points -->
-      <circle class="node-1" cx="6" cy="-3" r="1.5"/>
-      <circle class="node-1" cx="6" cy="15" r="1.5"/>
+      <circle class="node-3" cx="6" cy="-3" r="1.5"/>
+      <circle class="node-3" cx="6" cy="15" r="1.5"/>
     </g>
     <g transform="translate(248, 0)">
-      <rect class="node-1" x="0" y="0" width="12" height="12" rx="2"/>
+      <rect class="node-4 node-glow pulse" x="0" y="0" width="12" height="12" rx="2"/>
       <!-- Connection points -->
-      <circle class="node-1" cx="6" cy="-3" r="1.5"/>
-      <circle class="node-1" cx="6" cy="15" r="1.5"/>
+      <circle class="node-4" cx="6" cy="-3" r="1.5"/>
+      <circle class="node-4" cx="6" cy="15" r="1.5"/>
     </g>
     <g transform="translate(248, 18)">
-      <rect class="node-2" x="0" y="0" width="12" height="12" rx="2"/>
+      <rect class="node-3 node-glow pulse" x="0" y="0" width="12" height="12" rx="2"/>
       <!-- Connection points -->
-      <circle class="node-2" cx="6" cy="-3" r="1.5"/>
-      <circle class="node-2" cx="6" cy="15" r="1.5"/>
+      <circle class="node-3" cx="6" cy="-3" r="1.5"/>
+      <circle class="node-3" cx="6" cy="15" r="1.5"/>
     </g>
     <g transform="translate(248, 36)">
-      <rect class="node-1" x="0" y="0" width="12" height="12" rx="2"/>
+      <rect class="node-2" x="0" y="0" width="12" height="12" rx="2"/>
       <!-- Connection points -->
-      <circle class="node-1" cx="6" cy="-3" r="1.5"/>
-      <circle class="node-1" cx="6" cy="15" r="1.5"/>
+      <circle class="node-2" cx="6" cy="-3" r="1.5"/>
+      <circle class="node-2" cx="6" cy="15" r="1.5"/>
     </g>
     <g transform="translate(248, 54)">
-      <rect class="node-2" x="0" y="0" width="12" height="12" rx="2"/>
-      <!-- Connection points -->
-      <circle class="node-2" cx="6" cy="-3" r="1.5"/>
-      <circle class="node-2" cx="6" cy="15" r="1.5"/>
-    </g>
-    <g transform="translate(248, 72)">
-      <rect class="node-4 node-glow pulse" x="0" y="0" width="12" height="12" rx="2"/>
-      <!-- Connection points -->
-      <circle class="node-4" cx="6" cy="-3" r="1.5"/>
-      <circle class="node-4" cx="6" cy="15" r="1.5"/>
-    </g>
-    <g transform="translate(248, 90)">
-      <rect class="node-2" x="0" y="0" width="12" height="12" rx="2"/>
-      <!-- Connection points -->
-      <circle class="node-2" cx="6" cy="-3" r="1.5"/>
-      <circle class="node-2" cx="6" cy="15" r="1.5"/>
-    </g>
-    <g transform="translate(248, 108)">
-      <rect class="node-3 node-glow pulse" x="0" y="0" width="12" height="12" rx="2"/>
-      <!-- Connection points -->
-      <circle class="node-3" cx="6" cy="-3" r="1.5"/>
-      <circle class="node-3" cx="6" cy="15" r="1.5"/>
-    </g>
-    <g transform="translate(310, 0)">
-      <rect class="node-4 node-glow pulse" x="0" y="0" width="12" height="12" rx="2"/>
-      <!-- Connection points -->
-      <circle class="node-4" cx="6" cy="-3" r="1.5"/>
-      <circle class="node-4" cx="6" cy="15" r="1.5"/>
-    </g>
-    <g transform="translate(310, 18)">
-      <rect class="node-3 node-glow pulse" x="0" y="0" width="12" height="12" rx="2"/>
-      <!-- Connection points -->
-      <circle class="node-3" cx="6" cy="-3" r="1.5"/>
-      <circle class="node-3" cx="6" cy="15" r="1.5"/>
-    </g>
-    <g transform="translate(310, 36)">
-      <rect class="node-2" x="0" y="0" width="12" height="12" rx="2"/>
-      <!-- Connection points -->
-      <circle class="node-2" cx="6" cy="-3" r="1.5"/>
-      <circle class="node-2" cx="6" cy="15" r="1.5"/>
-    </g>
-    <g transform="translate(310, 54)">
       <rect class="node-1" x="0" y="0" width="12" height="12" rx="2"/>
       <!-- Connection points -->
       <circle class="node-1" cx="6" cy="-3" r="1.5"/>
       <circle class="node-1" cx="6" cy="15" r="1.5"/>
+    </g>
+    <g transform="translate(248, 72)">
+      <rect class="node-1" x="0" y="0" width="12" height="12" rx="2"/>
+      <!-- Connection points -->
+      <circle class="node-1" cx="6" cy="-3" r="1.5"/>
+      <circle class="node-1" cx="6" cy="15" r="1.5"/>
+    </g>
+    <g transform="translate(248, 90)">
+      <rect class="node-1" x="0" y="0" width="12" height="12" rx="2"/>
+      <!-- Connection points -->
+      <circle class="node-1" cx="6" cy="-3" r="1.5"/>
+      <circle class="node-1" cx="6" cy="15" r="1.5"/>
+    </g>
+    <g transform="translate(248, 108)">
+      <rect class="node-1" x="0" y="0" width="12" height="12" rx="2"/>
+      <!-- Connection points -->
+      <circle class="node-1" cx="6" cy="-3" r="1.5"/>
+      <circle class="node-1" cx="6" cy="15" r="1.5"/>
+    </g>
+    <g transform="translate(310, 0)">
+      <rect class="node-0" x="0" y="0" width="12" height="12" rx="2"/>
+    </g>
+    <g transform="translate(310, 18)">
+      <rect class="node-0" x="0" y="0" width="12" height="12" rx="2"/>
+    </g>
+    <g transform="translate(310, 36)">
+      <rect class="node-0" x="0" y="0" width="12" height="12" rx="2"/>
+    </g>
+    <g transform="translate(310, 54)">
+      <rect class="node-0" x="0" y="0" width="12" height="12" rx="2"/>
     </g>
     <g transform="translate(310, 72)">
       <rect class="node-1" x="0" y="0" width="12" height="12" rx="2"/>
@@ -366,46 +357,58 @@
       <circle class="node-1" cx="6" cy="15" r="1.5"/>
     </g>
     <g transform="translate(310, 90)">
-      <rect class="node-1" x="0" y="0" width="12" height="12" rx="2"/>
-      <!-- Connection points -->
-      <circle class="node-1" cx="6" cy="-3" r="1.5"/>
-      <circle class="node-1" cx="6" cy="15" r="1.5"/>
-    </g>
-    <g transform="translate(310, 108)">
-      <rect class="node-1" x="0" y="0" width="12" height="12" rx="2"/>
-      <!-- Connection points -->
-      <circle class="node-1" cx="6" cy="-3" r="1.5"/>
-      <circle class="node-1" cx="6" cy="15" r="1.5"/>
-    </g>
-    <g transform="translate(372, 0)">
-      <rect class="node-0" x="0" y="0" width="12" height="12" rx="2"/>
-    </g>
-    <g transform="translate(372, 18)">
-      <rect class="node-0" x="0" y="0" width="12" height="12" rx="2"/>
-    </g>
-    <g transform="translate(372, 36)">
-      <rect class="node-0" x="0" y="0" width="12" height="12" rx="2"/>
-    </g>
-    <g transform="translate(372, 54)">
-      <rect class="node-0" x="0" y="0" width="12" height="12" rx="2"/>
-    </g>
-    <g transform="translate(372, 72)">
-      <rect class="node-1" x="0" y="0" width="12" height="12" rx="2"/>
-      <!-- Connection points -->
-      <circle class="node-1" cx="6" cy="-3" r="1.5"/>
-      <circle class="node-1" cx="6" cy="15" r="1.5"/>
-    </g>
-    <g transform="translate(372, 90)">
       <rect class="node-2" x="0" y="0" width="12" height="12" rx="2"/>
       <!-- Connection points -->
       <circle class="node-2" cx="6" cy="-3" r="1.5"/>
       <circle class="node-2" cx="6" cy="15" r="1.5"/>
     </g>
-    <g transform="translate(372, 108)">
+    <g transform="translate(310, 108)">
       <rect class="node-3 node-glow pulse" x="0" y="0" width="12" height="12" rx="2"/>
       <!-- Connection points -->
       <circle class="node-3" cx="6" cy="-3" r="1.5"/>
       <circle class="node-3" cx="6" cy="15" r="1.5"/>
+    </g>
+    <g transform="translate(372, 0)">
+      <rect class="node-1" x="0" y="0" width="12" height="12" rx="2"/>
+      <!-- Connection points -->
+      <circle class="node-1" cx="6" cy="-3" r="1.5"/>
+      <circle class="node-1" cx="6" cy="15" r="1.5"/>
+    </g>
+    <g transform="translate(372, 18)">
+      <rect class="node-2" x="0" y="0" width="12" height="12" rx="2"/>
+      <!-- Connection points -->
+      <circle class="node-2" cx="6" cy="-3" r="1.5"/>
+      <circle class="node-2" cx="6" cy="15" r="1.5"/>
+    </g>
+    <g transform="translate(372, 36)">
+      <rect class="node-2" x="0" y="0" width="12" height="12" rx="2"/>
+      <!-- Connection points -->
+      <circle class="node-2" cx="6" cy="-3" r="1.5"/>
+      <circle class="node-2" cx="6" cy="15" r="1.5"/>
+    </g>
+    <g transform="translate(372, 54)">
+      <rect class="node-1" x="0" y="0" width="12" height="12" rx="2"/>
+      <!-- Connection points -->
+      <circle class="node-1" cx="6" cy="-3" r="1.5"/>
+      <circle class="node-1" cx="6" cy="15" r="1.5"/>
+    </g>
+    <g transform="translate(372, 72)">
+      <rect class="node-2" x="0" y="0" width="12" height="12" rx="2"/>
+      <!-- Connection points -->
+      <circle class="node-2" cx="6" cy="-3" r="1.5"/>
+      <circle class="node-2" cx="6" cy="15" r="1.5"/>
+    </g>
+    <g transform="translate(372, 90)">
+      <rect class="node-1" x="0" y="0" width="12" height="12" rx="2"/>
+      <!-- Connection points -->
+      <circle class="node-1" cx="6" cy="-3" r="1.5"/>
+      <circle class="node-1" cx="6" cy="15" r="1.5"/>
+    </g>
+    <g transform="translate(372, 108)">
+      <rect class="node-2" x="0" y="0" width="12" height="12" rx="2"/>
+      <!-- Connection points -->
+      <circle class="node-2" cx="6" cy="-3" r="1.5"/>
+      <circle class="node-2" cx="6" cy="15" r="1.5"/>
     </g>
     <g transform="translate(434, 0)">
       <rect class="node-1" x="0" y="0" width="12" height="12" rx="2"/>
@@ -420,10 +423,10 @@
       <circle class="node-2" cx="6" cy="15" r="1.5"/>
     </g>
     <g transform="translate(434, 36)">
-      <rect class="node-2" x="0" y="0" width="12" height="12" rx="2"/>
+      <rect class="node-1" x="0" y="0" width="12" height="12" rx="2"/>
       <!-- Connection points -->
-      <circle class="node-2" cx="6" cy="-3" r="1.5"/>
-      <circle class="node-2" cx="6" cy="15" r="1.5"/>
+      <circle class="node-1" cx="6" cy="-3" r="1.5"/>
+      <circle class="node-1" cx="6" cy="15" r="1.5"/>
     </g>
     <g transform="translate(434, 54)">
       <rect class="node-1" x="0" y="0" width="12" height="12" rx="2"/>
@@ -432,40 +435,40 @@
       <circle class="node-1" cx="6" cy="15" r="1.5"/>
     </g>
     <g transform="translate(434, 72)">
-      <rect class="node-2" x="0" y="0" width="12" height="12" rx="2"/>
+      <rect class="node-1" x="0" y="0" width="12" height="12" rx="2"/>
       <!-- Connection points -->
-      <circle class="node-2" cx="6" cy="-3" r="1.5"/>
-      <circle class="node-2" cx="6" cy="15" r="1.5"/>
+      <circle class="node-1" cx="6" cy="-3" r="1.5"/>
+      <circle class="node-1" cx="6" cy="15" r="1.5"/>
     </g>
     <g transform="translate(434, 90)">
-      <rect class="node-1" x="0" y="0" width="12" height="12" rx="2"/>
+      <rect class="node-2" x="0" y="0" width="12" height="12" rx="2"/>
       <!-- Connection points -->
-      <circle class="node-1" cx="6" cy="-3" r="1.5"/>
-      <circle class="node-1" cx="6" cy="15" r="1.5"/>
+      <circle class="node-2" cx="6" cy="-3" r="1.5"/>
+      <circle class="node-2" cx="6" cy="15" r="1.5"/>
     </g>
     <g transform="translate(434, 108)">
-      <rect class="node-2" x="0" y="0" width="12" height="12" rx="2"/>
+      <rect class="node-1" x="0" y="0" width="12" height="12" rx="2"/>
       <!-- Connection points -->
-      <circle class="node-2" cx="6" cy="-3" r="1.5"/>
-      <circle class="node-2" cx="6" cy="15" r="1.5"/>
+      <circle class="node-1" cx="6" cy="-3" r="1.5"/>
+      <circle class="node-1" cx="6" cy="15" r="1.5"/>
     </g>
     <g transform="translate(496, 0)">
-      <rect class="node-1" x="0" y="0" width="12" height="12" rx="2"/>
-      <!-- Connection points -->
-      <circle class="node-1" cx="6" cy="-3" r="1.5"/>
-      <circle class="node-1" cx="6" cy="15" r="1.5"/>
-    </g>
-    <g transform="translate(496, 18)">
       <rect class="node-2" x="0" y="0" width="12" height="12" rx="2"/>
       <!-- Connection points -->
       <circle class="node-2" cx="6" cy="-3" r="1.5"/>
       <circle class="node-2" cx="6" cy="15" r="1.5"/>
     </g>
-    <g transform="translate(496, 36)">
+    <g transform="translate(496, 18)">
       <rect class="node-1" x="0" y="0" width="12" height="12" rx="2"/>
       <!-- Connection points -->
       <circle class="node-1" cx="6" cy="-3" r="1.5"/>
       <circle class="node-1" cx="6" cy="15" r="1.5"/>
+    </g>
+    <g transform="translate(496, 36)">
+      <rect class="node-2" x="0" y="0" width="12" height="12" rx="2"/>
+      <!-- Connection points -->
+      <circle class="node-2" cx="6" cy="-3" r="1.5"/>
+      <circle class="node-2" cx="6" cy="15" r="1.5"/>
     </g>
     <g transform="translate(496, 54)">
       <rect class="node-1" x="0" y="0" width="12" height="12" rx="2"/>
@@ -480,10 +483,10 @@
       <circle class="node-1" cx="6" cy="15" r="1.5"/>
     </g>
     <g transform="translate(496, 90)">
-      <rect class="node-2" x="0" y="0" width="12" height="12" rx="2"/>
+      <rect class="node-1" x="0" y="0" width="12" height="12" rx="2"/>
       <!-- Connection points -->
-      <circle class="node-2" cx="6" cy="-3" r="1.5"/>
-      <circle class="node-2" cx="6" cy="15" r="1.5"/>
+      <circle class="node-1" cx="6" cy="-3" r="1.5"/>
+      <circle class="node-1" cx="6" cy="15" r="1.5"/>
     </g>
     <g transform="translate(496, 108)">
       <rect class="node-1" x="0" y="0" width="12" height="12" rx="2"/>
@@ -492,10 +495,7 @@
       <circle class="node-1" cx="6" cy="15" r="1.5"/>
     </g>
     <g transform="translate(558, 0)">
-      <rect class="node-2" x="0" y="0" width="12" height="12" rx="2"/>
-      <!-- Connection points -->
-      <circle class="node-2" cx="6" cy="-3" r="1.5"/>
-      <circle class="node-2" cx="6" cy="15" r="1.5"/>
+      <rect class="node-0" x="0" y="0" width="12" height="12" rx="2"/>
     </g>
     <g transform="translate(558, 18)">
       <rect class="node-1" x="0" y="0" width="12" height="12" rx="2"/>
@@ -504,10 +504,10 @@
       <circle class="node-1" cx="6" cy="15" r="1.5"/>
     </g>
     <g transform="translate(558, 36)">
-      <rect class="node-2" x="0" y="0" width="12" height="12" rx="2"/>
+      <rect class="node-1" x="0" y="0" width="12" height="12" rx="2"/>
       <!-- Connection points -->
-      <circle class="node-2" cx="6" cy="-3" r="1.5"/>
-      <circle class="node-2" cx="6" cy="15" r="1.5"/>
+      <circle class="node-1" cx="6" cy="-3" r="1.5"/>
+      <circle class="node-1" cx="6" cy="15" r="1.5"/>
     </g>
     <g transform="translate(558, 54)">
       <rect class="node-1" x="0" y="0" width="12" height="12" rx="2"/>
@@ -522,10 +522,7 @@
       <circle class="node-1" cx="6" cy="15" r="1.5"/>
     </g>
     <g transform="translate(558, 90)">
-      <rect class="node-1" x="0" y="0" width="12" height="12" rx="2"/>
-      <!-- Connection points -->
-      <circle class="node-1" cx="6" cy="-3" r="1.5"/>
-      <circle class="node-1" cx="6" cy="15" r="1.5"/>
+      <rect class="node-0" x="0" y="0" width="12" height="12" rx="2"/>
     </g>
     <g transform="translate(558, 108)">
       <rect class="node-1" x="0" y="0" width="12" height="12" rx="2"/>
@@ -534,13 +531,16 @@
       <circle class="node-1" cx="6" cy="15" r="1.5"/>
     </g>
     <g transform="translate(620, 0)">
-      <rect class="node-0" x="0" y="0" width="12" height="12" rx="2"/>
-    </g>
-    <g transform="translate(620, 18)">
       <rect class="node-1" x="0" y="0" width="12" height="12" rx="2"/>
       <!-- Connection points -->
       <circle class="node-1" cx="6" cy="-3" r="1.5"/>
       <circle class="node-1" cx="6" cy="15" r="1.5"/>
+    </g>
+    <g transform="translate(620, 18)">
+      <rect class="node-2" x="0" y="0" width="12" height="12" rx="2"/>
+      <!-- Connection points -->
+      <circle class="node-2" cx="6" cy="-3" r="1.5"/>
+      <circle class="node-2" cx="6" cy="15" r="1.5"/>
     </g>
     <g transform="translate(620, 36)">
       <rect class="node-1" x="0" y="0" width="12" height="12" rx="2"/>
@@ -549,10 +549,10 @@
       <circle class="node-1" cx="6" cy="15" r="1.5"/>
     </g>
     <g transform="translate(620, 54)">
-      <rect class="node-1" x="0" y="0" width="12" height="12" rx="2"/>
+      <rect class="node-2" x="0" y="0" width="12" height="12" rx="2"/>
       <!-- Connection points -->
-      <circle class="node-1" cx="6" cy="-3" r="1.5"/>
-      <circle class="node-1" cx="6" cy="15" r="1.5"/>
+      <circle class="node-2" cx="6" cy="-3" r="1.5"/>
+      <circle class="node-2" cx="6" cy="15" r="1.5"/>
     </g>
     <g transform="translate(620, 72)">
       <rect class="node-1" x="0" y="0" width="12" height="12" rx="2"/>
@@ -561,51 +561,18 @@
       <circle class="node-1" cx="6" cy="15" r="1.5"/>
     </g>
     <g transform="translate(620, 90)">
-      <rect class="node-0" x="0" y="0" width="12" height="12" rx="2"/>
+      <rect class="node-1" x="0" y="0" width="12" height="12" rx="2"/>
+      <!-- Connection points -->
+      <circle class="node-1" cx="6" cy="-3" r="1.5"/>
+      <circle class="node-1" cx="6" cy="15" r="1.5"/>
     </g>
     <g transform="translate(620, 108)">
-      <rect class="node-1" x="0" y="0" width="12" height="12" rx="2"/>
+      <rect class="node-2" x="0" y="0" width="12" height="12" rx="2"/>
       <!-- Connection points -->
-      <circle class="node-1" cx="6" cy="-3" r="1.5"/>
-      <circle class="node-1" cx="6" cy="15" r="1.5"/>
+      <circle class="node-2" cx="6" cy="-3" r="1.5"/>
+      <circle class="node-2" cx="6" cy="15" r="1.5"/>
     </g>
     <g transform="translate(682, 0)">
-      <rect class="node-1" x="0" y="0" width="12" height="12" rx="2"/>
-      <!-- Connection points -->
-      <circle class="node-1" cx="6" cy="-3" r="1.5"/>
-      <circle class="node-1" cx="6" cy="15" r="1.5"/>
-    </g>
-    <g transform="translate(682, 18)">
-      <rect class="node-2" x="0" y="0" width="12" height="12" rx="2"/>
-      <!-- Connection points -->
-      <circle class="node-2" cx="6" cy="-3" r="1.5"/>
-      <circle class="node-2" cx="6" cy="15" r="1.5"/>
-    </g>
-    <g transform="translate(682, 36)">
-      <rect class="node-1" x="0" y="0" width="12" height="12" rx="2"/>
-      <!-- Connection points -->
-      <circle class="node-1" cx="6" cy="-3" r="1.5"/>
-      <circle class="node-1" cx="6" cy="15" r="1.5"/>
-    </g>
-    <g transform="translate(682, 54)">
-      <rect class="node-2" x="0" y="0" width="12" height="12" rx="2"/>
-      <!-- Connection points -->
-      <circle class="node-2" cx="6" cy="-3" r="1.5"/>
-      <circle class="node-2" cx="6" cy="15" r="1.5"/>
-    </g>
-    <g transform="translate(682, 72)">
-      <rect class="node-1" x="0" y="0" width="12" height="12" rx="2"/>
-      <!-- Connection points -->
-      <circle class="node-1" cx="6" cy="-3" r="1.5"/>
-      <circle class="node-1" cx="6" cy="15" r="1.5"/>
-    </g>
-    <g transform="translate(682, 90)">
-      <rect class="node-1" x="0" y="0" width="12" height="12" rx="2"/>
-      <!-- Connection points -->
-      <circle class="node-1" cx="6" cy="-3" r="1.5"/>
-      <circle class="node-1" cx="6" cy="15" r="1.5"/>
-    </g>
-    <g transform="translate(682, 108)">
       <rect class="node-1" x="0" y="0" width="12" height="12" rx="2"/>
       <!-- Connection points -->
       <circle class="node-1" cx="6" cy="-3" r="1.5"/>
