@@ -66,11 +66,11 @@ current_focus: Architecting persistence layers for autonomous agents.
 <br />
 
 <!--START_SECTION:activity-->
-1. 💪 Opened PR [#21](https://github.com/dinesh-git17/toronto-mobility-analytics/pull/21) in [dinesh-git17/toronto-mobility-analytics](https://github.com/dinesh-git17/toronto-mobility-analytics)
-2. 🔒 Closed issue [#19](https://github.com/dinesh-git17/toronto-mobility-analytics/issues/19) in [dinesh-git17/toronto-mobility-analytics](https://github.com/dinesh-git17/toronto-mobility-analytics)
-3. 🎉 Merged PR [#20](https://github.com/dinesh-git17/toronto-mobility-analytics/pull/20) in [dinesh-git17/toronto-mobility-analytics](https://github.com/dinesh-git17/toronto-mobility-analytics)
-4. 💪 Opened PR [#20](https://github.com/dinesh-git17/toronto-mobility-analytics/pull/20) in [dinesh-git17/toronto-mobility-analytics](https://github.com/dinesh-git17/toronto-mobility-analytics)
-5. ℹ️ Labeled issue [#19](https://github.com/dinesh-git17/toronto-mobility-analytics/issues/19) in [dinesh-git17/toronto-mobility-analytics](https://github.com/dinesh-git17/toronto-mobility-analytics)
+1. 🎉 Merged PR [#21](https://github.com/dinesh-git17/toronto-mobility-analytics/pull/21) in [dinesh-git17/toronto-mobility-analytics](https://github.com/dinesh-git17/toronto-mobility-analytics)
+2. 💪 Opened PR [#21](https://github.com/dinesh-git17/toronto-mobility-analytics/pull/21) in [dinesh-git17/toronto-mobility-analytics](https://github.com/dinesh-git17/toronto-mobility-analytics)
+3. 🔒 Closed issue [#19](https://github.com/dinesh-git17/toronto-mobility-analytics/issues/19) in [dinesh-git17/toronto-mobility-analytics](https://github.com/dinesh-git17/toronto-mobility-analytics)
+4. 🎉 Merged PR [#20](https://github.com/dinesh-git17/toronto-mobility-analytics/pull/20) in [dinesh-git17/toronto-mobility-analytics](https://github.com/dinesh-git17/toronto-mobility-analytics)
+5. 💪 Opened PR [#20](https://github.com/dinesh-git17/toronto-mobility-analytics/pull/20) in [dinesh-git17/toronto-mobility-analytics](https://github.com/dinesh-git17/toronto-mobility-analytics)
 <!--END_SECTION:activity-->
 
 </details>
