@@ -102,27 +102,27 @@
 
   <!-- Header -->
   <text class="title" x="20" y="28">// now coding</text>
-  <text class="total" x="780" y="28" text-anchor="end">15.3h this week</text>
+  <text class="total" x="780" y="28" text-anchor="end">10.8h this week</text>
 
   <!-- Language Bars - Horizontal layout -->
   <g transform="translate(20, 50)">
     <g transform="translate(0, 0)">
       <text class="label" x="0" y="12">Markdown</text>
-      <text class="hours" x="230" y="12" text-anchor="end">6.1h (40.1%)</text>
+      <text class="hours" x="230" y="12" text-anchor="end">4.3h (40.1%)</text>
       <rect class="bar-bg" x="0" y="22" width="240" height="10" rx="5"/>
       <rect class="bar-fill-1 bar-animated bar-1" x="0" y="22" width="96.24000000000001" height="10" rx="5"/>
     </g>
     <g transform="translate(255, 0)">
       <text class="label" x="0" y="12">Python</text>
-      <text class="hours" x="230" y="12" text-anchor="end">2.6h (16.7%)</text>
+      <text class="hours" x="230" y="12" text-anchor="end">2.6h (23.7%)</text>
       <rect class="bar-bg" x="0" y="22" width="240" height="10" rx="5"/>
-      <rect class="bar-fill-2 bar-animated bar-2" x="0" y="22" width="40.08" height="10" rx="5"/>
+      <rect class="bar-fill-2 bar-animated bar-2" x="0" y="22" width="56.879999999999995" height="10" rx="5"/>
     </g>
     <g transform="translate(510, 0)">
       <text class="label" x="0" y="12">TypeScript</text>
-      <text class="hours" x="230" y="12" text-anchor="end">2.0h (13.3%)</text>
+      <text class="hours" x="230" y="12" text-anchor="end">2.0h (18.9%)</text>
       <rect class="bar-bg" x="0" y="22" width="240" height="10" rx="5"/>
-      <rect class="bar-fill-3 bar-animated bar-3" x="0" y="22" width="31.92" height="10" rx="5"/>
+      <rect class="bar-fill-3 bar-animated bar-3" x="0" y="22" width="45.35999999999999" height="10" rx="5"/>
     </g>
   </g>
 </svg>
