@@ -102,27 +102,27 @@
 
   <!-- Header -->
   <text class="title" x="20" y="28">// now coding</text>
-  <text class="total" x="780" y="28" text-anchor="end">25.6h this week</text>
+  <text class="total" x="780" y="28" text-anchor="end">21.2h this week</text>
 
   <!-- Language Bars - Horizontal layout -->
   <g transform="translate(20, 50)">
     <g transform="translate(0, 0)">
       <text class="label" x="0" y="12">Markdown</text>
-      <text class="hours" x="230" y="12" text-anchor="end">14.7h (57.7%)</text>
+      <text class="hours" x="230" y="12" text-anchor="end">12.7h (59.9%)</text>
       <rect class="bar-bg" x="0" y="22" width="240" height="10" rx="5"/>
-      <rect class="bar-fill-1 bar-animated bar-1" x="0" y="22" width="138.48000000000002" height="10" rx="5"/>
+      <rect class="bar-fill-1 bar-animated bar-1" x="0" y="22" width="143.76" height="10" rx="5"/>
     </g>
     <g transform="translate(255, 0)">
       <text class="label" x="0" y="12">Python</text>
-      <text class="hours" x="230" y="12" text-anchor="end">4.2h (16.3%)</text>
+      <text class="hours" x="230" y="12" text-anchor="end">3.0h (13.9%)</text>
       <rect class="bar-bg" x="0" y="22" width="240" height="10" rx="5"/>
-      <rect class="bar-fill-2 bar-animated bar-2" x="0" y="22" width="39.120000000000005" height="10" rx="5"/>
+      <rect class="bar-fill-2 bar-animated bar-2" x="0" y="22" width="33.36" height="10" rx="5"/>
     </g>
     <g transform="translate(510, 0)">
-      <text class="label" x="0" y="12">YAML</text>
-      <text class="hours" x="230" y="12" text-anchor="end">1.3h (5.1%)</text>
+      <text class="label" x="0" y="12">Swift</text>
+      <text class="hours" x="230" y="12" text-anchor="end">1.2h (5.9%)</text>
       <rect class="bar-bg" x="0" y="22" width="240" height="10" rx="5"/>
-      <rect class="bar-fill-3 bar-animated bar-3" x="0" y="22" width="12.239999999999998" height="10" rx="5"/>
+      <rect class="bar-fill-3 bar-animated bar-3" x="0" y="22" width="14.16" height="10" rx="5"/>
     </g>
   </g>
 </svg>
