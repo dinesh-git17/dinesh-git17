@@ -102,27 +102,27 @@
 
   <!-- Header -->
   <text class="title" x="20" y="28">// now coding</text>
-  <text class="total" x="780" y="28" text-anchor="end">22.7h this week</text>
+  <text class="total" x="780" y="28" text-anchor="end">14.8h this week</text>
 
   <!-- Language Bars - Horizontal layout -->
   <g transform="translate(20, 50)">
     <g transform="translate(0, 0)">
       <text class="label" x="0" y="12">Markdown</text>
-      <text class="hours" x="230" y="12" text-anchor="end">13.0h (57.1%)</text>
+      <text class="hours" x="230" y="12" text-anchor="end">8.9h (59.8%)</text>
       <rect class="bar-bg" x="0" y="22" width="240" height="10" rx="5"/>
-      <rect class="bar-fill-1 bar-animated bar-1" x="0" y="22" width="137.04000000000002" height="10" rx="5"/>
+      <rect class="bar-fill-1 bar-animated bar-1" x="0" y="22" width="143.51999999999998" height="10" rx="5"/>
     </g>
     <g transform="translate(255, 0)">
-      <text class="label" x="0" y="12">Python</text>
-      <text class="hours" x="230" y="12" text-anchor="end">3.0h (13.0%)</text>
+      <text class="label" x="0" y="12">Swift</text>
+      <text class="hours" x="230" y="12" text-anchor="end">2.5h (16.7%)</text>
       <rect class="bar-bg" x="0" y="22" width="240" height="10" rx="5"/>
-      <rect class="bar-fill-2 bar-animated bar-2" x="0" y="22" width="31.200000000000003" height="10" rx="5"/>
+      <rect class="bar-fill-2 bar-animated bar-2" x="0" y="22" width="40.08" height="10" rx="5"/>
     </g>
     <g transform="translate(510, 0)">
-      <text class="label" x="0" y="12">Swift</text>
-      <text class="hours" x="230" y="12" text-anchor="end">2.5h (10.9%)</text>
+      <text class="label" x="0" y="12">Bash</text>
+      <text class="hours" x="230" y="12" text-anchor="end">0.7h (5.0%)</text>
       <rect class="bar-bg" x="0" y="22" width="240" height="10" rx="5"/>
-      <rect class="bar-fill-3 bar-animated bar-3" x="0" y="22" width="26.16" height="10" rx="5"/>
+      <rect class="bar-fill-3 bar-animated bar-3" x="0" y="22" width="12.0" height="10" rx="5"/>
     </g>
   </g>
 </svg>
