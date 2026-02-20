@@ -605,6 +605,9 @@
       <circle class="node-1" cx="6" cy="-3" r="1.5"/>
       <circle class="node-1" cx="6" cy="15" r="1.5"/>
     </g>
+    <g transform="translate(682, 90)">
+      <rect class="node-0" x="0" y="0" width="12" height="12" rx="2"/>
+    </g>
   </g>
 
   <!-- Legend -->
