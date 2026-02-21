@@ -102,27 +102,27 @@
 
   <!-- Header -->
   <text class="title" x="20" y="28">// now coding</text>
-  <text class="total" x="780" y="28" text-anchor="end">12.2h this week</text>
+  <text class="total" x="780" y="28" text-anchor="end">5.6h this week</text>
 
   <!-- Language Bars - Horizontal layout -->
   <g transform="translate(20, 50)">
     <g transform="translate(0, 0)">
-      <text class="label" x="0" y="12">Markdown</text>
-      <text class="hours" x="230" y="12" text-anchor="end">5.8h (47.6%)</text>
+      <text class="label" x="0" y="12">Swift</text>
+      <text class="hours" x="230" y="12" text-anchor="end">3.3h (59.2%)</text>
       <rect class="bar-bg" x="0" y="22" width="240" height="10" rx="5"/>
-      <rect class="bar-fill-1 bar-animated bar-1" x="0" y="22" width="114.24000000000001" height="10" rx="5"/>
+      <rect class="bar-fill-1 bar-animated bar-1" x="0" y="22" width="142.08" height="10" rx="5"/>
     </g>
     <g transform="translate(255, 0)">
-      <text class="label" x="0" y="12">Swift</text>
-      <text class="hours" x="230" y="12" text-anchor="end">3.6h (29.2%)</text>
+      <text class="label" x="0" y="12">Markdown</text>
+      <text class="hours" x="230" y="12" text-anchor="end">1.8h (31.4%)</text>
       <rect class="bar-bg" x="0" y="22" width="240" height="10" rx="5"/>
-      <rect class="bar-fill-2 bar-animated bar-2" x="0" y="22" width="70.08" height="10" rx="5"/>
+      <rect class="bar-fill-2 bar-animated bar-2" x="0" y="22" width="75.36" height="10" rx="5"/>
     </g>
     <g transform="translate(510, 0)">
       <text class="label" x="0" y="12">JSON</text>
-      <text class="hours" x="230" y="12" text-anchor="end">0.7h (6.1%)</text>
+      <text class="hours" x="230" y="12" text-anchor="end">0.3h (4.8%)</text>
       <rect class="bar-bg" x="0" y="22" width="240" height="10" rx="5"/>
-      <rect class="bar-fill-3 bar-animated bar-3" x="0" y="22" width="14.64" height="10" rx="5"/>
+      <rect class="bar-fill-3 bar-animated bar-3" x="0" y="22" width="11.52" height="10" rx="5"/>
     </g>
   </g>
 </svg>
