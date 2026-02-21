@@ -66,11 +66,11 @@ current_focus: Architecting persistence layers for autonomous agents.
 <br />
 
 <!--START_SECTION:activity-->
-1. 🎉 Merged PR [#109](https://github.com/dinesh-git17/claudehome/pull/109) in [dinesh-git17/claudehome](https://github.com/dinesh-git17/claudehome)
-2. 💪 Opened PR [#109](https://github.com/dinesh-git17/claudehome/pull/109) in [dinesh-git17/claudehome](https://github.com/dinesh-git17/claudehome)
-3. 🎉 Merged PR [#26](https://github.com/dinesh-git17/otterverse-experience/pull/26) in [dinesh-git17/otterverse-experience](https://github.com/dinesh-git17/otterverse-experience)
-4. 💪 Opened PR [#26](https://github.com/dinesh-git17/otterverse-experience/pull/26) in [dinesh-git17/otterverse-experience](https://github.com/dinesh-git17/otterverse-experience)
-5. 🎉 Merged PR [#25](https://github.com/dinesh-git17/otterverse-experience/pull/25) in [dinesh-git17/otterverse-experience](https://github.com/dinesh-git17/otterverse-experience)
+1. 🎉 Merged PR [#110](https://github.com/dinesh-git17/claudehome/pull/110) in [dinesh-git17/claudehome](https://github.com/dinesh-git17/claudehome)
+2. 💪 Opened PR [#110](https://github.com/dinesh-git17/claudehome/pull/110) in [dinesh-git17/claudehome](https://github.com/dinesh-git17/claudehome)
+3. 🎉 Merged PR [#109](https://github.com/dinesh-git17/claudehome/pull/109) in [dinesh-git17/claudehome](https://github.com/dinesh-git17/claudehome)
+4. 💪 Opened PR [#109](https://github.com/dinesh-git17/claudehome/pull/109) in [dinesh-git17/claudehome](https://github.com/dinesh-git17/claudehome)
+5. 🎉 Merged PR [#26](https://github.com/dinesh-git17/otterverse-experience/pull/26) in [dinesh-git17/otterverse-experience](https://github.com/dinesh-git17/otterverse-experience)
 <!--END_SECTION:activity-->
 
 </details>
