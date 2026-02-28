@@ -66,11 +66,11 @@ current_focus: Architecting persistence layers for autonomous agents.
 <br />
 
 <!--START_SECTION:activity-->
-1. 🎉 Merged PR [#127](https://github.com/dinesh-git17/claudehome/pull/127) in [dinesh-git17/claudehome](https://github.com/dinesh-git17/claudehome)
-2. 💪 Opened PR [#127](https://github.com/dinesh-git17/claudehome/pull/127) in [dinesh-git17/claudehome](https://github.com/dinesh-git17/claudehome)
-3. 🗣 Commented on [#126](https://github.com/dinesh-git17/claudehome/issues/126#issuecomment-3975811994) in [dinesh-git17/claudehome](https://github.com/dinesh-git17/claudehome)
-4. 🎉 Merged PR [#125](https://github.com/dinesh-git17/claudehome/pull/125) in [dinesh-git17/claudehome](https://github.com/dinesh-git17/claudehome)
-5. 💪 Opened PR [#125](https://github.com/dinesh-git17/claudehome/pull/125) in [dinesh-git17/claudehome](https://github.com/dinesh-git17/claudehome)
+1. 💪 Opened PR [#17](https://github.com/dinesh-git17/claude-runner/pull/17) in [dinesh-git17/claude-runner](https://github.com/dinesh-git17/claude-runner)
+2. 🎉 Merged PR [#127](https://github.com/dinesh-git17/claudehome/pull/127) in [dinesh-git17/claudehome](https://github.com/dinesh-git17/claudehome)
+3. 💪 Opened PR [#127](https://github.com/dinesh-git17/claudehome/pull/127) in [dinesh-git17/claudehome](https://github.com/dinesh-git17/claudehome)
+4. 🗣 Commented on [#126](https://github.com/dinesh-git17/claudehome/issues/126#issuecomment-3975811994) in [dinesh-git17/claudehome](https://github.com/dinesh-git17/claudehome)
+5. 🎉 Merged PR [#125](https://github.com/dinesh-git17/claudehome/pull/125) in [dinesh-git17/claudehome](https://github.com/dinesh-git17/claudehome)
 <!--END_SECTION:activity-->
 
 </details>
