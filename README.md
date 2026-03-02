@@ -66,11 +66,11 @@ current_focus: Architecting persistence layers for autonomous agents.
 <br />
 
 <!--START_SECTION:activity-->
-1. ℹ️ Labeled PR [#4](https://github.com/dinesh-git17/exhibitA/pull/4) in [dinesh-git17/exhibitA](https://github.com/dinesh-git17/exhibitA)
-2. 🗣 Commented on [#4](https://github.com/dinesh-git17/exhibitA/pull/4#issuecomment-3983802507) in [dinesh-git17/exhibitA](https://github.com/dinesh-git17/exhibitA)
-3. 🗣 Commented on [#3](https://github.com/dinesh-git17/exhibitA/pull/3#issuecomment-3983796458) in [dinesh-git17/exhibitA](https://github.com/dinesh-git17/exhibitA)
-4. 🎉 Merged PR [#5](https://github.com/dinesh-git17/exhibitA/pull/5) in [dinesh-git17/exhibitA](https://github.com/dinesh-git17/exhibitA)
-5. 💪 Opened PR [#5](https://github.com/dinesh-git17/exhibitA/pull/5) in [dinesh-git17/exhibitA](https://github.com/dinesh-git17/exhibitA)
+1. 🎉 Merged PR [#7](https://github.com/dinesh-git17/exhibitA/pull/7) in [dinesh-git17/exhibitA](https://github.com/dinesh-git17/exhibitA)
+2. 💪 Opened PR [#7](https://github.com/dinesh-git17/exhibitA/pull/7) in [dinesh-git17/exhibitA](https://github.com/dinesh-git17/exhibitA)
+3. 🎉 Merged PR [#6](https://github.com/dinesh-git17/exhibitA/pull/6) in [dinesh-git17/exhibitA](https://github.com/dinesh-git17/exhibitA)
+4. 💪 Opened PR [#6](https://github.com/dinesh-git17/exhibitA/pull/6) in [dinesh-git17/exhibitA](https://github.com/dinesh-git17/exhibitA)
+5. ℹ️ Labeled PR [#4](https://github.com/dinesh-git17/exhibitA/pull/4) in [dinesh-git17/exhibitA](https://github.com/dinesh-git17/exhibitA)
 <!--END_SECTION:activity-->
 
 </details>
