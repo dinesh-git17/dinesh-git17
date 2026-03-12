@@ -114,9 +114,9 @@
     </g>
     <g transform="translate(255, 0)">
       <text class="label" x="0" y="12">YAML</text>
-      <text class="hours" x="230" y="12" text-anchor="end">0.6h (7.7%)</text>
+      <text class="hours" x="230" y="12" text-anchor="end">0.6h (7.6%)</text>
       <rect class="bar-bg" x="0" y="22" width="240" height="10" rx="5"/>
-      <rect class="bar-fill-2 bar-animated bar-2" x="0" y="22" width="18.48" height="10" rx="5"/>
+      <rect class="bar-fill-2 bar-animated bar-2" x="0" y="22" width="18.24" height="10" rx="5"/>
     </g>
     <g transform="translate(510, 0)">
       <text class="label" x="0" y="12">Python</text>
