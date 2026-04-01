@@ -66,11 +66,11 @@ current_focus: Architecting persistence layers for autonomous agents.
 <br />
 
 <!--START_SECTION:activity-->
-1. 🎉 Merged PR [#3](https://github.com/dinesh-git17/cadence-ios/pull/3) in [dinesh-git17/cadence-ios](https://github.com/dinesh-git17/cadence-ios)
-2. 💪 Opened PR [#3](https://github.com/dinesh-git17/cadence-ios/pull/3) in [dinesh-git17/cadence-ios](https://github.com/dinesh-git17/cadence-ios)
-3. 🎉 Merged PR [#2](https://github.com/dinesh-git17/cadence-ios/pull/2) in [dinesh-git17/cadence-ios](https://github.com/dinesh-git17/cadence-ios)
-4. 💪 Opened PR [#2](https://github.com/dinesh-git17/cadence-ios/pull/2) in [dinesh-git17/cadence-ios](https://github.com/dinesh-git17/cadence-ios)
-5. 🎉 Merged PR [#1](https://github.com/dinesh-git17/cadence-ios/pull/1) in [dinesh-git17/cadence-ios](https://github.com/dinesh-git17/cadence-ios)
+1. 🎉 Merged PR [#10](https://github.com/dinesh-git17/cadence-ios/pull/10) in [dinesh-git17/cadence-ios](https://github.com/dinesh-git17/cadence-ios)
+2. 🎉 Merged PR [#9](https://github.com/dinesh-git17/cadence-ios/pull/9) in [dinesh-git17/cadence-ios](https://github.com/dinesh-git17/cadence-ios)
+3. 💪 Opened PR [#10](https://github.com/dinesh-git17/cadence-ios/pull/10) in [dinesh-git17/cadence-ios](https://github.com/dinesh-git17/cadence-ios)
+4. 💪 Opened PR [#9](https://github.com/dinesh-git17/cadence-ios/pull/9) in [dinesh-git17/cadence-ios](https://github.com/dinesh-git17/cadence-ios)
+5. 🎉 Merged PR [#8](https://github.com/dinesh-git17/cadence-ios/pull/8) in [dinesh-git17/cadence-ios](https://github.com/dinesh-git17/cadence-ios)
 <!--END_SECTION:activity-->
 
 </details>
