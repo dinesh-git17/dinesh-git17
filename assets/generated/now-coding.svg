@@ -2,25 +2,23 @@
   <title>Coding Stats - Last 7 Days</title>
   <defs>
     <style>
-      /* Dracula Theme */
       :root {
-        --bg: #282a36;
-        --fg: #f8f8f2;
-        --accent: #ff79c6;
-        --comment: #6272a4;
-        --green: #50fa7b;
-        --purple: #bd93f9;
-        --cyan: #8be9fd;
-        --orange: #ffb86c;
+        --bg: #1C1A17;
+        --surface: #252320;
+        --border: #3A3630;
+        --fg: #F0EBE1;
+        --fg-muted: #8C8479;
+        --accent: #E8A838;
+        --accent-dim: #A8762A;
       }
 
       .card-bg {
-        fill: var(--bg);
+        fill: var(--surface);
       }
 
       .card-border {
         fill: none;
-        stroke: var(--comment);
+        stroke: var(--border);
         stroke-width: 1;
       }
 
@@ -38,28 +36,28 @@
       }
 
       .bar-bg {
-        fill: #44475a;
+        fill: var(--border);
       }
 
-      .bar-fill-1 { fill: var(--cyan); }
-      .bar-fill-2 { fill: var(--purple); }
-      .bar-fill-3 { fill: var(--green); }
+      .bar-fill-1 { fill: var(--accent); }
+      .bar-fill-2 { fill: var(--accent-dim); }
+      .bar-fill-3 { fill: var(--fg-muted); }
 
       .hours {
-        fill: var(--comment);
+        fill: var(--fg-muted);
         font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
         font-size: 11px;
       }
 
       .total {
-        fill: var(--green);
+        fill: var(--accent);
         font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
         font-size: 16px;
         font-weight: bold;
       }
 
       .unavailable {
-        fill: var(--comment);
+        fill: var(--fg-muted);
         font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
         font-size: 12px;
         font-style: italic;
@@ -80,12 +78,6 @@
       .bar-2 { animation-delay: 0.4s; }
       .bar-3 { animation-delay: 0.6s; }
 
-      /* Light mode */
-      @media (prefers-color-scheme: light) {
-        .card-bg { fill: #f5f5f5; }
-        .bar-bg { fill: #e0e0e0; }
-      }
-
       /* Reduced motion */
       @media (prefers-reduced-motion: reduce) {
         .bar-animated {
@@ -102,27 +94,9 @@
 
   <!-- Header -->
   <text class="title" x="20" y="28">// now coding</text>
-  <text class="total" x="780" y="28" text-anchor="end">13.0h this week</text>
+  <text class="total" x="780" y="28" text-anchor="end">0h this week</text>
 
-  <!-- Language Bars - Horizontal layout -->
-  <g transform="translate(20, 50)">
-    <g transform="translate(0, 0)">
-      <text class="label" x="0" y="12">Swift</text>
-      <text class="hours" x="230" y="12" text-anchor="end">4.2h (32.3%)</text>
-      <rect class="bar-bg" x="0" y="22" width="240" height="10" rx="5"/>
-      <rect class="bar-fill-1 bar-animated bar-1" x="0" y="22" width="77.51999999999998" height="10" rx="5"/>
-    </g>
-    <g transform="translate(255, 0)">
-      <text class="label" x="0" y="12">Markdown</text>
-      <text class="hours" x="230" y="12" text-anchor="end">3.9h (30.3%)</text>
-      <rect class="bar-bg" x="0" y="22" width="240" height="10" rx="5"/>
-      <rect class="bar-fill-2 bar-animated bar-2" x="0" y="22" width="72.72" height="10" rx="5"/>
-    </g>
-    <g transform="translate(510, 0)">
-      <text class="label" x="0" y="12">Other</text>
-      <text class="hours" x="230" y="12" text-anchor="end">1.6h (12.0%)</text>
-      <rect class="bar-bg" x="0" y="22" width="240" height="10" rx="5"/>
-      <rect class="bar-fill-3 bar-animated bar-3" x="0" y="22" width="28.799999999999997" height="10" rx="5"/>
-    </g>
-  </g>
+  <!-- Unavailable State -->
+  <text class="unavailable" x="400" y="75" text-anchor="middle">// no coding data available</text>
+  <text class="unavailable" x="400" y="100" text-anchor="middle">// connect WakaTime to see your stats</text>
 </svg>

@@ -2,11 +2,10 @@
   <title>Tech Stack Marquee</title>
   <defs>
     <style>
-      /* Dracula Theme */
       :root {
-        --bg: #282a36;
-        --fg: #f8f8f2;
-        --comment: #6272a4;
+        --bg: #1C1A17;
+        --fg: #F0EBE1;
+        --fg-muted: #8C8479;
       }
 
       .ticker-bg {
@@ -20,7 +19,7 @@
       }
 
       .separator {
-        fill: var(--comment);
+        fill: var(--fg-muted);
         font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
         font-size: 14px;
       }
@@ -33,12 +32,6 @@
       @keyframes scroll {
         from { transform: translateX(0); }
         to { transform: translateX(-{{ half_width }}px); }
-      }
-
-      /* Light mode */
-      @media (prefers-color-scheme: light) {
-        .ticker-bg { fill: #f5f5f5; }
-        .tech-text { fill: #282a36; }
       }
 
       /* Reduced motion - stop animation */
@@ -63,13 +56,13 @@
       <!-- First copy of items -->
       {% for item in technologies %}
       <text class="tech-text" x="{{ item.x }}" y="32">{{ item.name }}</text>
-      <text class="separator" x="{{ item.sep_x }}" y="32">//</text>
+      <text class="separator" x="{{ item.sep_x }}" y="32">&#xB7;</text>
       {% endfor %}
 
       <!-- Second copy for seamless loop -->
       {% for item in technologies %}
       <text class="tech-text" x="{{ item.x + half_width }}" y="32">{{ item.name }}</text>
-      <text class="separator" x="{{ item.sep_x + half_width }}" y="32">//</text>
+      <text class="separator" x="{{ item.sep_x + half_width }}" y="32">&#xB7;</text>
       {% endfor %}
     </g>
   </g>

@@ -39,11 +39,9 @@ def generate_terminal_header(env: Environment) -> str:
     template = env.get_template("terminal-header.svg.j2")
 
     context = {
-        "name": "dinesh",
-        "role": "Data Engineer · Full-Stack Builder · AI Tinkerer",
-        "bio_line_1": "I build data pipelines by day and ship side projects",
-        "bio_line_2": "somewhere between midnight and regret. Based in Toronto.",
-        "bio_text": "Data Engineer building things between midnight and regret",
+        "name": "Dinesh Dawonauth",
+        "title": "Staff Data Engineer \u00b7 Full-Stack Builder",
+        "tagline": "Engineering data systems by day. Shipping side projects because the work doesn\u2019t stop.",
     }
 
     return template.render(**context)
@@ -163,7 +161,7 @@ def generate_stack_ticker(env: Environment) -> str:
 
     # Pre-calculate positions for each technology
     char_width = 9  # Approximate monospace character width
-    separator_width = 30  # Width for " // " separator
+    separator_width = 15  # Width for " · " separator
     padding = 10  # Padding after text
 
     technologies = []
@@ -222,11 +220,9 @@ def main() -> int:
         now_coding_svg = generate_now_coding(env)
         write_svg("now-coding.svg", now_coding_svg)
 
-        activity_circuit_svg = generate_activity_circuit(env)
-        write_svg("activity-circuit.svg", activity_circuit_svg)
-
-        project_grid_svg = generate_project_grid(env)
-        write_svg("project-grid.svg", project_grid_svg)
+        # Activity circuit and project grid removed per profile overhaul
+        # generate_activity_circuit(env) — retained but not called
+        # generate_project_grid(env) — retained but not called
 
         stack_ticker_svg = generate_stack_ticker(env)
         write_svg("stack-ticker.svg", stack_ticker_svg)

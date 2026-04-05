@@ -1,174 +1,71 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 200" role="img" aria-label="Terminal showing: {{ bio_text }}">
-  <title>Terminal Bio - {{ name }}</title>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 170" role="img" aria-label="{{ name }} — {{ title }}">
+  <title>{{ name }} — {{ title }}</title>
   <defs>
     <style>
-      /* Dracula Theme */
       :root {
-        --bg: #282a36;
-        --fg: #f8f8f2;
-        --accent: #ff79c6;
-        --comment: #6272a4;
-        --green: #50fa7b;
-        --purple: #bd93f9;
-        --cyan: #8be9fd;
-        --orange: #ffb86c;
-        --red: #ff5555;
+        --bg: #1C1A17;
+        --fg: #F0EBE1;
+        --fg-muted: #8C8479;
+        --accent: #E8A838;
+        --accent-dim: #A8762A;
       }
 
-      .terminal-bg {
+      .header-bg {
         fill: var(--bg);
       }
 
-      .terminal-border {
-        fill: none;
-        stroke: var(--comment);
-        stroke-width: 2;
-      }
-
-      .titlebar {
-        fill: #44475a;
-      }
-
-      .btn-close { fill: var(--red); }
-      .btn-minimize { fill: var(--orange); }
-      .btn-maximize { fill: var(--green); }
-
-      .title-text {
+      .name {
         fill: var(--fg);
         font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
-        font-size: 12px;
+        font-size: 24px;
+        font-weight: 700;
       }
 
-      .prompt {
-        fill: var(--green);
-        font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+      .title {
+        fill: var(--fg-muted);
+        font-family: 'Inter', 'Helvetica Neue', 'Arial', sans-serif;
         font-size: 14px;
+        font-weight: 400;
       }
 
-      .command {
-        fill: var(--cyan);
-        font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
-        font-size: 14px;
+      .tagline {
+        fill: var(--fg-muted);
+        font-family: 'Inter', 'Helvetica Neue', 'Arial', sans-serif;
+        font-size: 13px;
+        font-weight: 400;
       }
 
-      .output {
-        fill: var(--fg);
-        font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
-        font-size: 14px;
-      }
-
-      .highlight {
+      .pulse-line {
         fill: var(--accent);
+        animation: pulse 3s ease-in-out infinite;
       }
 
-      .comment-text {
-        fill: var(--comment);
-        font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
-        font-size: 14px;
+      @keyframes pulse {
+        0%, 100% { opacity: 1.0; }
+        50% { opacity: 0.6; }
       }
 
-      /* Typing animation */
-      .typing-line {
-        opacity: 0;
-        animation: fadeIn 0.1s forwards;
-      }
-
-      .line-1 { animation-delay: 0.3s; }
-      .line-2 { animation-delay: 0.8s; }
-      .line-3 { animation-delay: 1.3s; }
-      .line-4 { animation-delay: 1.8s; }
-      .line-5 { animation-delay: 2.3s; }
-      .line-6 { animation-delay: 2.8s; }
-
-      @keyframes fadeIn {
-        to { opacity: 1; }
-      }
-
-      /* Cursor blink */
-      .cursor {
-        fill: var(--fg);
-        animation: blink 1s step-end infinite;
-      }
-
-      @keyframes blink {
-        0%, 100% { opacity: 1; }
-        50% { opacity: 0; }
-      }
-
-      /* Light mode support */
-      @media (prefers-color-scheme: light) {
-        :root {
-          --bg: #f8f8f2;
-          --fg: #282a36;
-          --comment: #6272a4;
-        }
-        .terminal-bg { fill: #f5f5f5; }
-        .titlebar { fill: #e0e0e0; }
-      }
-
-      /* Reduced motion support */
       @media (prefers-reduced-motion: reduce) {
-        .typing-line {
+        .pulse-line {
           animation: none;
-          opacity: 1;
-        }
-        .cursor {
-          animation: none;
-          opacity: 1;
+          opacity: 1.0;
         }
       }
     </style>
   </defs>
 
-  <!-- Terminal Window -->
-  <rect class="terminal-bg" x="0" y="0" width="800" height="200" rx="10" ry="10"/>
-  <rect class="terminal-border" x="1" y="1" width="798" height="198" rx="10" ry="10"/>
+  <!-- Background -->
+  <rect class="header-bg" x="0" y="0" width="800" height="170" rx="8" ry="8"/>
 
-  <!-- Title Bar -->
-  <rect class="titlebar" x="0" y="0" width="800" height="30" rx="10" ry="10"/>
-  <rect class="titlebar" x="0" y="15" width="800" height="15"/>
-
-  <!-- Window Buttons -->
-  <circle class="btn-close" cx="20" cy="15" r="6"/>
-  <circle class="btn-minimize" cx="40" cy="15" r="6"/>
-  <circle class="btn-maximize" cx="60" cy="15" r="6"/>
+  <!-- Name -->
+  <text class="name" x="400" y="58" text-anchor="middle">{{ name }}</text>
 
   <!-- Title -->
-  <text class="title-text" x="400" y="19" text-anchor="middle">{{ name }} ~ zsh</text>
+  <text class="title" x="400" y="82" text-anchor="middle">{{ title }}</text>
 
-  <!-- Terminal Content -->
-  <g transform="translate(20, 50)">
-    <!-- Line 1: whoami -->
-    <g class="typing-line line-1">
-      <text class="prompt" x="0" y="0">$</text>
-      <text class="command" x="15" y="0">whoami</text>
-    </g>
+  <!-- Tagline -->
+  <text class="tagline" x="400" y="108" text-anchor="middle">{{ tagline }}</text>
 
-    <!-- Line 2: Output -->
-    <g class="typing-line line-2">
-      <text class="output" x="0" y="22">{{ role }}</text>
-    </g>
-
-    <!-- Line 3: cat bio.txt -->
-    <g class="typing-line line-3">
-      <text class="prompt" x="0" y="52">$</text>
-      <text class="command" x="15" y="52">cat bio.txt</text>
-    </g>
-
-    <!-- Line 4: Bio output -->
-    <g class="typing-line line-4">
-      <text class="output" x="0" y="74">{{ bio_line_1 }}</text>
-    </g>
-
-    <!-- Line 5: Bio continued -->
-    <g class="typing-line line-5">
-      <text class="output" x="0" y="96">{{ bio_line_2 }}</text>
-    </g>
-
-    <!-- Line 6: New prompt with cursor -->
-    <g class="typing-line line-6">
-      <text class="prompt" x="0" y="126">$</text>
-      <rect class="cursor" x="15" y="114" width="8" height="16"/>
-    </g>
-  </g>
+  <!-- Amber Pulse Line -->
+  <rect class="pulse-line" x="40" y="130" width="720" height="1" rx="0.5"/>
 </svg>

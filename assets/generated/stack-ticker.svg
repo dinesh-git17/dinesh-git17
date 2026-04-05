@@ -2,11 +2,10 @@
   <title>Tech Stack Marquee</title>
   <defs>
     <style>
-      /* Dracula Theme */
       :root {
-        --bg: #282a36;
-        --fg: #f8f8f2;
-        --comment: #6272a4;
+        --bg: #1C1A17;
+        --fg: #F0EBE1;
+        --fg-muted: #8C8479;
       }
 
       .ticker-bg {
@@ -20,25 +19,19 @@
       }
 
       .separator {
-        fill: var(--comment);
+        fill: var(--fg-muted);
         font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
         font-size: 14px;
       }
 
       /* Marquee animation - infinite horizontal scroll */
       .marquee-group {
-        animation: scroll 45s linear infinite;
+        animation: scroll 39s linear infinite;
       }
 
       @keyframes scroll {
         from { transform: translateX(0); }
-        to { transform: translateX(-1823px); }
-      }
-
-      /* Light mode */
-      @media (prefers-color-scheme: light) {
-        .ticker-bg { fill: #f5f5f5; }
-        .tech-text { fill: #282a36; }
+        to { transform: translateX(-1568px); }
       }
 
       /* Reduced motion - stop animation */
@@ -62,75 +55,75 @@
     <g class="marquee-group">
       <!-- First copy of items -->
       <text class="tech-text" x="0" y="32">Python</text>
-      <text class="separator" x="64" y="32">//</text>
-      <text class="tech-text" x="94" y="32">TypeScript</text>
-      <text class="separator" x="194" y="32">//</text>
-      <text class="tech-text" x="224" y="32">SQL</text>
-      <text class="separator" x="261" y="32">//</text>
-      <text class="tech-text" x="291" y="32">PostgreSQL</text>
-      <text class="separator" x="391" y="32">//</text>
-      <text class="tech-text" x="421" y="32">Snowflake</text>
-      <text class="separator" x="512" y="32">//</text>
-      <text class="tech-text" x="542" y="32">Kafka</text>
-      <text class="separator" x="597" y="32">//</text>
-      <text class="tech-text" x="627" y="32">PyTorch</text>
-      <text class="separator" x="700" y="32">//</text>
-      <text class="tech-text" x="730" y="32">TensorFlow</text>
-      <text class="separator" x="830" y="32">//</text>
-      <text class="tech-text" x="860" y="32">LangChain</text>
-      <text class="separator" x="951" y="32">//</text>
-      <text class="tech-text" x="981" y="32">Next.js</text>
-      <text class="separator" x="1054" y="32">//</text>
-      <text class="tech-text" x="1084" y="32">React</text>
-      <text class="separator" x="1139" y="32">//</text>
-      <text class="tech-text" x="1169" y="32">FastAPI</text>
-      <text class="separator" x="1242" y="32">//</text>
-      <text class="tech-text" x="1272" y="32">AWS</text>
-      <text class="separator" x="1309" y="32">//</text>
-      <text class="tech-text" x="1339" y="32">Docker</text>
-      <text class="separator" x="1403" y="32">//</text>
-      <text class="tech-text" x="1433" y="32">Kubernetes</text>
-      <text class="separator" x="1533" y="32">//</text>
-      <text class="tech-text" x="1563" y="32">GitHub Actions</text>
-      <text class="separator" x="1699" y="32">//</text>
-      <text class="tech-text" x="1729" y="32">Vercel</text>
-      <text class="separator" x="1793" y="32">//</text>
+      <text class="separator" x="64" y="32">&#xB7;</text>
+      <text class="tech-text" x="79" y="32">TypeScript</text>
+      <text class="separator" x="179" y="32">&#xB7;</text>
+      <text class="tech-text" x="194" y="32">SQL</text>
+      <text class="separator" x="231" y="32">&#xB7;</text>
+      <text class="tech-text" x="246" y="32">PostgreSQL</text>
+      <text class="separator" x="346" y="32">&#xB7;</text>
+      <text class="tech-text" x="361" y="32">Snowflake</text>
+      <text class="separator" x="452" y="32">&#xB7;</text>
+      <text class="tech-text" x="467" y="32">Kafka</text>
+      <text class="separator" x="522" y="32">&#xB7;</text>
+      <text class="tech-text" x="537" y="32">PyTorch</text>
+      <text class="separator" x="610" y="32">&#xB7;</text>
+      <text class="tech-text" x="625" y="32">TensorFlow</text>
+      <text class="separator" x="725" y="32">&#xB7;</text>
+      <text class="tech-text" x="740" y="32">LangChain</text>
+      <text class="separator" x="831" y="32">&#xB7;</text>
+      <text class="tech-text" x="846" y="32">Next.js</text>
+      <text class="separator" x="919" y="32">&#xB7;</text>
+      <text class="tech-text" x="934" y="32">React</text>
+      <text class="separator" x="989" y="32">&#xB7;</text>
+      <text class="tech-text" x="1004" y="32">FastAPI</text>
+      <text class="separator" x="1077" y="32">&#xB7;</text>
+      <text class="tech-text" x="1092" y="32">AWS</text>
+      <text class="separator" x="1129" y="32">&#xB7;</text>
+      <text class="tech-text" x="1144" y="32">Docker</text>
+      <text class="separator" x="1208" y="32">&#xB7;</text>
+      <text class="tech-text" x="1223" y="32">Kubernetes</text>
+      <text class="separator" x="1323" y="32">&#xB7;</text>
+      <text class="tech-text" x="1338" y="32">GitHub Actions</text>
+      <text class="separator" x="1474" y="32">&#xB7;</text>
+      <text class="tech-text" x="1489" y="32">Vercel</text>
+      <text class="separator" x="1553" y="32">&#xB7;</text>
 
       <!-- Second copy for seamless loop -->
-      <text class="tech-text" x="1823" y="32">Python</text>
-      <text class="separator" x="1887" y="32">//</text>
-      <text class="tech-text" x="1917" y="32">TypeScript</text>
-      <text class="separator" x="2017" y="32">//</text>
-      <text class="tech-text" x="2047" y="32">SQL</text>
-      <text class="separator" x="2084" y="32">//</text>
-      <text class="tech-text" x="2114" y="32">PostgreSQL</text>
-      <text class="separator" x="2214" y="32">//</text>
-      <text class="tech-text" x="2244" y="32">Snowflake</text>
-      <text class="separator" x="2335" y="32">//</text>
-      <text class="tech-text" x="2365" y="32">Kafka</text>
-      <text class="separator" x="2420" y="32">//</text>
-      <text class="tech-text" x="2450" y="32">PyTorch</text>
-      <text class="separator" x="2523" y="32">//</text>
-      <text class="tech-text" x="2553" y="32">TensorFlow</text>
-      <text class="separator" x="2653" y="32">//</text>
-      <text class="tech-text" x="2683" y="32">LangChain</text>
-      <text class="separator" x="2774" y="32">//</text>
-      <text class="tech-text" x="2804" y="32">Next.js</text>
-      <text class="separator" x="2877" y="32">//</text>
-      <text class="tech-text" x="2907" y="32">React</text>
-      <text class="separator" x="2962" y="32">//</text>
-      <text class="tech-text" x="2992" y="32">FastAPI</text>
-      <text class="separator" x="3065" y="32">//</text>
-      <text class="tech-text" x="3095" y="32">AWS</text>
-      <text class="separator" x="3132" y="32">//</text>
-      <text class="tech-text" x="3162" y="32">Docker</text>
-      <text class="separator" x="3226" y="32">//</text>
-      <text class="tech-text" x="3256" y="32">Kubernetes</text>
-      <text class="separator" x="3356" y="32">//</text>
-      <text class="tech-text" x="3386" y="32">GitHub Actions</text>
-      <text class="separator" x="3522" y="32">//</text>
-      <text class="tech-text" x="3552" y="32">Vercel</text>
-      <text class="separator" x="3616" y="32">//</text>
+      <text class="tech-text" x="1568" y="32">Python</text>
+      <text class="separator" x="1632" y="32">&#xB7;</text>
+      <text class="tech-text" x="1647" y="32">TypeScript</text>
+      <text class="separator" x="1747" y="32">&#xB7;</text>
+      <text class="tech-text" x="1762" y="32">SQL</text>
+      <text class="separator" x="1799" y="32">&#xB7;</text>
+      <text class="tech-text" x="1814" y="32">PostgreSQL</text>
+      <text class="separator" x="1914" y="32">&#xB7;</text>
+      <text class="tech-text" x="1929" y="32">Snowflake</text>
+      <text class="separator" x="2020" y="32">&#xB7;</text>
+      <text class="tech-text" x="2035" y="32">Kafka</text>
+      <text class="separator" x="2090" y="32">&#xB7;</text>
+      <text class="tech-text" x="2105" y="32">PyTorch</text>
+      <text class="separator" x="2178" y="32">&#xB7;</text>
+      <text class="tech-text" x="2193" y="32">TensorFlow</text>
+      <text class="separator" x="2293" y="32">&#xB7;</text>
+      <text class="tech-text" x="2308" y="32">LangChain</text>
+      <text class="separator" x="2399" y="32">&#xB7;</text>
+      <text class="tech-text" x="2414" y="32">Next.js</text>
+      <text class="separator" x="2487" y="32">&#xB7;</text>
+      <text class="tech-text" x="2502" y="32">React</text>
+      <text class="separator" x="2557" y="32">&#xB7;</text>
+      <text class="tech-text" x="2572" y="32">FastAPI</text>
+      <text class="separator" x="2645" y="32">&#xB7;</text>
+      <text class="tech-text" x="2660" y="32">AWS</text>
+      <text class="separator" x="2697" y="32">&#xB7;</text>
+      <text class="tech-text" x="2712" y="32">Docker</text>
+      <text class="separator" x="2776" y="32">&#xB7;</text>
+      <text class="tech-text" x="2791" y="32">Kubernetes</text>
+      <text class="separator" x="2891" y="32">&#xB7;</text>
+      <text class="tech-text" x="2906" y="32">GitHub Actions</text>
+      <text class="separator" x="3042" y="32">&#xB7;</text>
+      <text class="tech-text" x="3057" y="32">Vercel</text>
+      <text class="separator" x="3121" y="32">&#xB7;</text>
     </g>
   </g>
 </svg>
