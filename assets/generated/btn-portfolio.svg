@@ -2,19 +2,15 @@
   <title>Portfolio</title>
   <defs>
     <style>
-      .btn-bg { fill: #44475a; }
-      .btn-border { fill: none; stroke: #6272a4; stroke-width: 1; }
-      .btn-icon { fill: #8be9fd; }
-      .btn-text { fill: #f8f8f2; font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; font-weight: bold; }
-      @media (prefers-color-scheme: light) {
-        .btn-bg { fill: #e0e0e0; }
-        .btn-text { fill: #282a36; }
-      }
+      .btn-bg { fill: #252320; }
+      .btn-border { fill: none; stroke: #3A3630; stroke-width: 1; }
+      .btn-icon { fill: #E8A838; }
+      .btn-text { fill: #F0EBE1; font-family: 'SF Mono', 'Fira Code', monospace; font-size: 12px; font-weight: bold; }
     </style>
   </defs>
   <rect class="btn-bg" x="0" y="0" width="130" height="36" rx="6"/>
   <rect class="btn-border" x="0.5" y="0.5" width="129" height="35" rx="6"/>
   <circle class="btn-icon" cx="22" cy="18" r="10"/>
-  <path fill="#282a36" d="M22 10a8 8 0 1 0 0 16 8 8 0 0 0 0-16zm-7 8h14M22 10.5c1.5 2 2.5 4.5 2.5 7.5s-1 5.5-2.5 7.5c-1.5-2-2.5-4.5-2.5-7.5s1-5.5 2.5-7.5z"/>
+  <path fill="#1C1A17" d="M22 10a8 8 0 1 0 0 16 8 8 0 0 0 0-16zm-7 8h14M22 10.5c1.5 2 2.5 4.5 2.5 7.5s-1 5.5-2.5 7.5c-1.5-2-2.5-4.5-2.5-7.5s1-5.5 2.5-7.5z"/>
   <text class="btn-text" x="42" y="22">Portfolio</text>
 </svg>
