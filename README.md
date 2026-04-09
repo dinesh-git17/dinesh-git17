@@ -1,5 +1,3 @@
-<table border="0" cellspacing="0" cellpadding="20" bgcolor="#1C1A17" width="100%"><tr><td>
-
 <div align="center">
   <img src="assets/generated/terminal-header.svg" alt="Terminal Header" width="100%" />
 </div>
@@ -69,5 +67,3 @@
 <div align="center">
   <code>EOF · EST. 2024 · DINESH.DEV</code>
 </div>
-
-</td></tr></table>
