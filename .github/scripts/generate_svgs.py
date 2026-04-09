@@ -134,30 +134,6 @@ def generate_project_grid(env: Environment) -> str:
     return template.render(**context)
 
 
-def generate_system_identity(env: Environment) -> str:
-    """Generate the system identity SVG."""
-    template = env.get_template("system-identity.svg.j2")
-
-    context = {
-        "entity": "Dinesh Dawonauth",
-        "role": "Staff Data Engineer \u00b7 Full-Stack Builder",
-        "location": "Toronto, CA",
-        "architecture": [
-            "Distributed Systems",
-            "AI/LLM Pipelines",
-            "Event-Driven Data",
-        ],
-        "philosophy": [
-            "Design for the failure, not around it.",
-            "Every abstraction is debt until proven otherwise.",
-            "Shipping is the only metric that compounds.",
-        ],
-        "current_focus": "Building in public. Shipping tools, writing about the process.",
-    }
-
-    return template.render(**context)
-
-
 def generate_stack_ticker(env: Environment) -> str:
     """Generate the tech stack ticker SVG."""
     template = env.get_template("stack-ticker.svg.j2")
@@ -243,9 +219,6 @@ def main() -> int:
 
         now_coding_svg = generate_now_coding(env)
         write_svg("now-coding.svg", now_coding_svg)
-
-        identity_svg = generate_system_identity(env)
-        write_svg("system-identity.svg", identity_svg)
 
         # Activity circuit and project grid removed per profile overhaul
         # generate_activity_circuit(env) — retained but not called
