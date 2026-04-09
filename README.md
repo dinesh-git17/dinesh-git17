@@ -53,11 +53,11 @@
 
 <!--START_SECTION:activity-->
 
-1. 🎉 Merged PR [#13](https://github.com/dinesh-git17/dinesh-git17/pull/13) in [dinesh-git17/dinesh-git17](https://github.com/dinesh-git17/dinesh-git17)
-2. 💪 Opened PR [#13](https://github.com/dinesh-git17/dinesh-git17/pull/13) in [dinesh-git17/dinesh-git17](https://github.com/dinesh-git17/dinesh-git17)
-3. 🎉 Merged PR [#27](https://github.com/dinesh-git17/claude-runner/pull/27) in [dinesh-git17/claude-runner](https://github.com/dinesh-git17/claude-runner)
-4. 💪 Opened PR [#27](https://github.com/dinesh-git17/claude-runner/pull/27) in [dinesh-git17/claude-runner](https://github.com/dinesh-git17/claude-runner)
-5. 🎉 Merged PR [#19](https://github.com/dinesh-git17/cadence-ios/pull/19) in [dinesh-git17/cadence-ios](https://github.com/dinesh-git17/cadence-ios)
+1. 🎉 Merged PR [#16](https://github.com/dinesh-git17/dinesh-git17/pull/16) in [dinesh-git17/dinesh-git17](https://github.com/dinesh-git17/dinesh-git17)
+2. 💪 Opened PR [#16](https://github.com/dinesh-git17/dinesh-git17/pull/16) in [dinesh-git17/dinesh-git17](https://github.com/dinesh-git17/dinesh-git17)
+3. 🎉 Merged PR [#15](https://github.com/dinesh-git17/dinesh-git17/pull/15) in [dinesh-git17/dinesh-git17](https://github.com/dinesh-git17/dinesh-git17)
+4. 💪 Opened PR [#15](https://github.com/dinesh-git17/dinesh-git17/pull/15) in [dinesh-git17/dinesh-git17](https://github.com/dinesh-git17/dinesh-git17)
+5. 🎉 Merged PR [#14](https://github.com/dinesh-git17/dinesh-git17/pull/14) in [dinesh-git17/dinesh-git17](https://github.com/dinesh-git17/dinesh-git17)
 <!--END_SECTION:activity-->
 
 </details>
