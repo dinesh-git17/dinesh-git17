@@ -10,10 +10,6 @@
         --accent-dim: #A8762A;
       }
 
-      .header-bg {
-        fill: var(--bg);
-      }
-
       .name {
         fill: var(--fg);
         font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
@@ -53,9 +49,6 @@
       }
     </style>
   </defs>
-
-  <!-- Background -->
-  <rect class="header-bg" x="0" y="0" width="800" height="170" rx="8" ry="8"/>
 
   <!-- Name -->
   <text class="name" x="400" y="58" text-anchor="middle">Dinesh Dawonauth</text>

@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 265" role="img" aria-label="System identity: Dinesh Dawonauth">
+  <title>System Identity — Dinesh Dawonauth</title>
+  <defs>
+    <style>
+      .id-key {
+        fill: #E8A838;
+        font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+        font-size: 13px;
+        font-weight: 600;
+      }
+      .id-val {
+        fill: #F0EBE1;
+        font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+        font-size: 13px;
+      }
+      .id-bracket {
+        fill: #8C8479;
+        font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+        font-size: 13px;
+      }
+      .id-arrow {
+        fill: #A8762A;
+        font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+        font-size: 12px;
+      }
+      .id-quote {
+        fill: #8C8479;
+        font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+        font-size: 12px;
+        font-style: italic;
+      }
+    </style>
+  </defs>
+
+  <text class="id-key" x="20" y="24">entity</text>
+  <text class="id-val" x="170" y="24">Dinesh Dawonauth</text>
+
+  <text class="id-key" x="20" y="50">role</text>
+  <text class="id-val" x="170" y="50">Staff Data Engineer &#xB7; Full-Stack Builder</text>
+
+  <text class="id-key" x="20" y="76">location</text>
+  <text class="id-val" x="170" y="76">Toronto, CA</text>
+
+  <text class="id-key" x="20" y="102">architecture</text>
+  <text class="id-bracket" x="170" y="102">[Distributed Systems, AI/LLM Pipelines, Event-Driven Data]</text>
+
+  <text class="id-key" x="20" y="140">philosophy</text>
+  <text class="id-arrow" x="40" y="165">&#x2192;</text>
+  <text class="id-quote" x="60" y="165">&#x201C;Design for the failure, not around it.&#x201D;</text>
+  <text class="id-arrow" x="40" y="188">&#x2192;</text>
+  <text class="id-quote" x="60" y="188">&#x201C;Every abstraction is debt until proven otherwise.&#x201D;</text>
+  <text class="id-arrow" x="40" y="211">&#x2192;</text>
+  <text class="id-quote" x="60" y="211">&#x201C;Shipping is the only metric that compounds.&#x201D;</text>
+
+  <text class="id-key" x="20" y="254">current_focus</text>
+  <text class="id-val" x="170" y="254">Building in public. Shipping tools, writing about the process.</text>
+</svg>

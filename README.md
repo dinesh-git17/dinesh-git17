@@ -1,3 +1,5 @@
+<table border="0" cellspacing="0" cellpadding="20" bgcolor="#1C1A17" width="100%"><tr><td>
+
 <div align="center">
   <img src="assets/generated/terminal-header.svg" alt="Terminal Header" width="100%" />
 </div>
@@ -18,17 +20,9 @@
 
 ### `>_ SYSTEM_IDENTITY`
 
-```yaml
-entity: Dinesh Dawonauth
-role: Staff Data Engineer · Full-Stack Builder
-location: Toronto, CA
-architecture: [Distributed Systems, AI/LLM Pipelines, Event-Driven Data]
-philosophy:
-  - "Design for the failure, not around it."
-  - "Every abstraction is debt until proven otherwise."
-  - "Shipping is the only metric that compounds."
-current_focus: Building in public. Shipping tools, writing about the process.
-```
+<div align="center">
+  <img src="assets/generated/system-identity.svg" alt="System Identity" width="100%" />
+</div>
 
 <br />
 
@@ -83,3 +77,5 @@ current_focus: Building in public. Shipping tools, writing about the process.
 <div align="center">
   <code>EOF · EST. 2024 · DINESH.DEV</code>
 </div>
+
+</td></tr></table>
