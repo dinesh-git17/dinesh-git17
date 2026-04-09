@@ -18,14 +18,6 @@
 
 <br />
 
-### `>_ SYSTEM_IDENTITY`
-
-<div align="center">
-  <img src="assets/generated/system-identity.svg" alt="System Identity" width="100%" />
-</div>
-
-<br />
-
 ### `>_ ACTIVE_WORKLOAD`
 
 <div align="center">
