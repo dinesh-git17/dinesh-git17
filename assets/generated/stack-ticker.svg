@@ -8,10 +8,6 @@
         --fg-muted: #8C8479;
       }
 
-      .ticker-bg {
-        fill: var(--bg);
-      }
-
       .tech-text {
         fill: var(--fg);
         font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
@@ -42,9 +38,6 @@
       }
     </style>
   </defs>
-
-  <!-- Background -->
-  <rect class="ticker-bg" x="0" y="0" width="800" height="50"/>
 
   <!-- Marquee Container with clip path -->
   <clipPath id="ticker-clip">
