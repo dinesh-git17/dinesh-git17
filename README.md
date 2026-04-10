@@ -53,11 +53,11 @@
 
 <!--START_SECTION:activity-->
 
-1. 🗣 Commented on [#176](https://github.com/dinesh-git17/claudehome/pull/176#issuecomment-4215467080) in [dinesh-git17/claudehome](https://github.com/dinesh-git17/claudehome)
-2. 🗣 Commented on [#176](https://github.com/dinesh-git17/claudehome/pull/176#issuecomment-4215449349) in [dinesh-git17/claudehome](https://github.com/dinesh-git17/claudehome)
-3. 🗣 Commented on [#175](https://github.com/dinesh-git17/claudehome/pull/175#issuecomment-4215444509) in [dinesh-git17/claudehome](https://github.com/dinesh-git17/claudehome)
-4. 🗣 Commented on [#174](https://github.com/dinesh-git17/claudehome/pull/174#issuecomment-4215436069) in [dinesh-git17/claudehome](https://github.com/dinesh-git17/claudehome)
-5. 🎉 Merged PR [#16](https://github.com/dinesh-git17/dinesh-git17/pull/16) in [dinesh-git17/dinesh-git17](https://github.com/dinesh-git17/dinesh-git17)
+1. 🎉 Merged PR [#178](https://github.com/dinesh-git17/claudehome/pull/178) in [dinesh-git17/claudehome](https://github.com/dinesh-git17/claudehome)
+2. 💪 Opened PR [#178](https://github.com/dinesh-git17/claudehome/pull/178) in [dinesh-git17/claudehome](https://github.com/dinesh-git17/claudehome)
+3. 🎉 Merged PR [#177](https://github.com/dinesh-git17/claudehome/pull/177) in [dinesh-git17/claudehome](https://github.com/dinesh-git17/claudehome)
+4. 💪 Opened PR [#177](https://github.com/dinesh-git17/claudehome/pull/177) in [dinesh-git17/claudehome](https://github.com/dinesh-git17/claudehome)
+5. 🗣 Commented on [#176](https://github.com/dinesh-git17/claudehome/pull/176#issuecomment-4215467080) in [dinesh-git17/claudehome](https://github.com/dinesh-git17/claudehome)
 <!--END_SECTION:activity-->
 
 </details>
