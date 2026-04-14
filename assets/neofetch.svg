@@ -12,7 +12,7 @@
   <text x="630" y="116" fill="#E8E0D0" font-family="monospace" font-size="13" text-anchor="start">macOS 26 Tahoe · iOS 26</text>
 
   <text x="430" y="140" fill="#D4A017" font-family="monospace" font-size="13" text-anchor="start">Uptime:</text>
-  <text x="630" y="140" fill="#E8E0D0" font-family="monospace" font-size="13" text-anchor="start"><!-- UPTIME_START -->7 years, 7 months<!-- UPTIME_END --></text>
+  <text x="630" y="140" fill="#E8E0D0" font-family="monospace" font-size="13" text-anchor="start"><!-- UPTIME_START -->2 years, 7 months<!-- UPTIME_END --></text>
 
   <text x="430" y="164" fill="#D4A017" font-family="monospace" font-size="13" text-anchor="start">Host:</text>
   <text x="630" y="164" fill="#E8E0D0" font-family="monospace" font-size="13" text-anchor="start">Toronto, Canada</text>
