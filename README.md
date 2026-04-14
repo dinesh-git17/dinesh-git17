@@ -53,11 +53,11 @@
 
 <!--START_SECTION:activity-->
 
-1. 🎉 Merged PR [#20](https://github.com/dinesh-git17/bpetite/pull/20) in [dinesh-git17/bpetite](https://github.com/dinesh-git17/bpetite)
-2. 💪 Opened PR [#20](https://github.com/dinesh-git17/bpetite/pull/20) in [dinesh-git17/bpetite](https://github.com/dinesh-git17/bpetite)
-3. 🎉 Merged PR [#19](https://github.com/dinesh-git17/bpetite/pull/19) in [dinesh-git17/bpetite](https://github.com/dinesh-git17/bpetite)
-4. 💪 Opened PR [#19](https://github.com/dinesh-git17/bpetite/pull/19) in [dinesh-git17/bpetite](https://github.com/dinesh-git17/bpetite)
-5. 🎉 Merged PR [#18](https://github.com/dinesh-git17/bpetite/pull/18) in [dinesh-git17/bpetite](https://github.com/dinesh-git17/bpetite)
+1. 🎉 Merged PR [#21](https://github.com/dinesh-git17/bpetite/pull/21) in [dinesh-git17/bpetite](https://github.com/dinesh-git17/bpetite)
+2. 💪 Opened PR [#21](https://github.com/dinesh-git17/bpetite/pull/21) in [dinesh-git17/bpetite](https://github.com/dinesh-git17/bpetite)
+3. 🎉 Merged PR [#20](https://github.com/dinesh-git17/bpetite/pull/20) in [dinesh-git17/bpetite](https://github.com/dinesh-git17/bpetite)
+4. 💪 Opened PR [#20](https://github.com/dinesh-git17/bpetite/pull/20) in [dinesh-git17/bpetite](https://github.com/dinesh-git17/bpetite)
+5. 🎉 Merged PR [#19](https://github.com/dinesh-git17/bpetite/pull/19) in [dinesh-git17/bpetite](https://github.com/dinesh-git17/bpetite)
 <!--END_SECTION:activity-->
 
 </details>
