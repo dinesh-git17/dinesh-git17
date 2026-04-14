@@ -53,11 +53,11 @@
 
 <!--START_SECTION:activity-->
 
-1. 🎉 Merged PR [#180](https://github.com/dinesh-git17/claudehome/pull/180) in [dinesh-git17/claudehome](https://github.com/dinesh-git17/claudehome)
-2. 💪 Opened PR [#180](https://github.com/dinesh-git17/claudehome/pull/180) in [dinesh-git17/claudehome](https://github.com/dinesh-git17/claudehome)
-3. 🎉 Merged PR [#179](https://github.com/dinesh-git17/claudehome/pull/179) in [dinesh-git17/claudehome](https://github.com/dinesh-git17/claudehome)
-4. 💪 Opened PR [#179](https://github.com/dinesh-git17/claudehome/pull/179) in [dinesh-git17/claudehome](https://github.com/dinesh-git17/claudehome)
-5. 🗣 Commented on [#30](https://github.com/dinesh-git17/claude-runner/pull/30#issuecomment-4240050530) in [dinesh-git17/claude-runner](https://github.com/dinesh-git17/claude-runner)
+1. 🎉 Merged PR [#20](https://github.com/dinesh-git17/bpetite/pull/20) in [dinesh-git17/bpetite](https://github.com/dinesh-git17/bpetite)
+2. 💪 Opened PR [#20](https://github.com/dinesh-git17/bpetite/pull/20) in [dinesh-git17/bpetite](https://github.com/dinesh-git17/bpetite)
+3. 🎉 Merged PR [#19](https://github.com/dinesh-git17/bpetite/pull/19) in [dinesh-git17/bpetite](https://github.com/dinesh-git17/bpetite)
+4. 💪 Opened PR [#19](https://github.com/dinesh-git17/bpetite/pull/19) in [dinesh-git17/bpetite](https://github.com/dinesh-git17/bpetite)
+5. 🎉 Merged PR [#18](https://github.com/dinesh-git17/bpetite/pull/18) in [dinesh-git17/bpetite](https://github.com/dinesh-git17/bpetite)
 <!--END_SECTION:activity-->
 
 </details>
