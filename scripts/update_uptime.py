@@ -11,7 +11,7 @@ from pathlib import Path
 
 REPO_ROOT: Path = Path(__file__).resolve().parent.parent
 SVG_PATH: Path = REPO_ROOT / "assets" / "neofetch.svg"
-EPOCH: date = date(2018, 9, 1)
+EPOCH: date = date(2023, 9, 1)
 MARKER_PATTERN: re.Pattern[str] = re.compile(
     r"<!-- UPTIME_START -->(.*?)<!-- UPTIME_END -->",
     re.DOTALL,
