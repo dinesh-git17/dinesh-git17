@@ -55,6 +55,41 @@ def compute_next_v(current_v: str | None, today: date) -> str:
     return f"{today_str}.1"
 
 
+def _extract_v(url: str) -> str | None:
+    """Return the ``v`` query parameter from ``url``, or ``None`` if absent."""
+    query: str = urlsplit(url).query
+    for key, value in parse_qsl(query, keep_blank_values=True):
+        if key == "v":
+            return value
+    return None
+
+
+def update_v_param(url: str, new_v: str) -> str:
+    """Return ``url`` with its ``v`` query parameter replaced by ``new_v``.
+
+    All other query parameters are preserved in their original order; any
+    pre-existing ``v`` is dropped. ``new_v`` is appended at the end.
+
+    Args:
+        url: An absolute URL with a query string.
+        new_v: The replacement value (e.g. ``"2026-04-21.1"``).
+
+    Returns:
+        The reassembled URL string.
+    """
+    parts = urlsplit(url)
+    kept: list[tuple[str, str]] = [
+        (k, v)
+        for k, v in parse_qsl(parts.query, keep_blank_values=True)
+        if k != "v"
+    ]
+    kept.append(("v", new_v))
+    new_query: str = urlencode(kept)
+    return urlunsplit(
+        (parts.scheme, parts.netloc, parts.path, new_query, parts.fragment)
+    )
+
+
 def main() -> int:
     """Entry point. Returns process exit code."""
     return 0
