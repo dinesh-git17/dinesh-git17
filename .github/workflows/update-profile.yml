@@ -1,4 +1,4 @@
-name: Update Uptime
+name: Update Profile
 
 on:
   schedule:
@@ -9,7 +9,7 @@ permissions:
   contents: write
 
 jobs:
-  update-uptime:
+  update-profile:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -23,14 +23,17 @@ jobs:
       - name: Patch SVG uptime
         run: python3 scripts/update_uptime.py
 
+      - name: Bump stats cache-buster
+        run: python3 scripts/update_stats_cache.py
+
       - name: Commit and push if changed
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add assets/neofetch.svg
+          git add assets/neofetch.svg README.md
           if git diff --cached --quiet; then
-            echo "No uptime change — skipping commit."
+            echo "No changes - skipping commit."
           else
-            git commit -m "chore: update uptime to $(date +'%Y-%m')"
+            git commit -m "chore: refresh profile ($(date -u +'%Y-%m-%d'))"
             git push
           fi
