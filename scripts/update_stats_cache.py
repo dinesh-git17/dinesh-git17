@@ -90,8 +90,57 @@ def update_v_param(url: str, new_v: str) -> str:
     )
 
 
+def patch_readme(readme_path: Path, today: date) -> bool:
+    """Rewrite the three stats card URLs in ``readme_path`` with a fresh ``v``.
+
+    Always writes when exactly ``EXPECTED_URL_COUNT`` URLs are found. The
+    suffix is bumped per :func:`compute_next_v`, so the file content is
+    different after each successful call.
+
+    Args:
+        readme_path: Path to ``README.md``.
+        today: The reference date.
+
+    Returns:
+        ``True`` on a successful write.
+
+    Raises:
+        FileNotFoundError: If ``readme_path`` does not exist.
+        ValueError: If the URL count differs from ``EXPECTED_URL_COUNT`` or
+            any URL contains a malformed ``v`` value.
+    """
+    content: str = readme_path.read_text(encoding="utf-8")
+    urls: list[str] = URL_PATTERN.findall(content)
+    if len(urls) != EXPECTED_URL_COUNT:
+        msg = (
+            f"expected {EXPECTED_URL_COUNT} stats card URLs, "
+            f"found {len(urls)}"
+        )
+        raise ValueError(msg)
+
+    def replace(match: re.Match[str]) -> str:
+        url: str = match.group(0)
+        existing_v: str | None = _extract_v(url)
+        next_v: str = compute_next_v(existing_v, today)
+        return update_v_param(url, next_v)
+
+    new_content: str = URL_PATTERN.sub(replace, content)
+    readme_path.write_text(new_content, encoding="utf-8")
+    return True
+
+
 def main() -> int:
-    """Entry point. Returns process exit code."""
+    """Entry point: patch README.md with a fresh cache-buster.
+
+    Returns:
+        ``0`` on success, ``1`` on handled failure.
+    """
+    try:
+        patch_readme(README_PATH, date.today())
+    except (FileNotFoundError, ValueError) as exc:
+        sys.stderr.write(f"update_stats_cache: {exc}\n")
+        return 1
+    sys.stdout.write("update_stats_cache: rewrote README.md\n")
     return 0
 
 
