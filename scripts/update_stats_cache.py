@@ -1,7 +1,9 @@
 """Rewrite the cache-buster ``v`` query param on the stats card URLs in README.md.
 
-Runs idempotently per-day on schedule (rolls the date over), and bumps the
-monotonic suffix on manual dispatches to flush the Vercel and camo caches.
+Monotonic: every invocation writes a new ``v``. The date part rolls over to
+the current UTC date, and the integer suffix resets to ``1`` on a new date
+or increments by one on same-date re-runs. Each successful write changes
+the URL, which busts the Vercel and camo caches.
 """
 
 import re
