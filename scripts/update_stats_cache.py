@@ -23,6 +23,38 @@ V_PATTERN: re.Pattern[str] = re.compile(
 )
 
 
+def compute_next_v(current_v: str | None, today: date) -> str:
+    """Return the next cache-buster value.
+
+    The new suffix is ``(current suffix for today) + 1``, or ``1`` if the
+    date rolled over or ``current_v`` is ``None``.
+
+    Args:
+        current_v: The current ``v`` parameter value, or ``None`` if absent.
+            Expected shape is ``YYYY-MM-DD.N`` where N is a positive integer.
+        today: The reference date (usually ``date.today()``).
+
+    Returns:
+        A string of shape ``YYYY-MM-DD.N``.
+
+    Raises:
+        ValueError: If ``current_v`` is non-None and does not match the
+            expected pattern.
+    """
+    today_str: str = today.isoformat()
+    if current_v is None:
+        return f"{today_str}.1"
+    match: re.Match[str] | None = V_PATTERN.match(current_v)
+    if match is None:
+        msg = f"malformed v value: {current_v!r}"
+        raise ValueError(msg)
+    existing_date: str = match.group("date")
+    existing_n: int = int(match.group("n"))
+    if existing_date == today_str:
+        return f"{today_str}.{existing_n + 1}"
+    return f"{today_str}.1"
+
+
 def main() -> int:
     """Entry point. Returns process exit code."""
     return 0
