@@ -47,3 +47,8 @@ neofetch-*.png
 .env
 .env.local
 .env.*.local
+
+# ─────────────────────────────────────────────────────────────────────────────
+#  Superpowers governance scaffolding (local-only, not a profile artifact)
+# ─────────────────────────────────────────────────────────────────────────────
+docs/superpowers/
