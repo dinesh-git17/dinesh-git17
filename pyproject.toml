@@ -44,6 +44,7 @@ ignore = []
     "S106",   # fake tokens in mock calls
     "D",      # test names are self-documenting
     "ANN",    # test signatures are pytest-driven
+    "N802",   # test names may include mixed-case terms from the API under test
     "PLR2004", # magic values in parametrize and asserts are intentional
     "PLR0913", # test factories aggregate many fixtures
     "ARG001", # mock callables match real signatures
