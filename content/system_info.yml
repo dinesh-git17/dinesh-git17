@@ -1,0 +1,9 @@
+rows:
+  - { icon: hard-drive, label: "OS",        value: "macOS 26 Tahoe · iOS 26" }
+  - { icon: clock,      label: "Uptime",    value: "<!-- UPTIME_START -->2 years, 7 months<!-- UPTIME_END -->" }
+  - { icon: map-pin,    label: "Location",  value: "Toronto, Canada", flag: "CA" }
+  - { icon: code-xml,   label: "Editor",    value: "VS Code · Xcode" }
+  - { icon: code-xml,   label: "Languages", value: "Python · JavaScript · TypeScript · Swift" }
+  - { icon: brain,      label: "ML / AI",   value: "PyTorch · TensorFlow · scikit-learn · Hugging Face" }
+  - { icon: file-code,  label: "Markup",    value: "HTML · CSS · JSON · YAML · LaTeX" }
+  - { icon: globe,      label: "Spoken",    value: "English · French" }
