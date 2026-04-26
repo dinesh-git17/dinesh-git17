@@ -70,3 +70,25 @@ def outline(text: str, font_path: Path, size_px: int) -> str:
         cursor_x += glyph.width * scale
 
     return pen.getCommands()
+
+
+def measure(text: str, font_path: Path, size_px: int) -> float:
+    """Return the rendered advance width of ``text`` in ``font_path`` at ``size_px``.
+
+    Uses the same glyph-advance summation as :func:`outline` so the result
+    is exact for any string the function would render.
+    """
+    if not font_path.exists():
+        raise FileNotFoundError(f"font file not found: {font_path}")
+    font: TTFont = TTFont(str(font_path))
+    cmap: dict[int, str] = font.getBestCmap()
+    glyph_set = font.getGlyphSet()
+    scale: float = size_px / font["head"].unitsPerEm
+    width: float = 0.0
+    for char in text:
+        codepoint: int = ord(char)
+        if codepoint not in cmap:
+            msg = f"font {font_path.name} has no glyph for {char!r} (U+{codepoint:04X})"
+            raise ValueError(msg)
+        width += glyph_set[cmap[codepoint]].width * scale
+    return width

@@ -21,7 +21,14 @@ _INHERITABLE_ICON_ATTRS: tuple[str, ...] = (
 )
 
 
-def embed_icon(icon_path: Path, x: float, y: float, size: float) -> str:
+def embed_icon(
+    icon_path: Path,
+    x: float,
+    y: float,
+    size: float,
+    stroke: str | None = None,
+    fill: str | None = None,
+) -> str:
     """Return a ``<g>`` element that embeds an icon's inner SVG content.
 
     Args:
@@ -29,6 +36,11 @@ def embed_icon(icon_path: Path, x: float, y: float, size: float) -> str:
         x: Target x position (top-left of the icon in the parent SVG).
         y: Target y position.
         size: Target rendered size in pixels (square).
+        stroke: Optional override for the inherited ``stroke`` colour. When
+            set, replaces whatever stroke value the source icon declares so
+            the same outline icon can be reused in different colours.
+        fill: Optional override for the inherited ``fill`` colour. Mirror of
+            ``stroke`` for filled (brand) icons whose root carries the colour.
 
     Returns:
         An SVG ``<g>`` element string positioned at (``x``, ``y``) with
@@ -60,7 +72,16 @@ def embed_icon(icon_path: Path, x: float, y: float, size: float) -> str:
             rf'\s{re.escape(attr)}="([^"]*)"', root_match.group(0)
         )
         if attr_match is not None:
-            inherited.append(f'{attr}="{attr_match.group(1)}"')
+            value: str = attr_match.group(1)
+            if attr == "stroke" and stroke is not None and value != "none":
+                value = stroke
+            elif attr == "fill" and fill is not None and value != "none":
+                value = fill
+            inherited.append(f'{attr}="{value}"')
+    if stroke is not None and not any(a.startswith("stroke=") for a in inherited):
+        inherited.append(f'stroke="{stroke}"')
+    if fill is not None and not any(a.startswith("fill=") for a in inherited):
+        inherited.append(f'fill="{fill}"')
 
     inner_match: re.Match[str] | None = re.search(
         r"<svg[^>]*>(.*)</svg>", content, re.DOTALL
