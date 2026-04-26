@@ -530,10 +530,10 @@ _GLANCE_ROWS: tuple[tuple[str, str, str], ...] = (
 
 _LANG_ROWS: tuple[tuple[str, str, str, int, str], ...] = (
     ("LANG_1", "Python", "30 hrs", 180, dl.ACCENT),
-    ("LANG_2", "Other", "9 hrs 35 mins", 58, dl.ACCENT_DIM),
+    ("LANG_2", "TypeScript", "5 hrs 12 mins", 31, dl.ACCENT_DIM),
     ("LANG_3", "JavaScript", "3 hrs 9 mins", 19, dl.ACCENT_DIM),
-    ("LANG_4", "YAML", "1 hr 25 mins", 8, dl.ACCENT_DIM),
-    ("LANG_5", "Bash", "1 hr 24 mins", 8, dl.ACCENT_DIM),
+    ("LANG_4", "Bash", "1 hr 24 mins", 8, dl.ACCENT_DIM),
+    ("LANG_5", "Rust", "45 mins", 5, dl.ACCENT_DIM),
 )
 
 
