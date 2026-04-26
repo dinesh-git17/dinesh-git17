@@ -29,11 +29,23 @@ TEXT_MUTED: str = "#8B92A5"
 BG: str = "#0A0E1A"
 
 
+_INHERITABLE_ICON_ATTRS: tuple[str, ...] = (
+    "fill",
+    "stroke",
+    "stroke-width",
+    "stroke-linecap",
+    "stroke-linejoin",
+)
+
+
 def _embed_icon(icon_path: Path, x: int, y: int, size: int) -> str:
     """Inline an icon SVG's contents into a translate+scale group.
 
     Mirrors :func:`scripts.build_dashboard_top.embed_icon`. Duplicated here
     to keep the footer build script independent of the top build script.
+    Forwards the root ``<svg>``'s presentation attributes onto the wrapping
+    ``<g>`` so Lucide-style outline icons render correctly after the outer
+    element is stripped.
     """
     content: str = icon_path.read_text(encoding="utf-8")
     viewbox_match = re.search(r'viewBox\s*=\s*"([^"]+)"', content)
@@ -43,12 +55,29 @@ def _embed_icon(icon_path: Path, x: int, y: int, size: int) -> str:
     parts = viewbox_match.group(1).split()
     source_size: float = max(float(parts[2]), float(parts[3]))
     scale: float = size / source_size
+
+    root_match = re.match(r"<svg\b[^>]*>", content, re.DOTALL)
+    if root_match is None:
+        msg = f"icon {icon_path.name} has no <svg> root"
+        raise ValueError(msg)
+    inherited: list[str] = []
+    for attr in _INHERITABLE_ICON_ATTRS:
+        attr_match = re.search(
+            rf'\s{re.escape(attr)}="([^"]*)"', root_match.group(0)
+        )
+        if attr_match is not None:
+            inherited.append(f'{attr}="{attr_match.group(1)}"')
+
     inner_match = re.search(r"<svg[^>]*>(.*)</svg>", content, re.DOTALL)
     if inner_match is None:
         msg = f"icon {icon_path.name} has no closing </svg>"
         raise ValueError(msg)
     inner: str = inner_match.group(1).strip()
-    return f'<g transform="translate({x},{y}) scale({scale:.4f})">{inner}</g>'
+    inherited_attrs: str = (" " + " ".join(inherited)) if inherited else ""
+    return (
+        f'<g transform="translate({x},{y}) scale({scale:.4f})"'
+        f'{inherited_attrs}>{inner}</g>'
+    )
 
 
 def render_enjoy_card(

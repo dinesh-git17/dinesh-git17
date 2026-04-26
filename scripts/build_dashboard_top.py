@@ -37,13 +37,25 @@ SURFACE: str = "#11151F"
 BORDER: str = "#1F2533"
 
 
+_INHERITABLE_ICON_ATTRS: tuple[str, ...] = (
+    "fill",
+    "stroke",
+    "stroke-width",
+    "stroke-linecap",
+    "stroke-linejoin",
+)
+
+
 def embed_icon(icon_path: Path, x: int, y: int, size: int) -> str:
     """Return a ``<g>`` element that embeds an icon's inner SVG content.
 
     The icon file's outer ``<svg>`` element is stripped; only its child
     elements are inlined inside a translate+scale group positioned at
     (``x``, ``y``) with a uniform scale chosen so the icon's source viewBox
-    maps to ``size`` pixels.
+    maps to ``size`` pixels. Presentation attributes that Lucide-style
+    outline icons set on the root ``<svg>`` (``fill``, ``stroke``,
+    ``stroke-width``, ``stroke-linecap``, ``stroke-linejoin``) are
+    forwarded onto the wrapping ``<g>`` so the children inherit them.
 
     Args:
         icon_path: Path to the source SVG icon.
@@ -69,6 +81,18 @@ def embed_icon(icon_path: Path, x: int, y: int, size: int) -> str:
     source_size: float = max(float(parts[2]), float(parts[3]))
     scale: float = size / source_size
 
+    root_match: re.Match[str] | None = re.match(r"<svg\b[^>]*>", content, re.DOTALL)
+    if root_match is None:
+        msg = f"icon {icon_path.name} has no <svg> root"
+        raise ValueError(msg)
+    inherited: list[str] = []
+    for attr in _INHERITABLE_ICON_ATTRS:
+        attr_match: re.Match[str] | None = re.search(
+            rf'\s{re.escape(attr)}="([^"]*)"', root_match.group(0)
+        )
+        if attr_match is not None:
+            inherited.append(f'{attr}="{attr_match.group(1)}"')
+
     inner_match: re.Match[str] | None = re.search(
         r"<svg[^>]*>(.*)</svg>", content, re.DOTALL
     )
@@ -77,7 +101,11 @@ def embed_icon(icon_path: Path, x: int, y: int, size: int) -> str:
         raise ValueError(msg)
     inner: str = inner_match.group(1).strip()
 
-    return f'<g transform="translate({x},{y}) scale({scale:.4f})">{inner}</g>'
+    inherited_attrs: str = (" " + " ".join(inherited)) if inherited else ""
+    return (
+        f'<g transform="translate({x},{y}) scale({scale:.4f})"'
+        f'{inherited_attrs}>{inner}</g>'
+    )
 
 
 def label_value_row(
