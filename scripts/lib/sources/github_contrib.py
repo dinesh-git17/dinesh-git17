@@ -137,3 +137,101 @@ def year_windows(account_epoch: date, today: date) -> list[tuple[datetime, datet
         windows.append((cursor, min(next_cursor, end)))
         cursor = next_cursor
     return windows
+
+
+def _post_json(url: str, headers: dict[str, str], body: dict[str, Any]) -> dict[str, Any]:
+    """POST JSON to ``url``; return the parsed response."""
+    payload: bytes = json.dumps(body).encode("utf-8")
+    request = Request(url, data=payload, headers=headers, method="POST")
+    try:
+        with urlopen(request, timeout=30) as response:
+            text: str = response.read().decode("utf-8")
+    except HTTPError:
+        raise
+    except URLError as exc:
+        msg = f"network error for {url}: {exc.reason}"
+        raise ConnectionError(msg) from exc
+    return json.loads(text)
+
+
+def _today_utc() -> date:
+    """Return today's date in UTC. Override target in tests."""
+    return datetime.now(timezone.utc).date()
+
+
+def fetch(*, login: str, token: str) -> GithubContribResult:
+    """Fetch the calendar-year total and all-time streaks for ``login``.
+
+    Args:
+        login: The GitHub user login (e.g., ``"dinesh-git17"``).
+        token: A personal access token with ``read:user`` scope.
+
+    Returns:
+        ``GithubContribResult`` populated with total + streak fields.
+    """
+    headers: dict[str, str] = {
+        "Authorization": f"Bearer {token}",
+        "Content-Type": "application/json",
+        "User-Agent": "dinesh-git17-dashboard",
+    }
+    today: date = _today_utc()
+    year_start: datetime = datetime(today.year, 1, 1, tzinfo=timezone.utc)
+    now: datetime = datetime.combine(today, datetime.max.time().replace(microsecond=0), tzinfo=timezone.utc)
+
+    total_response: dict[str, Any] = _post_json(
+        _GRAPHQL_ENDPOINT,
+        headers,
+        {
+            "query": _TOTAL_QUERY,
+            "variables": {
+                "login": login,
+                "from": year_start.isoformat().replace("+00:00", "Z"),
+                "to": now.isoformat().replace("+00:00", "Z"),
+            },
+        },
+    )
+    total_count: int = total_response["data"]["user"]["contributionsCollection"]["contributionCalendar"]["totalContributions"]
+
+    by_date: dict[date, int] = {}
+    for window_from, window_to in year_windows(_ACCOUNT_EPOCH, today):
+        response: dict[str, Any] = _post_json(
+            _GRAPHQL_ENDPOINT,
+            headers,
+            {
+                "query": _CALENDAR_QUERY,
+                "variables": {
+                    "login": login,
+                    "from": window_from.isoformat().replace("+00:00", "Z"),
+                    "to": window_to.isoformat().replace("+00:00", "Z"),
+                },
+            },
+        )
+        weeks: list[dict[str, Any]] = response["data"]["user"]["contributionsCollection"]["contributionCalendar"]["weeks"]
+        for week in weeks:
+            for day in week["contributionDays"]:
+                day_date: date = date.fromisoformat(day["date"])
+                by_date[day_date] = day["contributionCount"]
+    calendar: list[tuple[date, int]] = sorted(by_date.items())
+
+    streaks: StreakStats = compute_streaks(calendar, today=today)
+
+    current_label: str = (
+        format_range_label(streaks.current_start, streaks.current_end)
+        if streaks.current_start is not None and streaks.current_end is not None
+        else ""
+    )
+    longest_label: str = (
+        format_range_label(streaks.longest_start, streaks.longest_end)
+        if streaks.longest_start is not None and streaks.longest_end is not None
+        else ""
+    )
+
+    return GithubContribResult(
+        total_count=total_count,
+        total_display=f"{total_count:,}",
+        total_range_label=f"Jan 1, {today.year} - Present",
+        current_streak_days=streaks.current_days,
+        current_streak_range_label=current_label,
+        longest_streak_days=streaks.longest_days,
+        longest_streak_range_label=longest_label,
+    )

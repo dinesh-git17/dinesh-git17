@@ -119,3 +119,89 @@ def test_year_windows_last_window_ends_at_today() -> None:
     today = date(2026, 4, 26)
     windows = year_windows(epoch, today)
     assert windows[-1][1].date() == today
+
+
+def test_fetch_returns_total_and_streaks(monkeypatch: pytest.MonkeyPatch) -> None:
+    today = date(2026, 4, 26)
+
+    def fake_post_json(url: str, headers: dict[str, str], body: dict[str, Any]) -> dict[str, Any]:
+        query: str = body["query"]
+        variables: dict[str, Any] = body["variables"]
+        if "totalContributions" in query:
+            return {
+                "data": {
+                    "user": {
+                        "contributionsCollection": {
+                            "contributionCalendar": {"totalContributions": 5_981}
+                        }
+                    }
+                }
+            }
+        return {
+            "data": {
+                "user": {
+                    "contributionsCollection": {
+                        "contributionCalendar": {
+                            "weeks": [
+                                {
+                                    "contributionDays": [
+                                        {"date": (today - timedelta(days=2)).isoformat(), "contributionCount": 5},
+                                        {"date": (today - timedelta(days=1)).isoformat(), "contributionCount": 3},
+                                        {"date": today.isoformat(), "contributionCount": 7},
+                                    ]
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        }
+
+    monkeypatch.setattr(github_contrib, "_post_json", fake_post_json)
+    monkeypatch.setattr(github_contrib, "_today_utc", lambda: today)
+
+    result = github_contrib.fetch(login="dinesh-git17", token="ghp_test")
+
+    assert isinstance(result, GithubContribResult)
+    assert result.total_count == 5_981
+    assert result.total_display == "5,981"
+    assert result.total_range_label == "Jan 1, 2026 - Present"
+    assert result.current_streak_days == 3
+    assert result.longest_streak_days == 3
+    assert result.current_streak_range_label == f"{(today - timedelta(days=2)).strftime('%b')} {(today - timedelta(days=2)).day} - {today.strftime('%b')} {today.day}"
+
+
+def test_fetch_concatenates_multiple_year_windows(monkeypatch: pytest.MonkeyPatch) -> None:
+    today = date(2026, 4, 26)
+    calendar_calls: list[tuple[str, str]] = []
+
+    def fake_post_json(url: str, headers: dict[str, str], body: dict[str, Any]) -> dict[str, Any]:
+        query: str = body["query"]
+        if "totalContributions" in query:
+            return {
+                "data": {
+                    "user": {
+                        "contributionsCollection": {
+                            "contributionCalendar": {"totalContributions": 100}
+                        }
+                    }
+                }
+            }
+        variables: dict[str, Any] = body["variables"]
+        calendar_calls.append((variables["from"], variables["to"]))
+        return {
+            "data": {
+                "user": {
+                    "contributionsCollection": {
+                        "contributionCalendar": {"weeks": []}
+                    }
+                }
+            }
+        }
+
+    monkeypatch.setattr(github_contrib, "_post_json", fake_post_json)
+    monkeypatch.setattr(github_contrib, "_today_utc", lambda: today)
+
+    github_contrib.fetch(login="dinesh-git17", token="ghp_test")
+
+    assert len(calendar_calls) >= 3
