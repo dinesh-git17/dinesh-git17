@@ -94,3 +94,28 @@ def test_format_range_label_full_range() -> None:
 
 def test_format_range_label_single_day() -> None:
     assert format_range_label(date(2026, 4, 25), date(2026, 4, 25)) == "Apr 25"
+
+
+def test_year_windows_single_window_when_account_under_one_year() -> None:
+    epoch = date(2025, 10, 1)
+    today = date(2026, 4, 26)
+    windows = year_windows(epoch, today)
+    assert len(windows) == 1
+    assert windows[0][0].year == 2025
+    assert windows[0][1].year == 2026
+
+
+def test_year_windows_tile_multi_year_account_without_overlap() -> None:
+    epoch = date(2023, 9, 1)
+    today = date(2026, 4, 26)
+    windows = year_windows(epoch, today)
+    assert len(windows) >= 3
+    for i in range(len(windows) - 1):
+        assert windows[i][1] <= windows[i + 1][0] + timedelta(microseconds=1) or windows[i][1] == windows[i + 1][0]
+
+
+def test_year_windows_last_window_ends_at_today() -> None:
+    epoch = date(2023, 9, 1)
+    today = date(2026, 4, 26)
+    windows = year_windows(epoch, today)
+    assert windows[-1][1].date() == today
