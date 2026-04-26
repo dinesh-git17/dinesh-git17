@@ -91,9 +91,7 @@ def patch_element_attribute(
         raise ValueError(msg)
 
     tag: str = tag_match.group(0)
-    attr_pattern: re.Pattern[str] = re.compile(
-        rf'\s{re.escape(attr_name)}="([^"]*)"'
-    )
+    attr_pattern: re.Pattern[str] = re.compile(rf'\s{re.escape(attr_name)}="([^"]*)"')
     attr_match: re.Match[str] | None = attr_pattern.search(tag)
     if attr_match is None:
         msg = (
@@ -106,6 +104,8 @@ def patch_element_attribute(
         return False
 
     new_tag: str = attr_pattern.sub(f' {attr_name}="{new_value}"', tag, count=1)
-    new_content: str = content[: tag_match.start()] + new_tag + content[tag_match.end() :]
+    new_content: str = (
+        content[: tag_match.start()] + new_tag + content[tag_match.end() :]
+    )
     svg_path.write_text(new_content, encoding="utf-8")
     return True

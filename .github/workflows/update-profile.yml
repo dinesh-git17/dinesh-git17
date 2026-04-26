@@ -19,17 +19,20 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - name: Install uv
+        uses: astral-sh/setup-uv@v6
         with:
-          python-version: "3.12"
+          enable-cache: true
+
+      - name: Sync dependencies
+        run: uv sync --frozen --no-dev
 
       - name: Refresh dashboard
         env:
           GH_USER_LOGIN: dinesh-git17
           READMEDASH_TOKEN: ${{ secrets.READMEDASH_TOKEN }}
           WAKATIME_API_KEY: ${{ secrets.WAKATIME_API_KEY }}
-        run: python -m scripts.update_dashboard
+        run: uv run python -m scripts.update_dashboard
 
       - name: Commit and push if changed
         run: |

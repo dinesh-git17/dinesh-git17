@@ -1,6 +1,6 @@
 """Tests for the GitHub contribution source."""
 
-from datetime import date, datetime, timedelta, timezone
+from datetime import date, timedelta
 from typing import Any
 
 import pytest
@@ -8,7 +8,6 @@ import pytest
 from scripts.lib.sources import github_contrib
 from scripts.lib.sources.github_contrib import (
     GithubContribResult,
-    StreakStats,
     compute_streaks,
     format_range_label,
     year_windows,
@@ -61,7 +60,9 @@ def test_today_zero_with_yesterday_streak_uses_yesterday_grace() -> None:
 
 def test_streak_ending_two_days_ago_means_current_zero() -> None:
     today = date(2026, 4, 26)
-    days: list[tuple[date, int]] = [(date.fromordinal(today.toordinal() - i), 1) for i in range(2, 32)]
+    days: list[tuple[date, int]] = [
+        (date.fromordinal(today.toordinal() - i), 1) for i in range(2, 32)
+    ]
     days.append((date.fromordinal(today.toordinal() - 1), 0))
     days.append((today, 0))
     days.sort(key=lambda x: x[0])
@@ -111,7 +112,10 @@ def test_year_windows_tile_multi_year_account_without_overlap() -> None:
     windows = year_windows(epoch, today)
     assert len(windows) >= 3
     for i in range(len(windows) - 1):
-        assert windows[i][1] <= windows[i + 1][0] + timedelta(microseconds=1) or windows[i][1] == windows[i + 1][0]
+        assert (
+            windows[i][1] <= windows[i + 1][0] + timedelta(microseconds=1)
+            or windows[i][1] == windows[i + 1][0]
+        )
 
 
 def test_year_windows_last_window_ends_at_today() -> None:
@@ -124,9 +128,11 @@ def test_year_windows_last_window_ends_at_today() -> None:
 def test_fetch_returns_total_and_streaks(monkeypatch: pytest.MonkeyPatch) -> None:
     today = date(2026, 4, 26)
 
-    def fake_post_json(url: str, headers: dict[str, str], body: dict[str, Any]) -> dict[str, Any]:
+    def fake_post_json(
+        url: str, headers: dict[str, str], body: dict[str, Any]
+    ) -> dict[str, Any]:
         query: str = body["query"]
-        variables: dict[str, Any] = body["variables"]
+        body["variables"]
         if "totalContributions" in query:
             return {
                 "data": {
@@ -145,9 +151,22 @@ def test_fetch_returns_total_and_streaks(monkeypatch: pytest.MonkeyPatch) -> Non
                             "weeks": [
                                 {
                                     "contributionDays": [
-                                        {"date": (today - timedelta(days=2)).isoformat(), "contributionCount": 5},
-                                        {"date": (today - timedelta(days=1)).isoformat(), "contributionCount": 3},
-                                        {"date": today.isoformat(), "contributionCount": 7},
+                                        {
+                                            "date": (
+                                                today - timedelta(days=2)
+                                            ).isoformat(),
+                                            "contributionCount": 5,
+                                        },
+                                        {
+                                            "date": (
+                                                today - timedelta(days=1)
+                                            ).isoformat(),
+                                            "contributionCount": 3,
+                                        },
+                                        {
+                                            "date": today.isoformat(),
+                                            "contributionCount": 7,
+                                        },
                                     ]
                                 }
                             ]
@@ -168,14 +187,23 @@ def test_fetch_returns_total_and_streaks(monkeypatch: pytest.MonkeyPatch) -> Non
     assert result.total_range_label == "Jan 1, 2026 - Present"
     assert result.current_streak_days == 3
     assert result.longest_streak_days == 3
-    assert result.current_streak_range_label == f"{(today - timedelta(days=2)).strftime('%b')} {(today - timedelta(days=2)).day} - {today.strftime('%b')} {today.day}"
+    streak_start = today - timedelta(days=2)
+    expected_label = (
+        f"{streak_start.strftime('%b')} {streak_start.day} - "
+        f"{today.strftime('%b')} {today.day}"
+    )
+    assert result.current_streak_range_label == expected_label
 
 
-def test_fetch_concatenates_multiple_year_windows(monkeypatch: pytest.MonkeyPatch) -> None:
+def test_fetch_concatenates_multiple_year_windows(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
     today = date(2026, 4, 26)
     calendar_calls: list[tuple[str, str]] = []
 
-    def fake_post_json(url: str, headers: dict[str, str], body: dict[str, Any]) -> dict[str, Any]:
+    def fake_post_json(
+        url: str, headers: dict[str, str], body: dict[str, Any]
+    ) -> dict[str, Any]:
         query: str = body["query"]
         if "totalContributions" in query:
             return {
@@ -192,9 +220,7 @@ def test_fetch_concatenates_multiple_year_windows(monkeypatch: pytest.MonkeyPatc
         return {
             "data": {
                 "user": {
-                    "contributionsCollection": {
-                        "contributionCalendar": {"weeks": []}
-                    }
+                    "contributionsCollection": {"contributionCalendar": {"weeks": []}}
                 }
             }
         }

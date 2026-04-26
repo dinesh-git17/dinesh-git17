@@ -63,7 +63,9 @@ def _canned_graphql_response(
 def test_fetch_extracts_all_fields(monkeypatch: pytest.MonkeyPatch) -> None:
     captured: dict[str, Any] = {}
 
-    def fake_post_json(url: str, headers: dict[str, str], body: dict[str, Any]) -> dict[str, Any]:
+    def fake_post_json(
+        url: str, headers: dict[str, str], body: dict[str, Any]
+    ) -> dict[str, Any]:
         captured["url"] = url
         captured["headers"] = headers
         captured["body"] = body
@@ -91,7 +93,9 @@ def test_fetch_extracts_all_fields(monkeypatch: pytest.MonkeyPatch) -> None:
 def test_fetch_sends_bearer_token_header(monkeypatch: pytest.MonkeyPatch) -> None:
     captured: dict[str, Any] = {}
 
-    def fake_post_json(url: str, headers: dict[str, str], body: dict[str, Any]) -> dict[str, Any]:
+    def fake_post_json(
+        url: str, headers: dict[str, str], body: dict[str, Any]
+    ) -> dict[str, Any]:
         captured["headers"] = headers
         return _canned_graphql_response()
 
@@ -102,7 +106,9 @@ def test_fetch_sends_bearer_token_header(monkeypatch: pytest.MonkeyPatch) -> Non
     assert captured["headers"]["Content-Type"] == "application/json"
 
 
-def test_fetch_raises_when_repo_count_exceeds_window(monkeypatch: pytest.MonkeyPatch) -> None:
+def test_fetch_raises_when_repo_count_exceeds_window(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
     response = _canned_graphql_response(repo_stars=[1] * 50)
     response["data"]["user"]["repositories"]["totalCount"] = 150
 

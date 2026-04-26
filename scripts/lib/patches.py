@@ -6,8 +6,9 @@ or ``svg_markers.patch_element_attribute`` (for ring dasharrays and bar widths).
 """
 
 import math
+from collections.abc import Callable
 from dataclasses import dataclass
-from typing import Callable, Literal
+from typing import Any, Literal
 
 GRADE_RING_RADIUS: int = 38
 STREAK_RING_RADIUS: int = 46
@@ -24,7 +25,7 @@ class PatchEntry:
     target_kind: Literal["marker", "attribute"]
     target_id: str
     attribute_name: str | None
-    value_fn: Callable[[dict], str]
+    value_fn: Callable[[dict[str, Any]], str]
 
 
 def bar_scale(*, top_seconds: float, my_seconds: float) -> int:
@@ -78,53 +79,180 @@ def catalogue() -> list[PatchEntry]:
     """
     entries: list[PatchEntry] = []
 
-    entries.append(PatchEntry("github_stats", "marker", "STARS", None,
-        lambda r: r["github_stats"].stars_display))
-    entries.append(PatchEntry("github_stats", "marker", "COMMITS", None,
-        lambda r: r["github_stats"].commits_display))
-    entries.append(PatchEntry("github_stats", "marker", "PRS", None,
-        lambda r: r["github_stats"].prs_display))
-    entries.append(PatchEntry("github_stats", "marker", "ISSUES", None,
-        lambda r: r["github_stats"].issues_display))
-    entries.append(PatchEntry("github_stats", "marker", "CONTRIB_TO", None,
-        lambda r: r["github_stats"].contributed_to_display))
+    entries.append(
+        PatchEntry(
+            "github_stats",
+            "marker",
+            "STARS",
+            None,
+            lambda r: r["github_stats"].stars_display,
+        )
+    )
+    entries.append(
+        PatchEntry(
+            "github_stats",
+            "marker",
+            "COMMITS",
+            None,
+            lambda r: r["github_stats"].commits_display,
+        )
+    )
+    entries.append(
+        PatchEntry(
+            "github_stats",
+            "marker",
+            "PRS",
+            None,
+            lambda r: r["github_stats"].prs_display,
+        )
+    )
+    entries.append(
+        PatchEntry(
+            "github_stats",
+            "marker",
+            "ISSUES",
+            None,
+            lambda r: r["github_stats"].issues_display,
+        )
+    )
+    entries.append(
+        PatchEntry(
+            "github_stats",
+            "marker",
+            "CONTRIB_TO",
+            None,
+            lambda r: r["github_stats"].contributed_to_display,
+        )
+    )
 
-    entries.append(PatchEntry("grade", "marker", "GRADE_LETTER", None,
-        lambda r: r["grade"].letter))
-    entries.append(PatchEntry("grade", "attribute", "grade-ring", "stroke-dasharray",
-        lambda r: grade_dasharray(percentile=r["grade"].percentile)))
+    entries.append(
+        PatchEntry("grade", "marker", "GRADE_LETTER", None, lambda r: r["grade"].letter)
+    )
+    entries.append(
+        PatchEntry(
+            "grade",
+            "attribute",
+            "grade-ring",
+            "stroke-dasharray",
+            lambda r: grade_dasharray(percentile=r["grade"].percentile),
+        )
+    )
 
-    entries.append(PatchEntry("github_contrib", "marker", "TOTAL_CONTRIB", None,
-        lambda r: r["github_contrib"].total_display))
-    entries.append(PatchEntry("github_contrib", "marker", "TOTAL_CONTRIB_RANGE", None,
-        lambda r: r["github_contrib"].total_range_label))
-    entries.append(PatchEntry("github_contrib", "marker", "CURRENT_STREAK", None,
-        lambda r: str(r["github_contrib"].current_streak_days)))
-    entries.append(PatchEntry("github_contrib", "marker", "CURRENT_STREAK_RANGE", None,
-        lambda r: r["github_contrib"].current_streak_range_label))
-    entries.append(PatchEntry("github_contrib", "marker", "LONGEST_STREAK", None,
-        lambda r: str(r["github_contrib"].longest_streak_days)))
-    entries.append(PatchEntry("github_contrib", "marker", "LONGEST_STREAK_RANGE", None,
-        lambda r: r["github_contrib"].longest_streak_range_label))
-    entries.append(PatchEntry("github_contrib", "attribute", "streak-ring", "stroke-dasharray",
-        lambda r: streak_dasharray(
-            current=r["github_contrib"].current_streak_days,
-            longest=r["github_contrib"].longest_streak_days,
-        )))
+    entries.append(
+        PatchEntry(
+            "github_contrib",
+            "marker",
+            "TOTAL_CONTRIB",
+            None,
+            lambda r: r["github_contrib"].total_display,
+        )
+    )
+    entries.append(
+        PatchEntry(
+            "github_contrib",
+            "marker",
+            "TOTAL_CONTRIB_RANGE",
+            None,
+            lambda r: r["github_contrib"].total_range_label,
+        )
+    )
+    entries.append(
+        PatchEntry(
+            "github_contrib",
+            "marker",
+            "CURRENT_STREAK",
+            None,
+            lambda r: str(r["github_contrib"].current_streak_days),
+        )
+    )
+    entries.append(
+        PatchEntry(
+            "github_contrib",
+            "marker",
+            "CURRENT_STREAK_RANGE",
+            None,
+            lambda r: r["github_contrib"].current_streak_range_label,
+        )
+    )
+    entries.append(
+        PatchEntry(
+            "github_contrib",
+            "marker",
+            "LONGEST_STREAK",
+            None,
+            lambda r: str(r["github_contrib"].longest_streak_days),
+        )
+    )
+    entries.append(
+        PatchEntry(
+            "github_contrib",
+            "marker",
+            "LONGEST_STREAK_RANGE",
+            None,
+            lambda r: r["github_contrib"].longest_streak_range_label,
+        )
+    )
+    entries.append(
+        PatchEntry(
+            "github_contrib",
+            "attribute",
+            "streak-ring",
+            "stroke-dasharray",
+            lambda r: streak_dasharray(
+                current=r["github_contrib"].current_streak_days,
+                longest=r["github_contrib"].longest_streak_days,
+            ),
+        )
+    )
 
     for i in range(5):
         idx: int = i + 1
-        entries.append(PatchEntry("wakatime", "marker", f"LANG_{idx}_NAME", None,
-            lambda r, _i=i: r["wakatime"].languages[_i].name if _i < len(r["wakatime"].languages) else ""))
-        entries.append(PatchEntry("wakatime", "marker", f"LANG_{idx}_VALUE", None,
-            lambda r, _i=i: r["wakatime"].languages[_i].text if _i < len(r["wakatime"].languages) else ""))
-        entries.append(PatchEntry("wakatime", "attribute", f"lang-{idx}-bar", "width",
-            lambda r, _i=i: str(bar_scale(
-                top_seconds=r["wakatime"].languages[0].total_seconds if r["wakatime"].languages else 0.0,
-                my_seconds=r["wakatime"].languages[_i].total_seconds if _i < len(r["wakatime"].languages) else 0.0,
-            ))))
+        entries.append(
+            PatchEntry("wakatime", "marker", f"LANG_{idx}_NAME", None, _lang_name(i))
+        )
+        entries.append(
+            PatchEntry("wakatime", "marker", f"LANG_{idx}_VALUE", None, _lang_value(i))
+        )
+        entries.append(
+            PatchEntry(
+                "wakatime", "attribute", f"lang-{idx}-bar", "width", _lang_bar(i)
+            )
+        )
 
-    entries.append(PatchEntry("uptime", "marker", "UPTIME", None,
-        lambda r: r["uptime"].value))
+    entries.append(
+        PatchEntry("uptime", "marker", "UPTIME", None, lambda r: r["uptime"].value)
+    )
 
     return entries
+
+
+def _lang_name(i: int) -> Callable[[dict[str, Any]], str]:
+    """Return a lookup that yields the i-th language name or empty string."""
+
+    def fn(r: dict[str, Any]) -> str:
+        langs = r["wakatime"].languages
+        return str(langs[i].name) if i < len(langs) else ""
+
+    return fn
+
+
+def _lang_value(i: int) -> Callable[[dict[str, Any]], str]:
+    """Return a lookup that yields the i-th language display value."""
+
+    def fn(r: dict[str, Any]) -> str:
+        langs = r["wakatime"].languages
+        return str(langs[i].text) if i < len(langs) else ""
+
+    return fn
+
+
+def _lang_bar(i: int) -> Callable[[dict[str, Any]], str]:
+    """Return a lookup that yields the i-th language bar width in pixels."""
+
+    def fn(r: dict[str, Any]) -> str:
+        langs = r["wakatime"].languages
+        top_seconds = langs[0].total_seconds if langs else 0.0
+        my_seconds = langs[i].total_seconds if i < len(langs) else 0.0
+        return str(bar_scale(top_seconds=top_seconds, my_seconds=my_seconds))
+
+    return fn

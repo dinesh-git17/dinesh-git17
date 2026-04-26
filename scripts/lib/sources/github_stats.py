@@ -1,4 +1,4 @@
-"""GitHub stats source: stars, commits, PRs, issues, contributed-to, followers, reviews."""
+"""GitHub stats source: stars, commits, PRs, issues, reviews, contributed-to."""
 
 from dataclasses import dataclass
 from typing import Any
@@ -7,6 +7,8 @@ from scripts.lib.http import post_json
 
 _GRAPHQL_ENDPOINT: str = "https://api.github.com/graphql"
 _REPO_WINDOW: int = 100
+_MILLION: int = 1_000_000
+_THOUSAND: int = 1_000
 
 _QUERY: str = """
 query($login: String!) {
@@ -51,10 +53,10 @@ def abbreviate(n: int) -> str:
 
     Trims trailing ``".0"``. Uses one decimal of precision for thousands and millions.
     """
-    if n >= 1_000_000:
-        formatted: str = f"{n / 1_000_000:.1f}M"
-    elif n >= 1_000:
-        formatted = f"{n / 1_000:.1f}k"
+    if n >= _MILLION:
+        formatted: str = f"{n / _MILLION:.1f}M"
+    elif n >= _THOUSAND:
+        formatted = f"{n / _THOUSAND:.1f}k"
     else:
         return str(n)
     return formatted.replace(".0", "", 1)
@@ -87,7 +89,10 @@ def fetch(*, login: str, token: str) -> GithubStatsResult:
 
     repos: dict[str, Any] = user["repositories"]
     if repos["totalCount"] > _REPO_WINDOW:
-        msg = f"owned repo count ({repos['totalCount']}) exceeds {_REPO_WINDOW}; pagination required"
+        msg = (
+            f"owned repo count ({repos['totalCount']}) "
+            f"exceeds {_REPO_WINDOW}; pagination required"
+        )
         raise ValueError(msg)
     stars: int = sum(node["stargazerCount"] for node in repos["nodes"])
 

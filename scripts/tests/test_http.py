@@ -1,6 +1,7 @@
 """Tests for the HTTP helper module."""
 
 import json
+from email.message import Message
 from typing import Any
 from unittest.mock import MagicMock, patch
 from urllib.error import HTTPError
@@ -31,22 +32,26 @@ def test_get_json_retries_on_5xx_then_succeeds() -> None:
     fail_503_again = _mock_response(503, {})
     succeed = _mock_response(200, {"ok": True})
     side_effects = [fail_503, fail_503_again, succeed]
-    with patch("scripts.lib.http.urlopen", side_effect=side_effects), \
-         patch("scripts.lib.http.time.sleep"):
+    with (
+        patch("scripts.lib.http.urlopen", side_effect=side_effects),
+        patch("scripts.lib.http.time.sleep"),
+    ):
         result = get_json("https://example.com", headers={})
     assert result == {"ok": True}
 
 
 def test_get_json_raises_after_persistent_5xx() -> None:
     fail = _mock_response(503, {})
-    with patch("scripts.lib.http.urlopen", return_value=fail), \
-         patch("scripts.lib.http.time.sleep"):
+    with (
+        patch("scripts.lib.http.urlopen", return_value=fail),
+        patch("scripts.lib.http.time.sleep"),
+    ):
         with pytest.raises(ConnectionError, match="server returned 503"):
             get_json("https://example.com", headers={})
 
 
 def test_get_json_raises_immediately_on_4xx() -> None:
-    err = HTTPError("https://example.com", 401, "Unauthorized", {}, None)
+    err = HTTPError("https://example.com", 401, "Unauthorized", Message(), None)
     with patch("scripts.lib.http.urlopen", side_effect=err):
         with pytest.raises(HTTPError) as exc_info:
             get_json("https://example.com", headers={})
@@ -78,14 +83,16 @@ def test_post_json_sends_json_encoded_body() -> None:
 def test_post_json_retries_on_5xx_then_succeeds() -> None:
     fail = _mock_response(503, {})
     succeed = _mock_response(200, {"ok": True})
-    with patch("scripts.lib.http.urlopen", side_effect=[fail, fail, succeed]), \
-         patch("scripts.lib.http.time.sleep"):
+    with (
+        patch("scripts.lib.http.urlopen", side_effect=[fail, fail, succeed]),
+        patch("scripts.lib.http.time.sleep"),
+    ):
         result = post_json("https://example.com", headers={}, body={})
     assert result == {"ok": True}
 
 
 def test_post_json_raises_immediately_on_4xx() -> None:
-    err = HTTPError("https://example.com", 422, "Unprocessable", {}, None)
+    err = HTTPError("https://example.com", 422, "Unprocessable", Message(), None)
     with patch("scripts.lib.http.urlopen", side_effect=err):
         with pytest.raises(HTTPError) as exc_info:
             post_json("https://example.com", headers={}, body={})

@@ -12,6 +12,8 @@ from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
 
 _RETRY_DELAYS_SECONDS: tuple[float, ...] = (1.0, 2.0, 4.0)
+_HTTP_SERVER_ERROR_MIN: int = 500
+_HTTP_SERVER_ERROR_MAX: int = 600
 
 
 def _request_with_retry(request: Request, timeout: int) -> bytes:
@@ -26,8 +28,8 @@ def _request_with_retry(request: Request, timeout: int) -> bytes:
 
     for attempt_index in range(len(_RETRY_DELAYS_SECONDS) + 1):
         try:
-            with urlopen(request, timeout=timeout) as response:
-                if response.status >= 500:
+            with urlopen(request, timeout=timeout) as response:  # noqa: S310 (urls are constants in caller modules)
+                if response.status >= _HTTP_SERVER_ERROR_MIN:
                     last_error = ConnectionError(
                         f"server returned {response.status} for {request.full_url}"
                     )
@@ -35,7 +37,7 @@ def _request_with_retry(request: Request, timeout: int) -> bytes:
                     body: bytes = response.read()
                     return body
         except HTTPError as exc:
-            if 500 <= exc.code < 600:
+            if _HTTP_SERVER_ERROR_MIN <= exc.code < _HTTP_SERVER_ERROR_MAX:
                 last_error = ConnectionError(
                     f"server returned {exc.code} for {request.full_url}"
                 )
@@ -50,10 +52,11 @@ def _request_with_retry(request: Request, timeout: int) -> bytes:
             time.sleep(_RETRY_DELAYS_SECONDS[attempt_index])
 
     if last_error is None:
-        raise RuntimeError(
+        msg = (
             f"_request_with_retry exited the loop without recording an error "
             f"for {request.full_url}"
         )
+        raise RuntimeError(msg)
     raise last_error
 
 
@@ -79,9 +82,10 @@ def get_json(
         HTTPError: If the server returns a non-retryable error status (4xx).
         ValueError: If the response body is not valid JSON.
     """
-    request = Request(url, headers=headers, method="GET")
+    request = Request(url, headers=headers, method="GET")  # noqa: S310 (urls are constants in caller modules)
     body: bytes = _request_with_retry(request, timeout)
-    return json.loads(body.decode("utf-8"))
+    parsed: dict[str, Any] = json.loads(body.decode("utf-8"))
+    return parsed
 
 
 def post_json(
@@ -90,7 +94,7 @@ def post_json(
     body: dict[str, Any],
     timeout: int = 30,
 ) -> dict[str, Any]:
-    """Issue an HTTP POST with a JSON ``body``, retry on 5xx, return the parsed JSON response.
+    """Issue HTTP POST with JSON ``body``, retry on 5xx, return parsed JSON response.
 
     Args:
         url: The full URL to POST.
@@ -109,6 +113,7 @@ def post_json(
         ValueError: If the response body is not valid JSON.
     """
     payload: bytes = json.dumps(body).encode("utf-8")
-    request = Request(url, data=payload, headers=headers, method="POST")
+    request = Request(url, data=payload, headers=headers, method="POST")  # noqa: S310 (urls are constants in caller modules)
     response_body: bytes = _request_with_retry(request, timeout)
-    return json.loads(response_body.decode("utf-8"))
+    parsed: dict[str, Any] = json.loads(response_body.decode("utf-8"))
+    return parsed

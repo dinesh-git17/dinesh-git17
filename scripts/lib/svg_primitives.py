@@ -52,9 +52,7 @@ def embed_icon(
             an ``<svg>`` root element.
     """
     content: str = icon_path.read_text(encoding="utf-8")
-    viewbox_match: re.Match[str] | None = re.search(
-        r'viewBox\s*=\s*"([^"]+)"', content
-    )
+    viewbox_match: re.Match[str] | None = re.search(r'viewBox\s*=\s*"([^"]+)"', content)
     if viewbox_match is None:
         msg = f"icon {icon_path.name} has no viewBox"
         raise ValueError(msg)
@@ -94,5 +92,5 @@ def embed_icon(
     inherited_attrs: str = (" " + " ".join(inherited)) if inherited else ""
     return (
         f'<g transform="translate({x:g},{y:g}) scale({scale:.4f})"'
-        f'{inherited_attrs}>{inner}</g>'
+        f"{inherited_attrs}>{inner}</g>"
     )

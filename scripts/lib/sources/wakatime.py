@@ -2,10 +2,13 @@
 
 import base64
 from dataclasses import dataclass
+from typing import Any
 
 from scripts.lib import http
 
-_ENDPOINT_TEMPLATE: str = "https://wakatime.com/api/v1/users/{username}/stats/last_7_days"
+_ENDPOINT_TEMPLATE: str = (
+    "https://wakatime.com/api/v1/users/{username}/stats/last_7_days"
+)
 _TOP_N: int = 5
 
 
@@ -41,8 +44,8 @@ def fetch(*, username: str, api_key: str | None = None) -> WakatimeResult:
         encoded: str = base64.b64encode(api_key.encode("utf-8")).decode("ascii")
         headers["Authorization"] = f"Basic {encoded}"
     url: str = _ENDPOINT_TEMPLATE.format(username=username)
-    body: dict = http.get_json(url, headers=headers)
-    raw_languages: list[dict] = body["data"]["languages"]
+    body: dict[str, Any] = http.get_json(url, headers=headers)
+    raw_languages: list[dict[str, Any]] = body["data"]["languages"]
     entries: list[LanguageEntry] = [
         LanguageEntry(
             name=row["name"],
