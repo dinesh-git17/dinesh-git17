@@ -582,13 +582,6 @@ def _stats_glance() -> str:
         f'<circle cx="{ring_cx}" cy="{ring_cy}" r="{ring_r}" fill="none" '
         f'stroke="{dl.TRACK}" stroke-width="6"/>'
     )
-    parts.append(
-        f'<circle id="grade-ring" cx="{ring_cx}" cy="{ring_cy}" '
-        f'r="{ring_r}" fill="none" stroke="{dl.ACCENT}" stroke-width="6" '
-        f'stroke-dasharray="{arc_len} {ring_circumference}" '
-        f'stroke-dashoffset="0" transform="rotate(-90 {ring_cx} {ring_cy})" '
-        f'stroke-linecap="round"/>'
-    )
     ring_anim: str = anim.boot_animate(
         attribute="stroke-dashoffset",
         from_value=str(ring_circumference),
@@ -596,7 +589,13 @@ def _stats_glance() -> str:
         begin_s=anim.BOOT_STATS_BEGIN_S,
         dur_s=anim.BOOT_RING_DUR_S,
     )
-    parts.append(ring_anim.replace("<animate ", '<animate href="#grade-ring" ', 1))
+    parts.append(
+        f'<circle id="grade-ring" cx="{ring_cx}" cy="{ring_cy}" '
+        f'r="{ring_r}" fill="none" stroke="{dl.ACCENT}" stroke-width="6" '
+        f'stroke-dasharray="{arc_len} {ring_circumference}" '
+        f'stroke-dashoffset="0" transform="rotate(-90 {ring_cx} {ring_cy})" '
+        f'stroke-linecap="round">{ring_anim}</circle>'
+    )
     letter_anim: str = anim.boot_animate(
         attribute="opacity",
         from_value="0",
