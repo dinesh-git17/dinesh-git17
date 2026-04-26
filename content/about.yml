@@ -1,0 +1,11 @@
+bio:
+  - "AI engineer with a passion for building"
+  - "intelligent systems that solve real problems."
+  - "Specializing in AI, machine learning, and"
+  - "scalable production systems."
+
+trait_pills:
+  - { icon: lightbulb, label: "Problem Solver" }
+  - { icon: eye,       label: "Detail Oriented" }
+  - { icon: users,     label: "Team Player" }
+  - { icon: sparkles,  label: "Lifelong Learner" }

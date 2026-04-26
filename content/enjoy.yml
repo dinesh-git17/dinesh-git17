@@ -1,0 +1,21 @@
+cards:
+  - icon: box
+    title: "Building"
+    description:
+      - "I enjoy building tools and"
+      - "apps that solve real problems."
+  - icon: notebook-pen
+    title: "Writing"
+    description:
+      - "From technical docs to deep"
+      - "thoughts — I write to think."
+  - icon: telescope
+    title: "Exploring"
+    description:
+      - "Space, physics, and the unknown"
+      - "fascinate me endlessly."
+  - icon: lightbulb
+    title: "Thinking"
+    description:
+      - "Philosophy keeps me grounded"
+      - "and constantly curious."

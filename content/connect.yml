@@ -1,0 +1,5 @@
+rows:
+  - { icon: mail,     label: "info@dineshd.dev",                  href: "mailto:info@dineshd.dev" }
+  - { icon: linkedin, label: "linkedin.com/in/dineshsdawonauth",  href: "https://linkedin.com/in/dineshsdawonauth" }
+  - { icon: discord,  label: "dinesh1324",                        href: "" }
+  - { icon: globe,    label: "dineshd.dev",                       href: "https://dineshd.dev" }

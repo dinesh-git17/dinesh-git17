@@ -1,0 +1,12 @@
+icons:
+  - { file: python.svg,       label: "Python" }
+  - { file: javascript.svg,   label: "JavaScript" }
+  - { file: typescript.svg,   label: "TypeScript" }
+  - { file: pytorch.svg,      label: "PyTorch" }
+  - { file: tensorflow.svg,   label: "TensorFlow" }
+  - { file: scikit-learn.svg, label: "scikit-learn" }
+  - { file: html5.svg,        label: "HTML5" }
+  - { file: css.svg,          label: "CSS" }
+  - { file: json.svg,         label: "JSON" }
+  - { file: yaml.svg,         label: "YAML" }
+  - { file: latex.svg,        label: "LaTeX" }
