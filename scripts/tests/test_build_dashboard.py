@@ -203,15 +203,18 @@ def test_compose_svg_wraps_tech_icons_in_animated_groups() -> None:
 
 def test_compose_svg_pulses_name_prompt_cursor() -> None:
     svg = compose_svg(*_minimal_inputs())
-    assert 'repeatCount="indefinite"' in svg
+    role_idx = svg.index("AI Engineer")
+    surrounding = svg[max(0, role_idx - 4000) : role_idx + 200]
+    assert 'repeatCount="indefinite"' in surrounding, (
+        "expected an idle pulse animation near the name prompt"
+    )
 
 
-def test_compose_svg_pulses_brain_image_when_present() -> None:
+def test_compose_svg_pulses_brain_image_present() -> None:
     svg = compose_svg(*_minimal_inputs())
-    brain_token = 'opacity="0.3" href="data:image/png'  # noqa: S105
-    if brain_token not in svg:
-        return
-    brain_idx = svg.index(brain_token)
+    brain_marker = 'opacity="0.3" href="data:image/png'
+    assert brain_marker in svg, "brain card image must be embedded in build output"
+    brain_idx = svg.index(brain_marker)
     surrounding = svg[max(0, brain_idx - 600) : brain_idx + 200]
     assert 'repeatCount="indefinite"' in surrounding
     assert "0.3;0.42;0.3" in surrounding
