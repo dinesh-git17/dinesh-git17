@@ -515,6 +515,70 @@ def _stats_langs() -> str:
     return "".join(parts)
 
 
+def _enjoy_strip(enjoy: dict[str, Any]) -> str:
+    """Render the WHAT I ENJOY strip panel + closing tagline.
+
+    Header at top, four equal cards in a horizontal row, a dotted lime
+    divider at the bottom, and the closing tagline centered under it.
+    All inside the single ``ENJOY_PANEL`` rect.
+    """
+    parts: list[str] = []
+    panel: L.Rect = L.ENJOY_PANEL
+    inner_pad: int = 24
+    parts.append(
+        _section_header("WHAT I ENJOY", x=panel.x + inner_pad, y=panel.y + 32, icon="heart")
+    )
+    cards: list[dict[str, Any]] = enjoy.get("cards", [])
+    if cards:
+        inner_left: int = panel.x + inner_pad
+        inner_w: int = panel.w - 2 * inner_pad
+        card_gap: int = 16
+        card_w: float = (inner_w - card_gap * (len(cards) - 1)) / len(cards)
+        card_top: int = panel.y + 56
+        for index, card in enumerate(cards):
+            cx: float = inner_left + index * (card_w + card_gap)
+            parts.append(
+                embed_icon(UI_ICONS_DIR / f"{card['icon']}.svg", x=cx, y=card_top, size=22)
+            )
+            parts.append(
+                _outlined_text(
+                    card["title"],
+                    INTER_BOLD,
+                    size_px=15,
+                    x=int(cx + 32),
+                    y=card_top + 17,
+                    fill=L.ACCENT,
+                )
+            )
+            for line_index, line in enumerate(card.get("description", [])):
+                line_y: int = card_top + 42 + line_index * 18
+                parts.append(
+                    f'<text x="{cx:g}" y="{line_y}" font-family="monospace" '
+                    f'font-size="11" fill="{L.TEXT_MUTED}">{line}</text>'
+                )
+
+    dot_y: int = panel.bottom - 36
+    dot_count: int = 60
+    dot_x_start: int = panel.x + inner_pad
+    dot_x_end: int = panel.right - inner_pad
+    dot_spacing: float = (dot_x_end - dot_x_start) / max(dot_count - 1, 1)
+    parts.extend(
+        f'<circle cx="{round(dot_x_start + i * dot_spacing)}" cy="{dot_y}" r="1" fill="{L.ACCENT_DIM}"/>'
+        for i in range(dot_count)
+    )
+
+    closing_y: int = panel.bottom - 14
+    parts.append(
+        f'<text x="{panel.cx}" y="{closing_y}" font-family="monospace" font-size="13" '
+        f'fill="{L.TEXT_MUTED}" text-anchor="middle">'
+        f'<tspan>Thanks for stopping by! Let’s </tspan>'
+        f'<tspan fill="{L.ACCENT}">build the future</tspan>'
+        f'<tspan> together.</tspan>'
+        f'</text>'
+    )
+    return "".join(parts)
+
+
 def compose_svg(
     about: dict[str, Any],
     system_info: dict[str, Any],
@@ -559,6 +623,7 @@ def compose_svg(
     parts.append(L.panel(L.STATS_LANGS))
     parts.append(_stats_langs())
     parts.append(L.panel(L.ENJOY_PANEL))
+    parts.append(_enjoy_strip(enjoy))
 
     parts.append("</svg>")
     return "".join(parts)
