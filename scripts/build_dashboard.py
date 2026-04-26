@@ -19,6 +19,7 @@ from typing import Any
 import yaml
 
 from scripts.lib import dashboard_layout as dl
+from scripts.lib import svg_animation as anim
 from scripts.lib.svg_primitives import embed_icon
 from scripts.lib.text_to_path import measure, outline
 
@@ -104,10 +105,26 @@ def _portrait_card() -> str:
     )
     name_w: float = measure("Dinesh Dawonauth", INTER_BOLD, size_px=name_size)
     prompt_x: int = name_x + int(name_w) + 8
+    prompt_boot: str = anim.boot_animate(
+        attribute="opacity",
+        values=("1", "0.4", "1"),
+        key_times=("0", "0.5", "1"),
+        begin_s=anim.BOOT_PROMPT_BEGIN_S,
+        dur_s=1.0,
+    )
+    prompt_pulse: str = anim.idle_animate(
+        attribute="opacity",
+        values=("1", "0.45", "1"),
+        key_times=("0", "0.5", "1"),
+        begin_s=anim.IDLE_BEGIN_S,
+        dur_s=2.0,
+    )
     parts.append(
-        _outlined_text(
+        f'<g opacity="1">{prompt_boot}{prompt_pulse}'
+        + _outlined_text(
             ">_", INTER_BOLD, size_px=name_size, x=prompt_x, y=name_y, fill=dl.ACCENT
         )
+        + "</g>"
     )
     role_y: int = name_y + 20
     parts.append(
@@ -151,7 +168,15 @@ def _quote_card() -> str:
     glyph_y: int = card.y + 16
     glyph_cx: int = glyph_x + glyph_size // 2
     glyph_cy: int = glyph_y + glyph_size // 2
+    glyph_pulse: str = anim.idle_animate(
+        attribute="opacity",
+        values=("1", "0.65", "1"),
+        key_times=("0", "0.5", "1"),
+        begin_s=anim.IDLE_BEGIN_S + 2.0,
+        dur_s=14.0,
+    )
     parts.append(
+        f'<g opacity="1">{glyph_pulse}'
         f'<g transform="rotate(180 {glyph_cx} {glyph_cy})">'
         + embed_icon(
             UI_ICONS_DIR / "quote.svg",
@@ -159,7 +184,7 @@ def _quote_card() -> str:
             y=glyph_y,
             size=glyph_size,
         )
-        + "</g>"
+        + "</g></g>"
     )
     text_x: int = card.x + 56
     line_stride: int = 22
@@ -348,10 +373,19 @@ def _top_panel(about: dict[str, Any], system_info: dict[str, Any]) -> str:  # no
         brain_x: int = divider_x - inner_pad - brain_size
         brain_y: int = panel.y + 80
         b64: str = base64.b64encode(BRAIN_CARD_PATH.read_bytes()).decode("ascii")
+        brain_pulse: str = anim.idle_animate(
+            attribute="opacity",
+            values=("0.3", "0.42", "0.3"),
+            key_times=("0", "0.5", "1"),
+            begin_s=anim.IDLE_BEGIN_S + 1.0,
+            dur_s=9.0,
+        )
         parts.append(
+            f"<g>{brain_pulse}"
             f'<image x="{brain_x}" y="{brain_y}" width="{brain_size}" '
             f'height="{brain_size}" opacity="0.3" '
             f'href="data:image/png;base64,{b64}"/>'
+            f"</g>"
         )
 
     bio_lines: list[str] = about.get("bio", [])
@@ -511,12 +545,29 @@ def _tech_strip(tech_stack: dict[str, Any]) -> str:
         slot_cx: float = inner_left + (index + 0.5) * column_w
         icon_x: float = slot_cx - icon_size / 2
         icon_path: Path = TECH_ICONS_DIR / icon_info["file"]
+        begin_s: float = anim.BOOT_TECH_BEGIN_S + index * anim.BOOT_TECH_STAGGER_S
+        opacity_anim: str = anim.boot_animate(
+            attribute="opacity",
+            from_value="0",
+            to_value="1",
+            begin_s=begin_s,
+            dur_s=anim.BOOT_TECH_DUR_S,
+        )
+        slide_anim: str = anim.boot_transform(
+            transform_type="translate",
+            from_value="0 6",
+            to_value="0 0",
+            begin_s=begin_s,
+            dur_s=anim.BOOT_TECH_DUR_S,
+        )
+        parts.append(f'<g opacity="1">{opacity_anim}{slide_anim}')
         parts.append(embed_icon(icon_path, x=icon_x, y=icons_top, size=icon_size))
         parts.append(
             f'<text x="{slot_cx:g}" y="{label_y}" font-family="monospace" '
             f'font-size="11" fill="{dl.TEXT}" text-anchor="middle">'
             f"{icon_info['label']}</text>"
         )
+        parts.append("</g>")
     return "".join(parts)
 
 
@@ -552,6 +603,15 @@ def _stats_glance() -> str:
     row_stride: int = 32
     for index, (label, key, value) in enumerate(_GLANCE_ROWS):
         row_y: int = row_origin_y + index * row_stride
+        begin_s: float = anim.BOOT_STATS_BEGIN_S + index * anim.BOOT_STATS_STAGGER_S
+        row_anim: str = anim.boot_animate(
+            attribute="opacity",
+            from_value="0",
+            to_value="1",
+            begin_s=begin_s,
+            dur_s=anim.BOOT_STATS_DUR_S,
+        )
+        parts.append(f'<g opacity="1">{row_anim}')
         parts.append(
             f'<text x="{label_x}" y="{row_y}" font-family="monospace" '
             f'font-size="12" fill="{dl.TEXT}">{label}</text>'
@@ -561,6 +621,7 @@ def _stats_glance() -> str:
             f'font-size="12" fill="{dl.TEXT}" text-anchor="end">'
             f"<!-- {key}_START -->{value}<!-- {key}_END --></text>"
         )
+        parts.append("</g>")
 
     ring_cx: int = card.right - 60
     ring_cy: int = card.y + 132
@@ -571,17 +632,33 @@ def _stats_glance() -> str:
         f'<circle cx="{ring_cx}" cy="{ring_cy}" r="{ring_r}" fill="none" '
         f'stroke="{dl.TRACK}" stroke-width="6"/>'
     )
+    ring_anim: str = anim.boot_animate(
+        attribute="stroke-dashoffset",
+        from_value=str(ring_circumference),
+        to_value="0",
+        begin_s=anim.BOOT_STATS_BEGIN_S,
+        dur_s=anim.BOOT_RING_DUR_S,
+    )
     parts.append(
         f'<circle id="grade-ring" cx="{ring_cx}" cy="{ring_cy}" '
         f'r="{ring_r}" fill="none" stroke="{dl.ACCENT}" stroke-width="6" '
         f'stroke-dasharray="{arc_len} {ring_circumference}" '
         f'stroke-dashoffset="0" transform="rotate(-90 {ring_cx} {ring_cy})" '
-        f'stroke-linecap="round"/>'
+        f'stroke-linecap="round">{ring_anim}</circle>'
+    )
+    letter_anim: str = anim.boot_animate(
+        attribute="opacity",
+        from_value="0",
+        to_value="1",
+        begin_s=anim.BOOT_STATS_BEGIN_S + 0.4,
+        dur_s=anim.BOOT_NUMBER_DUR_S,
     )
     parts.append(
+        f'<g opacity="1">{letter_anim}'
         f'<text x="{ring_cx}" y="{ring_cy + 8}" font-family="monospace" font-size="22" '
         f'font-weight="bold" fill="{dl.TEXT}" text-anchor="middle">'
         f"<!-- GRADE_LETTER_START -->A<!-- GRADE_LETTER_END --></text>"
+        f"</g>"
     )
     parts.append(
         f'<text x="{ring_cx}" y="{ring_cy + ring_r + 30}" '
@@ -618,10 +695,19 @@ def _stats_contrib() -> str:
     date_y: int = card.y + 186
 
     total_cx: int = col_centres[0]
+    total_anim: str = anim.boot_animate(
+        attribute="opacity",
+        from_value="0",
+        to_value="1",
+        begin_s=anim.BOOT_STATS_BEGIN_S,
+        dur_s=anim.BOOT_NUMBER_DUR_S,
+    )
     parts.append(
+        f'<g opacity="1">{total_anim}'
         f'<text x="{total_cx}" y="{number_y}" font-family="monospace" font-size="30" '
         f'font-weight="bold" fill="{dl.TEXT}" text-anchor="middle">'
         f"<!-- TOTAL_CONTRIB_START -->5,981<!-- TOTAL_CONTRIB_END --></text>"
+        f"</g>"
     )
     parts.append(
         f'<text x="{total_cx}" y="{label_y}" font-family="monospace" font-size="9" '
@@ -643,18 +729,34 @@ def _stats_contrib() -> str:
         f'<circle cx="{streak_cx}" cy="{streak_cy}" r="{streak_r}" fill="none" '
         f'stroke="{dl.TRACK}" stroke-width="6"/>'
     )
+    streak_ring_anim: str = anim.boot_animate(
+        attribute="stroke-dashoffset",
+        from_value=str(streak_circumference),
+        to_value="0",
+        begin_s=anim.BOOT_STATS_BEGIN_S + 0.1,
+        dur_s=anim.BOOT_RING_DUR_S,
+    )
     parts.append(
         f'<circle id="streak-ring" cx="{streak_cx}" cy="{streak_cy}" '
         f'r="{streak_r}" fill="none" stroke="{dl.ACCENT}" stroke-width="6" '
         f'stroke-dasharray="{streak_circumference} {streak_circumference}" '
         f'stroke-dashoffset="0" transform="rotate(-90 {streak_cx} {streak_cy})" '
-        f'stroke-linecap="round"/>'
+        f'stroke-linecap="round">{streak_ring_anim}</circle>'
+    )
+    current_anim: str = anim.boot_animate(
+        attribute="opacity",
+        from_value="0",
+        to_value="1",
+        begin_s=anim.BOOT_STATS_BEGIN_S + 0.6,
+        dur_s=anim.BOOT_NUMBER_DUR_S,
     )
     parts.append(
+        f'<g opacity="1">{current_anim}'
         f'<text x="{streak_cx}" y="{streak_cy + 11}" '
         f'font-family="monospace" font-size="30" font-weight="bold" '
         f'fill="{dl.TEXT}" text-anchor="middle">'
         f"<!-- CURRENT_STREAK_START -->85<!-- CURRENT_STREAK_END --></text>"
+        f"</g>"
     )
     parts.append(
         f'<text x="{streak_cx}" y="{streak_cy + streak_r + 28}" '
@@ -671,10 +773,19 @@ def _stats_contrib() -> str:
     )
 
     longest_cx: int = col_centres[2]
+    longest_anim: str = anim.boot_animate(
+        attribute="opacity",
+        from_value="0",
+        to_value="1",
+        begin_s=anim.BOOT_STATS_BEGIN_S + 0.9,
+        dur_s=anim.BOOT_NUMBER_DUR_S,
+    )
     parts.append(
+        f'<g opacity="1">{longest_anim}'
         f'<text x="{longest_cx}" y="{number_y}" font-family="monospace" font-size="30" '
         f'font-weight="bold" fill="{dl.TEXT}" text-anchor="middle">'
         f"<!-- LONGEST_STREAK_START -->85<!-- LONGEST_STREAK_END --></text>"
+        f"</g>"
     )
     parts.append(
         f'<text x="{longest_cx}" y="{label_y}" font-family="monospace" font-size="9" '
@@ -750,6 +861,15 @@ def _stats_langs() -> str:
         gradient_id: str = (
             "bar-fade-accent" if bar_fill == dl.ACCENT else "bar-fade-accent-dim"
         )
+        row_begin_s: float = anim.BOOT_STATS_BEGIN_S + index * anim.BOOT_STATS_STAGGER_S
+        row_anim: str = anim.boot_animate(
+            attribute="opacity",
+            from_value="0",
+            to_value="1",
+            begin_s=row_begin_s,
+            dur_s=anim.BOOT_STATS_DUR_S,
+        )
+        parts.append(f'<g opacity="1">{row_anim}')
         parts.append(
             f'<text x="{label_x}" y="{row_y + 9}" font-family="monospace" '
             f'font-size="12" fill="{dl.TEXT}">'
@@ -760,16 +880,27 @@ def _stats_langs() -> str:
             f'rx="{bar_radius}" fill="{dl.TRACK}"/>'
         )
         bar_id: str = f"{key.lower().replace('_', '-')}-bar"
+        bar_grow: str = anim.boot_transform(
+            transform_type="scale",
+            from_value="0 1",
+            to_value="1 1",
+            begin_s=row_begin_s,
+            dur_s=anim.BOOT_STATS_DUR_S,
+        )
         parts.append(
-            f'<rect id="{bar_id}" x="{track_x}" y="{row_y}" '
+            f'<g transform="translate({track_x} {row_y})">'
+            f'<rect id="{bar_id}" x="0" y="0" '
             f'width="{scaled_bar_w}" height="{bar_height}" '
             f'rx="{bar_radius}" fill="url(#{gradient_id})"/>'
+            f"{bar_grow}"
+            f"</g>"
         )
         parts.append(
             f'<text x="{value_x}" y="{row_y + 9}" font-family="monospace" '
             f'font-size="11" fill="{dl.TEXT_MUTED}" text-anchor="end">'
             f"<!-- {key}_VALUE_START -->{value}<!-- {key}_VALUE_END --></text>"
         )
+        parts.append("</g>")
     return "".join(parts)
 
 
