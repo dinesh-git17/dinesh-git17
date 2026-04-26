@@ -1,4 +1,4 @@
-"""Patch the uptime value inside assets/neofetch.svg.
+"""Patch the uptime value inside assets/dashboard.svg.
 
 Idempotent: rewrites the file only when the computed uptime string differs
 from the current value between the UPTIME_START / UPTIME_END markers.
@@ -10,7 +10,7 @@ from datetime import date
 from pathlib import Path
 
 REPO_ROOT: Path = Path(__file__).resolve().parent.parent
-SVG_PATH: Path = REPO_ROOT / "assets" / "neofetch.svg"
+SVG_PATH: Path = REPO_ROOT / "assets" / "dashboard.svg"
 EPOCH: date = date(2023, 9, 1)
 MARKER_PATTERN: re.Pattern[str] = re.compile(
     r"<!-- UPTIME_START -->(.*?)<!-- UPTIME_END -->",
