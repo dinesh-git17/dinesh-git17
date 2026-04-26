@@ -1,4 +1,8 @@
-"""WakaTime source: top 5 languages by hours, last 7 days."""
+"""WakaTime source: top 5 languages by hours, last 7 days.
+
+Markup and bucket categories (Markdown, YAML, "Other") are filtered out before
+the top-N slice so the dashboard only surfaces actual programming languages.
+"""
 
 import base64
 from dataclasses import dataclass
@@ -10,6 +14,7 @@ _ENDPOINT_TEMPLATE: str = (
     "https://wakatime.com/api/v1/users/{username}/stats/last_7_days"
 )
 _TOP_N: int = 5
+_EXCLUDED_LANGUAGES: frozenset[str] = frozenset({"Markdown", "YAML", "Other"})
 
 
 @dataclass(frozen=True)
@@ -46,12 +51,15 @@ def fetch(*, username: str, api_key: str | None = None) -> WakatimeResult:
     url: str = _ENDPOINT_TEMPLATE.format(username=username)
     body: dict[str, Any] = http.get_json(url, headers=headers)
     raw_languages: list[dict[str, Any]] = body["data"]["languages"]
+    filtered: list[dict[str, Any]] = [
+        row for row in raw_languages if row["name"] not in _EXCLUDED_LANGUAGES
+    ]
     entries: list[LanguageEntry] = [
         LanguageEntry(
             name=row["name"],
             text=row["text"],
             total_seconds=float(row["total_seconds"]),
         )
-        for row in raw_languages[:_TOP_N]
+        for row in filtered[:_TOP_N]
     ]
     return WakatimeResult(languages=entries)
