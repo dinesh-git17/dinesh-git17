@@ -336,6 +336,185 @@ def _tech_strip(tech_stack: dict[str, Any]) -> str:
     return "".join(parts)
 
 
+_GLANCE_ROWS: tuple[tuple[str, str, str], ...] = (
+    ("Total Stars Earned",        "STARS",        "116"),
+    ("Total Commits (last year)", "COMMITS",      "3.8k"),
+    ("Total PRs",                 "PRS",          "818"),
+    ("Total Issues",              "ISSUES",       "36"),
+    ("Contributed to (last year)", "CONTRIB_TO",  "3"),
+)
+
+_LANG_ROWS: tuple[tuple[str, str, str, int, str], ...] = (
+    ("LANG_1", "Python",     "30 hrs",         180, L.ACCENT),
+    ("LANG_2", "Other",      "9 hrs 35 mins",   58, L.ACCENT_DIM),
+    ("LANG_3", "JavaScript", "3 hrs 9 mins",    19, L.ACCENT_DIM),
+    ("LANG_4", "YAML",       "1 hr 25 mins",     8, L.ACCENT_DIM),
+    ("LANG_5", "Bash",       "1 hr 24 mins",     8, L.ACCENT_DIM),
+)
+
+
+def _stats_glance() -> str:
+    """Render the GITHUB AT A GLANCE card with 5 metric rows + grade ring."""
+    parts: list[str] = []
+    card: L.Rect = L.STATS_GLANCE
+    parts.append(
+        _section_header("GITHUB AT A GLANCE", x=card.x + 20, y=card.y + 32, icon="bar-chart-3")
+    )
+    label_x: int = card.x + 20
+    value_x: int = card.x + 240
+    row_origin_y: int = card.y + 78
+    row_stride: int = 28
+    for index, (label, key, value) in enumerate(_GLANCE_ROWS):
+        row_y: int = row_origin_y + index * row_stride
+        parts.append(
+            f'<text x="{label_x}" y="{row_y}" font-family="monospace" '
+            f'font-size="12" fill="{L.TEXT}">{label}</text>'
+        )
+        parts.append(
+            f'<text x="{value_x}" y="{row_y}" font-family="monospace" '
+            f'font-size="12" fill="{L.ACCENT}" text-anchor="end">'
+            f'<!-- {key}_START -->{value}<!-- {key}_END --></text>'
+        )
+
+    ring_cx: int = card.right - 60
+    ring_cy: int = card.y + 158
+    ring_r: int = 38
+    ring_circumference: int = round(2 * 3.14159 * ring_r)
+    parts.append(
+        f'<circle cx="{ring_cx}" cy="{ring_cy}" r="{ring_r}" fill="none" '
+        f'stroke="{L.TRACK}" stroke-width="6"/>'
+    )
+    parts.append(
+        f'<circle id="grade-ring" cx="{ring_cx}" cy="{ring_cy}" r="{ring_r}" fill="none" '
+        f'stroke="{L.ACCENT}" stroke-width="6" stroke-dasharray="180 {ring_circumference}" '
+        f'stroke-dashoffset="0" transform="rotate(-90 {ring_cx} {ring_cy})" '
+        f'stroke-linecap="round"/>'
+    )
+    parts.append(
+        f'<text x="{ring_cx}" y="{ring_cy + 8}" font-family="monospace" font-size="24" '
+        f'font-weight="bold" fill="{L.TEXT}" text-anchor="middle">'
+        f'<!-- GRADE_LETTER_START -->A<!-- GRADE_LETTER_END --></text>'
+    )
+    parts.append(
+        f'<text x="{ring_cx}" y="{ring_cy + 56}" font-family="monospace" font-size="11" '
+        f'fill="{L.TEXT_MUTED}" text-anchor="middle">Overall Grade</text>'
+    )
+    return "".join(parts)
+
+
+def _stats_contrib() -> str:
+    """Render the CONTRIBUTION OVERVIEW card: total + current + longest streak."""
+    parts: list[str] = []
+    card: L.Rect = L.STATS_CONTRIB
+    parts.append(
+        _section_header("CONTRIBUTION OVERVIEW", x=card.x + 20, y=card.y + 32, icon="calendar")
+    )
+    col_w: int = card.w // 3
+    col_centres: list[int] = [card.x + col_w // 2 + i * col_w for i in range(3)]
+
+    total_cx: int = col_centres[0]
+    parts.append(
+        f'<text x="{total_cx}" y="{card.y + 130}" font-family="monospace" font-size="30" '
+        f'font-weight="bold" fill="{L.TEXT}" text-anchor="middle">'
+        f'<!-- TOTAL_CONTRIB_START -->5,981<!-- TOTAL_CONTRIB_END --></text>'
+    )
+    parts.append(
+        f'<text x="{total_cx}" y="{card.y + 158}" font-family="monospace" font-size="11" '
+        f'fill="{L.ACCENT}" text-anchor="middle">Total Contributions</text>'
+    )
+    parts.append(
+        f'<text x="{total_cx}" y="{card.y + 178}" font-family="monospace" font-size="10" '
+        f'fill="{L.TEXT_MUTED}" text-anchor="middle">'
+        f'<!-- TOTAL_CONTRIB_RANGE_START -->Jan 1, 2025 - Present<!-- TOTAL_CONTRIB_RANGE_END --></text>'
+    )
+
+    streak_cx: int = col_centres[1]
+    streak_cy: int = card.y + 130
+    streak_r: int = 38
+    streak_circumference: int = round(2 * 3.14159 * streak_r)
+    parts.append(
+        f'<circle cx="{streak_cx}" cy="{streak_cy}" r="{streak_r}" fill="none" '
+        f'stroke="{L.TRACK}" stroke-width="6"/>'
+    )
+    parts.append(
+        f'<circle id="streak-ring" cx="{streak_cx}" cy="{streak_cy}" r="{streak_r}" fill="none" '
+        f'stroke="{L.ACCENT}" stroke-width="6" stroke-dasharray="{streak_circumference} {streak_circumference}" '
+        f'stroke-dashoffset="0" transform="rotate(-90 {streak_cx} {streak_cy})" '
+        f'stroke-linecap="round"/>'
+    )
+    parts.append(
+        f'<text x="{streak_cx}" y="{streak_cy + 9}" font-family="monospace" font-size="26" '
+        f'font-weight="bold" fill="{L.TEXT}" text-anchor="middle">'
+        f'<!-- CURRENT_STREAK_START -->85<!-- CURRENT_STREAK_END --></text>'
+    )
+    parts.append(
+        f'<text x="{streak_cx}" y="{card.y + 200}" font-family="monospace" font-size="11" '
+        f'fill="{L.ACCENT}" text-anchor="middle">Current Streak</text>'
+    )
+    parts.append(
+        f'<text x="{streak_cx}" y="{card.y + 220}" font-family="monospace" font-size="10" '
+        f'fill="{L.TEXT_MUTED}" text-anchor="middle">'
+        f'<!-- CURRENT_STREAK_RANGE_START -->Jan 31 - Apr 25<!-- CURRENT_STREAK_RANGE_END --></text>'
+    )
+
+    longest_cx: int = col_centres[2]
+    parts.append(
+        f'<text x="{longest_cx}" y="{card.y + 130}" font-family="monospace" font-size="30" '
+        f'font-weight="bold" fill="{L.TEXT}" text-anchor="middle">'
+        f'<!-- LONGEST_STREAK_START -->85<!-- LONGEST_STREAK_END --></text>'
+    )
+    parts.append(
+        f'<text x="{longest_cx}" y="{card.y + 158}" font-family="monospace" font-size="11" '
+        f'fill="{L.ACCENT}" text-anchor="middle">Longest Streak</text>'
+    )
+    parts.append(
+        f'<text x="{longest_cx}" y="{card.y + 178}" font-family="monospace" font-size="10" '
+        f'fill="{L.TEXT_MUTED}" text-anchor="middle">'
+        f'<!-- LONGEST_STREAK_RANGE_START -->Jan 31 - Apr 25<!-- LONGEST_STREAK_RANGE_END --></text>'
+    )
+    return "".join(parts)
+
+
+def _stats_langs() -> str:
+    """Render the TOP LANGUAGES (BY HOURS) card with 5 bar rows + tracks."""
+    parts: list[str] = []
+    card: L.Rect = L.STATS_LANGS
+    parts.append(
+        _section_header("TOP LANGUAGES", x=card.x + 20, y=card.y + 32, icon="code-xml")
+    )
+    parts.append(
+        f'<text x="{card.x + 20}" y="{card.y + 50}" font-family="monospace" '
+        f'font-size="10" fill="{L.TEXT_MUTED}">(BY HOURS)</text>'
+    )
+    label_x: int = card.x + 20
+    track_x: int = card.x + 96
+    track_w: int = 184
+    value_x: int = card.right - 20
+    row_origin_y: int = card.y + 86
+    row_stride: int = 36
+    for index, (key, name, value, bar_w, bar_fill) in enumerate(_LANG_ROWS):
+        row_y: int = row_origin_y + index * row_stride
+        parts.append(
+            f'<text x="{label_x}" y="{row_y + 10}" font-family="monospace" '
+            f'font-size="12" fill="{L.TEXT}">'
+            f'<!-- {key}_NAME_START -->{name}<!-- {key}_NAME_END --></text>'
+        )
+        parts.append(
+            f'<rect x="{track_x}" y="{row_y}" width="{track_w}" height="12" '
+            f'rx="2" fill="{L.TRACK}"/>'
+        )
+        parts.append(
+            f'<rect id="{key.lower().replace("_", "-")}-bar" x="{track_x}" y="{row_y}" '
+            f'width="{bar_w}" height="12" rx="2" fill="{bar_fill}"/>'
+        )
+        parts.append(
+            f'<text x="{value_x}" y="{row_y + 10}" font-family="monospace" '
+            f'font-size="11" fill="{L.TEXT_MUTED}" text-anchor="end">'
+            f'<!-- {key}_VALUE_START -->{value}<!-- {key}_VALUE_END --></text>'
+        )
+    return "".join(parts)
+
+
 def compose_svg(
     about: dict[str, Any],
     system_info: dict[str, Any],
@@ -374,8 +553,11 @@ def compose_svg(
     parts.append(L.panel(L.TECH_PANEL))
     parts.append(_tech_strip(tech_stack))
     parts.append(L.panel(L.STATS_GLANCE))
+    parts.append(_stats_glance())
     parts.append(L.panel(L.STATS_CONTRIB))
+    parts.append(_stats_contrib())
     parts.append(L.panel(L.STATS_LANGS))
+    parts.append(_stats_langs())
     parts.append(L.panel(L.ENJOY_PANEL))
 
     parts.append("</svg>")
