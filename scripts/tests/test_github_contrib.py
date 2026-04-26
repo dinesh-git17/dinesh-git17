@@ -157,7 +157,7 @@ def test_fetch_returns_total_and_streaks(monkeypatch: pytest.MonkeyPatch) -> Non
             }
         }
 
-    monkeypatch.setattr(github_contrib, "_post_json", fake_post_json)
+    monkeypatch.setattr(github_contrib, "post_json", fake_post_json)
     monkeypatch.setattr(github_contrib, "_today_utc", lambda: today)
 
     result = github_contrib.fetch(login="dinesh-git17", token="ghp_test")
@@ -199,7 +199,7 @@ def test_fetch_concatenates_multiple_year_windows(monkeypatch: pytest.MonkeyPatc
             }
         }
 
-    monkeypatch.setattr(github_contrib, "_post_json", fake_post_json)
+    monkeypatch.setattr(github_contrib, "post_json", fake_post_json)
     monkeypatch.setattr(github_contrib, "_today_utc", lambda: today)
 
     github_contrib.fetch(login="dinesh-git17", token="ghp_test")

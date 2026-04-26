@@ -95,7 +95,11 @@ def run(*, svg_path: Path, sources: list[Source]) -> int:
         if entry.target_kind == "marker":
             svg_markers.patch_marker(svg_path, entry.target_id, value)
         else:
-            assert entry.attribute_name is not None
+            if entry.attribute_name is None:
+                raise RuntimeError(
+                    f"catalogue entry for {entry.target_id} has target_kind='attribute' "
+                    f"but attribute_name is None"
+                )
             svg_markers.patch_element_attribute(
                 svg_path, entry.target_id, entry.attribute_name, value
             )

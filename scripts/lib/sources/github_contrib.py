@@ -1,11 +1,10 @@
 """GitHub contribution source: calendar-year total + all-time streaks."""
 
-import json
 from dataclasses import dataclass
 from datetime import date, datetime, timedelta, timezone
 from typing import Any
-from urllib.error import HTTPError, URLError
-from urllib.request import Request, urlopen
+
+from scripts.lib.http import post_json
 
 _GRAPHQL_ENDPOINT: str = "https://api.github.com/graphql"
 _ACCOUNT_EPOCH: date = date(2023, 9, 1)
@@ -139,21 +138,6 @@ def year_windows(account_epoch: date, today: date) -> list[tuple[datetime, datet
     return windows
 
 
-def _post_json(url: str, headers: dict[str, str], body: dict[str, Any]) -> dict[str, Any]:
-    """POST JSON to ``url``; return the parsed response."""
-    payload: bytes = json.dumps(body).encode("utf-8")
-    request = Request(url, data=payload, headers=headers, method="POST")
-    try:
-        with urlopen(request, timeout=30) as response:
-            text: str = response.read().decode("utf-8")
-    except HTTPError:
-        raise
-    except URLError as exc:
-        msg = f"network error for {url}: {exc.reason}"
-        raise ConnectionError(msg) from exc
-    return json.loads(text)
-
-
 def _today_utc() -> date:
     """Return today's date in UTC. Override target in tests."""
     return datetime.now(timezone.utc).date()
@@ -178,7 +162,7 @@ def fetch(*, login: str, token: str) -> GithubContribResult:
     year_start: datetime = datetime(today.year, 1, 1, tzinfo=timezone.utc)
     now: datetime = datetime.combine(today, datetime.max.time().replace(microsecond=0), tzinfo=timezone.utc)
 
-    total_response: dict[str, Any] = _post_json(
+    total_response: dict[str, Any] = post_json(
         _GRAPHQL_ENDPOINT,
         headers,
         {
@@ -194,7 +178,7 @@ def fetch(*, login: str, token: str) -> GithubContribResult:
 
     by_date: dict[date, int] = {}
     for window_from, window_to in year_windows(_ACCOUNT_EPOCH, today):
-        response: dict[str, Any] = _post_json(
+        response: dict[str, Any] = post_json(
             _GRAPHQL_ENDPOINT,
             headers,
             {
@@ -211,6 +195,8 @@ def fetch(*, login: str, token: str) -> GithubContribResult:
             for day in week["contributionDays"]:
                 day_date: date = date.fromisoformat(day["date"])
                 by_date[day_date] = day["contributionCount"]
+    # Year windows overlap by one day at boundaries; the dict accumulator
+    # collapses duplicates so a date is counted exactly once.
     calendar: list[tuple[date, int]] = sorted(by_date.items())
 
     streaks: StreakStats = compute_streaks(calendar, today=today)

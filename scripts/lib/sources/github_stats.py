@@ -1,10 +1,9 @@
 """GitHub stats source: stars, commits, PRs, issues, contributed-to, followers, reviews."""
 
-import json
 from dataclasses import dataclass
 from typing import Any
-from urllib.error import HTTPError, URLError
-from urllib.request import Request, urlopen
+
+from scripts.lib.http import post_json
 
 _GRAPHQL_ENDPOINT: str = "https://api.github.com/graphql"
 _REPO_WINDOW: int = 100
@@ -61,25 +60,6 @@ def abbreviate(n: int) -> str:
     return formatted.replace(".0", "", 1)
 
 
-def _post_json(url: str, headers: dict[str, str], body: dict[str, Any]) -> dict[str, Any]:
-    """Issue an HTTP POST with a JSON body and return the parsed JSON response.
-
-    Raises ``ConnectionError`` on transport failure, ``HTTPError`` on a non-2xx
-    response, and ``ValueError`` on a non-JSON body.
-    """
-    payload: bytes = json.dumps(body).encode("utf-8")
-    request = Request(url, data=payload, headers=headers, method="POST")
-    try:
-        with urlopen(request, timeout=30) as response:
-            text: str = response.read().decode("utf-8")
-    except HTTPError:
-        raise
-    except URLError as exc:
-        msg = f"network error for {url}: {exc.reason}"
-        raise ConnectionError(msg) from exc
-    return json.loads(text)
-
-
 def fetch(*, login: str, token: str) -> GithubStatsResult:
     """Fetch GitHub stats for ``login`` using the bearer ``token``.
 
@@ -102,7 +82,7 @@ def fetch(*, login: str, token: str) -> GithubStatsResult:
         "User-Agent": "dinesh-git17-dashboard",
     }
     body: dict[str, Any] = {"query": _QUERY, "variables": {"login": login}}
-    response: dict[str, Any] = _post_json(_GRAPHQL_ENDPOINT, headers, body)
+    response: dict[str, Any] = post_json(_GRAPHQL_ENDPOINT, headers, body)
     user: dict[str, Any] = response["data"]["user"]
 
     repos: dict[str, Any] = user["repositories"]

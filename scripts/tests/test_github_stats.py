@@ -69,7 +69,7 @@ def test_fetch_extracts_all_fields(monkeypatch: pytest.MonkeyPatch) -> None:
         captured["body"] = body
         return _canned_graphql_response()
 
-    monkeypatch.setattr(github_stats, "_post_json", fake_post_json)
+    monkeypatch.setattr(github_stats, "post_json", fake_post_json)
 
     result = github_stats.fetch(login="dinesh-git17", token="ghp_test")
 
@@ -95,7 +95,7 @@ def test_fetch_sends_bearer_token_header(monkeypatch: pytest.MonkeyPatch) -> Non
         captured["headers"] = headers
         return _canned_graphql_response()
 
-    monkeypatch.setattr(github_stats, "_post_json", fake_post_json)
+    monkeypatch.setattr(github_stats, "post_json", fake_post_json)
     github_stats.fetch(login="dinesh-git17", token="ghp_test")
 
     assert captured["headers"]["Authorization"] == "Bearer ghp_test"
@@ -106,7 +106,7 @@ def test_fetch_raises_when_repo_count_exceeds_window(monkeypatch: pytest.MonkeyP
     response = _canned_graphql_response(repo_stars=[1] * 50)
     response["data"]["user"]["repositories"]["totalCount"] = 150
 
-    monkeypatch.setattr(github_stats, "_post_json", lambda *a, **k: response)
+    monkeypatch.setattr(github_stats, "post_json", lambda *a, **k: response)
 
     with pytest.raises(ValueError, match="exceeds 100"):
         github_stats.fetch(login="dinesh-git17", token="ghp_test")
@@ -114,7 +114,7 @@ def test_fetch_raises_when_repo_count_exceeds_window(monkeypatch: pytest.MonkeyP
 
 def test_fetch_handles_zero_stars(monkeypatch: pytest.MonkeyPatch) -> None:
     response = _canned_graphql_response(repo_stars=[0, 0, 0])
-    monkeypatch.setattr(github_stats, "_post_json", lambda *a, **k: response)
+    monkeypatch.setattr(github_stats, "post_json", lambda *a, **k: response)
 
     result = github_stats.fetch(login="dinesh-git17", token="ghp_test")
     assert result.stars == 0
@@ -123,7 +123,7 @@ def test_fetch_handles_zero_stars(monkeypatch: pytest.MonkeyPatch) -> None:
 
 def test_fetch_handles_no_repositories(monkeypatch: pytest.MonkeyPatch) -> None:
     response = _canned_graphql_response(repo_stars=[])
-    monkeypatch.setattr(github_stats, "_post_json", lambda *a, **k: response)
+    monkeypatch.setattr(github_stats, "post_json", lambda *a, **k: response)
 
     result = github_stats.fetch(login="dinesh-git17", token="ghp_test")
     assert result.stars == 0
