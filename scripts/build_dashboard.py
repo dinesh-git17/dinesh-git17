@@ -381,7 +381,7 @@ def _top_panel(about: dict[str, Any], system_info: dict[str, Any]) -> str:  # no
             dur_s=9.0,
         )
         parts.append(
-            f'<g>{brain_pulse}'
+            f"<g>{brain_pulse}"
             f'<image x="{brain_x}" y="{brain_y}" width="{brain_size}" '
             f'height="{brain_size}" opacity="0.3" '
             f'href="data:image/png;base64,{b64}"/>'
