@@ -199,3 +199,39 @@ def test_compose_svg_wraps_tech_icons_in_animated_groups() -> None:
     assert tech_section.count('attributeName="opacity"') >= 3, (
         "expected one opacity animation per tech icon group"
     )
+
+
+def test_compose_svg_pulses_name_prompt_cursor() -> None:
+    svg = compose_svg(*_minimal_inputs())
+    assert 'repeatCount="indefinite"' in svg
+
+
+def test_compose_svg_pulses_brain_image_when_present() -> None:
+    svg = compose_svg(*_minimal_inputs())
+    if "brain-ai-card" not in svg:
+        return
+    brain_idx = svg.index("brain-ai-card")
+    surrounding = svg[max(0, brain_idx - 600) : brain_idx + 600]
+    assert 'repeatCount="indefinite"' in surrounding
+
+
+def test_compose_svg_glows_quote_glyph() -> None:
+    svg = compose_svg(*_minimal_inputs())
+    rotate_idx = svg.index("rotate(180")
+    surrounding = svg[max(0, rotate_idx - 200) : rotate_idx + 800]
+    assert 'repeatCount="indefinite"' in surrounding
+
+
+def test_compose_svg_emits_boot_pulse_on_name_prompt() -> None:
+    svg = compose_svg(*_minimal_inputs())
+    # The prompt is rendered as outlined path data, so anchor near the name
+    # outlined glyph data via the role line tspans which ARE raw text.
+    role_idx = svg.index("AI Engineer")
+    surrounding = svg[max(0, role_idx - 4000) : role_idx + 200]
+    boot_pulse_count = surrounding.count('attributeName="opacity"')
+    assert boot_pulse_count >= 1, (
+        "expected at least one opacity animation in the prompt area"
+    )
+    # The prompt group must carry both a freeze (boot) and indefinite (idle) animation
+    assert 'fill="freeze"' in surrounding
+    assert 'repeatCount="indefinite"' in surrounding

@@ -105,10 +105,26 @@ def _portrait_card() -> str:
     )
     name_w: float = measure("Dinesh Dawonauth", INTER_BOLD, size_px=name_size)
     prompt_x: int = name_x + int(name_w) + 8
+    prompt_boot: str = anim.boot_animate(
+        attribute="opacity",
+        values=("1", "0.4", "1"),
+        key_times=("0", "0.5", "1"),
+        begin_s=anim.BOOT_PROMPT_BEGIN_S,
+        dur_s=0.5,
+    )
+    prompt_pulse: str = anim.idle_animate(
+        attribute="opacity",
+        values=("1", "0.45", "1"),
+        key_times=("0", "0.5", "1"),
+        begin_s=anim.IDLE_BEGIN_S,
+        dur_s=2.0,
+    )
     parts.append(
-        _outlined_text(
+        f'<g opacity="1">{prompt_boot}{prompt_pulse}'
+        + _outlined_text(
             ">_", INTER_BOLD, size_px=name_size, x=prompt_x, y=name_y, fill=dl.ACCENT
         )
+        + "</g>"
     )
     role_y: int = name_y + 20
     parts.append(
@@ -152,7 +168,15 @@ def _quote_card() -> str:
     glyph_y: int = card.y + 16
     glyph_cx: int = glyph_x + glyph_size // 2
     glyph_cy: int = glyph_y + glyph_size // 2
+    glyph_pulse: str = anim.idle_animate(
+        attribute="opacity",
+        values=("1", "0.65", "1"),
+        key_times=("0", "0.5", "1"),
+        begin_s=anim.IDLE_BEGIN_S + 1.0,
+        dur_s=14.0,
+    )
     parts.append(
+        f'<g opacity="1">{glyph_pulse}'
         f'<g transform="rotate(180 {glyph_cx} {glyph_cy})">'
         + embed_icon(
             UI_ICONS_DIR / "quote.svg",
@@ -160,7 +184,7 @@ def _quote_card() -> str:
             y=glyph_y,
             size=glyph_size,
         )
-        + "</g>"
+        + "</g></g>"
     )
     text_x: int = card.x + 56
     line_stride: int = 22
@@ -349,10 +373,19 @@ def _top_panel(about: dict[str, Any], system_info: dict[str, Any]) -> str:  # no
         brain_x: int = divider_x - inner_pad - brain_size
         brain_y: int = panel.y + 80
         b64: str = base64.b64encode(BRAIN_CARD_PATH.read_bytes()).decode("ascii")
+        brain_pulse: str = anim.idle_animate(
+            attribute="opacity",
+            values=("0.3", "0.42", "0.3"),
+            key_times=("0", "0.5", "1"),
+            begin_s=anim.IDLE_BEGIN_S + 0.5,
+            dur_s=9.0,
+        )
         parts.append(
+            f'<g>{brain_pulse}'
             f'<image x="{brain_x}" y="{brain_y}" width="{brain_size}" '
             f'height="{brain_size}" opacity="0.3" '
             f'href="data:image/png;base64,{b64}"/>'
+            f"</g>"
         )
 
     bio_lines: list[str] = about.get("bio", [])
