@@ -110,7 +110,7 @@ def _portrait_card() -> str:
         values=("1", "0.4", "1"),
         key_times=("0", "0.5", "1"),
         begin_s=anim.BOOT_PROMPT_BEGIN_S,
-        dur_s=0.5,
+        dur_s=1.0,
     )
     prompt_pulse: str = anim.idle_animate(
         attribute="opacity",
@@ -172,7 +172,7 @@ def _quote_card() -> str:
         attribute="opacity",
         values=("1", "0.65", "1"),
         key_times=("0", "0.5", "1"),
-        begin_s=anim.IDLE_BEGIN_S + 1.0,
+        begin_s=anim.IDLE_BEGIN_S + 2.0,
         dur_s=14.0,
     )
     parts.append(
@@ -377,7 +377,7 @@ def _top_panel(about: dict[str, Any], system_info: dict[str, Any]) -> str:  # no
             attribute="opacity",
             values=("0.3", "0.42", "0.3"),
             key_times=("0", "0.5", "1"),
-            begin_s=anim.IDLE_BEGIN_S + 0.5,
+            begin_s=anim.IDLE_BEGIN_S + 1.0,
             dur_s=9.0,
         )
         parts.append(
@@ -650,7 +650,7 @@ def _stats_glance() -> str:
         attribute="opacity",
         from_value="0",
         to_value="1",
-        begin_s=anim.BOOT_STATS_BEGIN_S + 0.2,
+        begin_s=anim.BOOT_STATS_BEGIN_S + 0.4,
         dur_s=anim.BOOT_NUMBER_DUR_S,
     )
     parts.append(
@@ -733,7 +733,7 @@ def _stats_contrib() -> str:
         attribute="stroke-dashoffset",
         from_value=str(streak_circumference),
         to_value="0",
-        begin_s=anim.BOOT_STATS_BEGIN_S + 0.05,
+        begin_s=anim.BOOT_STATS_BEGIN_S + 0.1,
         dur_s=anim.BOOT_RING_DUR_S,
     )
     parts.append(
@@ -747,7 +747,7 @@ def _stats_contrib() -> str:
         attribute="opacity",
         from_value="0",
         to_value="1",
-        begin_s=anim.BOOT_STATS_BEGIN_S + 0.3,
+        begin_s=anim.BOOT_STATS_BEGIN_S + 0.6,
         dur_s=anim.BOOT_NUMBER_DUR_S,
     )
     parts.append(
@@ -777,7 +777,7 @@ def _stats_contrib() -> str:
         attribute="opacity",
         from_value="0",
         to_value="1",
-        begin_s=anim.BOOT_STATS_BEGIN_S + 0.45,
+        begin_s=anim.BOOT_STATS_BEGIN_S + 0.9,
         dur_s=anim.BOOT_NUMBER_DUR_S,
     )
     parts.append(

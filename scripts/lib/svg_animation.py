@@ -13,16 +13,16 @@ Tune values here when adjusting the load feel.
 
 from typing import Final
 
-BOOT_PROMPT_BEGIN_S: Final[float] = 0.1
-BOOT_TECH_BEGIN_S: Final[float] = 0.25
-BOOT_TECH_STAGGER_S: Final[float] = 0.07
-BOOT_TECH_DUR_S: Final[float] = 0.45
-BOOT_STATS_BEGIN_S: Final[float] = 0.65
-BOOT_STATS_STAGGER_S: Final[float] = 0.09
-BOOT_STATS_DUR_S: Final[float] = 0.55
-BOOT_RING_DUR_S: Final[float] = 0.7
-BOOT_NUMBER_DUR_S: Final[float] = 0.45
-IDLE_BEGIN_S: Final[float] = 1.8
+BOOT_PROMPT_BEGIN_S: Final[float] = 0.2
+BOOT_TECH_BEGIN_S: Final[float] = 0.5
+BOOT_TECH_STAGGER_S: Final[float] = 0.14
+BOOT_TECH_DUR_S: Final[float] = 0.9
+BOOT_STATS_BEGIN_S: Final[float] = 1.3
+BOOT_STATS_STAGGER_S: Final[float] = 0.18
+BOOT_STATS_DUR_S: Final[float] = 1.1
+BOOT_RING_DUR_S: Final[float] = 1.4
+BOOT_NUMBER_DUR_S: Final[float] = 0.9
+IDLE_BEGIN_S: Final[float] = 3.6
 
 
 def _fmt_seconds(value: float) -> str:

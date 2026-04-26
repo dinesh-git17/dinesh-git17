@@ -79,13 +79,13 @@ def test_idle_animate_supports_keytimes_for_cadence_control() -> None:
 
 
 def test_timing_constants_match_spec_boot_sequence() -> None:
-    assert anim.BOOT_PROMPT_BEGIN_S == 0.1
-    assert anim.BOOT_TECH_BEGIN_S == 0.25
-    assert anim.BOOT_TECH_STAGGER_S == 0.07
-    assert anim.BOOT_TECH_DUR_S == 0.45
-    assert anim.BOOT_STATS_BEGIN_S == 0.65
-    assert anim.BOOT_STATS_STAGGER_S == 0.09
-    assert anim.BOOT_STATS_DUR_S == 0.55
-    assert anim.BOOT_RING_DUR_S == 0.7
-    assert anim.BOOT_NUMBER_DUR_S == 0.45
-    assert anim.IDLE_BEGIN_S == 1.8
+    assert anim.BOOT_PROMPT_BEGIN_S == 0.2
+    assert anim.BOOT_TECH_BEGIN_S == 0.5
+    assert anim.BOOT_TECH_STAGGER_S == 0.14
+    assert anim.BOOT_TECH_DUR_S == 0.9
+    assert anim.BOOT_STATS_BEGIN_S == 1.3
+    assert anim.BOOT_STATS_STAGGER_S == 0.18
+    assert anim.BOOT_STATS_DUR_S == 1.1
+    assert anim.BOOT_RING_DUR_S == 1.4
+    assert anim.BOOT_NUMBER_DUR_S == 0.9
+    assert anim.IDLE_BEGIN_S == 3.6
