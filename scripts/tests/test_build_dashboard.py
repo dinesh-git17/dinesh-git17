@@ -94,3 +94,31 @@ def test_compose_svg_renders_all_section_panels() -> None:
     assert "TOP LANGUAGES" not in svg
     assert "WHAT I ENJOY" not in svg
     assert "Thanks for stopping by" in svg
+
+
+def test_compose_svg_animates_grade_ring_dashoffset() -> None:
+    svg = compose_svg(*_minimal_inputs())
+    grade_tag_start = svg.index('id="grade-ring"')
+    next_close = svg.index("/>", grade_tag_start)
+    after_ring = svg[next_close : next_close + 600]
+    assert "<animate " in after_ring
+    assert 'attributeName="stroke-dashoffset"' in after_ring
+    assert 'to="0"' in after_ring
+    assert 'fill="freeze"' in after_ring
+
+
+def test_compose_svg_keeps_grade_ring_static_dashoffset_zero() -> None:
+    svg = compose_svg(*_minimal_inputs())
+    grade_tag_start = svg.index('id="grade-ring"')
+    grade_tag_end = svg.index("/>", grade_tag_start)
+    grade_tag = svg[grade_tag_start:grade_tag_end]
+    assert 'stroke-dashoffset="0"' in grade_tag
+
+
+def test_compose_svg_animates_grade_letter_group() -> None:
+    svg = compose_svg(*_minimal_inputs())
+    letter_marker = "<!-- GRADE_LETTER_START -->"
+    idx = svg.index(letter_marker)
+    surrounding = svg[max(0, idx - 400) : idx + 400]
+    assert "<g" in surrounding
+    assert 'attributeName="opacity"' in surrounding

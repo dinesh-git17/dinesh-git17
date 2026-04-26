@@ -19,6 +19,7 @@ from typing import Any
 import yaml
 
 from scripts.lib import dashboard_layout as dl
+from scripts.lib import svg_animation as anim
 from scripts.lib.svg_primitives import embed_icon
 from scripts.lib.text_to_path import measure, outline
 
@@ -552,6 +553,15 @@ def _stats_glance() -> str:
     row_stride: int = 32
     for index, (label, key, value) in enumerate(_GLANCE_ROWS):
         row_y: int = row_origin_y + index * row_stride
+        begin_s: float = anim.BOOT_STATS_BEGIN_S + index * anim.BOOT_STATS_STAGGER_S
+        row_anim: str = anim.boot_animate(
+            attribute="opacity",
+            from_value="0",
+            to_value="1",
+            begin_s=begin_s,
+            dur_s=anim.BOOT_STATS_DUR_S,
+        )
+        parts.append(f'<g opacity="1">{row_anim}')
         parts.append(
             f'<text x="{label_x}" y="{row_y}" font-family="monospace" '
             f'font-size="12" fill="{dl.TEXT}">{label}</text>'
@@ -561,6 +571,7 @@ def _stats_glance() -> str:
             f'font-size="12" fill="{dl.TEXT}" text-anchor="end">'
             f"<!-- {key}_START -->{value}<!-- {key}_END --></text>"
         )
+        parts.append("</g>")
 
     ring_cx: int = card.right - 60
     ring_cy: int = card.y + 132
@@ -578,10 +589,27 @@ def _stats_glance() -> str:
         f'stroke-dashoffset="0" transform="rotate(-90 {ring_cx} {ring_cy})" '
         f'stroke-linecap="round"/>'
     )
+    ring_anim: str = anim.boot_animate(
+        attribute="stroke-dashoffset",
+        from_value=str(ring_circumference),
+        to_value="0",
+        begin_s=anim.BOOT_STATS_BEGIN_S,
+        dur_s=anim.BOOT_RING_DUR_S,
+    )
+    parts.append(ring_anim.replace("<animate ", '<animate href="#grade-ring" ', 1))
+    letter_anim: str = anim.boot_animate(
+        attribute="opacity",
+        from_value="0",
+        to_value="1",
+        begin_s=anim.BOOT_STATS_BEGIN_S + 0.2,
+        dur_s=anim.BOOT_NUMBER_DUR_S,
+    )
     parts.append(
+        f'<g opacity="1">{letter_anim}'
         f'<text x="{ring_cx}" y="{ring_cy + 8}" font-family="monospace" font-size="22" '
         f'font-weight="bold" fill="{dl.TEXT}" text-anchor="middle">'
         f"<!-- GRADE_LETTER_START -->A<!-- GRADE_LETTER_END --></text>"
+        f"</g>"
     )
     parts.append(
         f'<text x="{ring_cx}" y="{ring_cy + ring_r + 30}" '
