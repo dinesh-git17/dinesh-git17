@@ -1,1 +1,5 @@
-![Dinesh Dawonauth profile dashboard.](assets/dashboard.svg)
+<img
+  src="./assets/dashboard.svg"
+  alt="Dinesh Dawonauth profile dashboard."
+  width="100%"
+/>
