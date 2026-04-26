@@ -180,3 +180,22 @@ def test_compose_svg_keeps_lang_bars_patchable_by_id() -> None:
         assert ' width="' in bar_tag, (
             f"lang-{index}-bar must keep a width attribute for patching"
         )
+
+
+def test_compose_svg_wraps_tech_icons_in_animated_groups() -> None:
+    inputs = list(_minimal_inputs())
+    inputs[2] = {
+        "icons": [
+            {"file": "python.svg", "label": "Python"},
+            {"file": "python.svg", "label": "Rust"},
+            {"file": "python.svg", "label": "Go"},
+        ]
+    }
+    svg = compose_svg(*inputs)
+    # Section headers are outlined paths, not raw text — anchor on the first label.
+    first_label_idx = svg.index(">Python<")
+    last_label_idx = svg.index(">Go<")
+    tech_section = svg[first_label_idx - 5000 : last_label_idx + 5000]
+    assert tech_section.count('attributeName="opacity"') >= 3, (
+        "expected one opacity animation per tech icon group"
+    )

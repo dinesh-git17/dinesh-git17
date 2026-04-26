@@ -512,12 +512,29 @@ def _tech_strip(tech_stack: dict[str, Any]) -> str:
         slot_cx: float = inner_left + (index + 0.5) * column_w
         icon_x: float = slot_cx - icon_size / 2
         icon_path: Path = TECH_ICONS_DIR / icon_info["file"]
+        begin_s: float = anim.BOOT_TECH_BEGIN_S + index * anim.BOOT_TECH_STAGGER_S
+        opacity_anim: str = anim.boot_animate(
+            attribute="opacity",
+            from_value="0",
+            to_value="1",
+            begin_s=begin_s,
+            dur_s=anim.BOOT_TECH_DUR_S,
+        )
+        slide_anim: str = anim.boot_transform(
+            transform_type="translate",
+            from_value="0 6",
+            to_value="0 0",
+            begin_s=begin_s,
+            dur_s=anim.BOOT_TECH_DUR_S,
+        )
+        parts.append(f'<g opacity="1">{opacity_anim}{slide_anim}')
         parts.append(embed_icon(icon_path, x=icon_x, y=icons_top, size=icon_size))
         parts.append(
             f'<text x="{slot_cx:g}" y="{label_y}" font-family="monospace" '
             f'font-size="11" fill="{dl.TEXT}" text-anchor="middle">'
             f"{icon_info['label']}</text>"
         )
+        parts.append("</g>")
     return "".join(parts)
 
 
