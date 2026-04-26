@@ -214,6 +214,94 @@ def _cta_card() -> str:
     return "".join(parts)
 
 
+def _canada_flag(x: int, y: int, width: int, height: int) -> str:
+    """Render a small inline Canadian flag using three coloured rects."""
+    side: int = round(width * 0.25)
+    centre: int = width - 2 * side
+    return (
+        f'<rect x="{x}" y="{y}" width="{side}" height="{height}" fill="#D52B1E"/>'
+        f'<rect x="{x + side}" y="{y}" width="{centre}" height="{height}" fill="#FFFFFF"/>'
+        f'<rect x="{x + side + centre}" y="{y}" width="{side}" height="{height}" fill="#D52B1E"/>'
+    )
+
+
+def _top_panel(about: dict[str, Any], system_info: dict[str, Any]) -> str:
+    """Render the top panel: ABOUT ME on the left, SYSTEM INFO on the right.
+
+    A single shared panel split by a vertical divider running floor-to-ceiling
+    inside the panel's inner padding.
+    """
+    parts: list[str] = []
+    panel: L.Rect = L.TOP_PANEL
+    inner_pad: int = 24
+    divider_x: int = panel.cx
+    parts.append(
+        f'<line x1="{divider_x}" y1="{panel.y + inner_pad}" '
+        f'x2="{divider_x}" y2="{panel.bottom - inner_pad}" '
+        f'stroke="{L.BORDER}"/>'
+    )
+
+    about_x: int = panel.x + inner_pad
+    parts.append(_section_header("ABOUT ME", x=about_x, y=panel.y + 36, icon="user"))
+    bio_lines: list[str] = about.get("bio", [])
+    bio_origin_y: int = panel.y + 72
+    for index, line in enumerate(bio_lines):
+        line_y: int = bio_origin_y + index * 22
+        parts.append(
+            f'<text x="{about_x}" y="{line_y}" font-family="monospace" '
+            f'font-size="14" fill="{L.TEXT}">{line}</text>'
+        )
+
+    pills: list[dict[str, str]] = about.get("trait_pills", [])
+    pill_origin_y: int = bio_origin_y + len(bio_lines) * 22 + 18
+    pill_w: int = (divider_x - about_x - inner_pad - 12) // 2
+    pill_h: int = 28
+    pill_stride_x: int = pill_w + 12
+    pill_stride_y: int = pill_h + 8
+    for index, pill in enumerate(pills):
+        col: int = index % 2
+        row: int = index // 2
+        px: int = about_x + col * pill_stride_x
+        py: int = pill_origin_y + row * pill_stride_y
+        parts.append(
+            f'<rect x="{px}" y="{py}" width="{pill_w}" height="{pill_h}" '
+            f'rx="14" fill="{L.SURFACE_2}" stroke="{L.BORDER}"/>'
+        )
+        parts.append(
+            embed_icon(UI_ICONS_DIR / f"{pill['icon']}.svg", x=px + 10, y=py + 7, size=14)
+        )
+        parts.append(
+            f'<text x="{px + 32}" y="{py + 19}" font-family="monospace" '
+            f'font-size="12" fill="{L.TEXT}">{pill["label"]}</text>'
+        )
+
+    sys_x: int = divider_x + inner_pad
+    parts.append(_section_header("SYSTEM INFO", x=sys_x, y=panel.y + 36, icon="hard-drive"))
+    rows: list[dict[str, str]] = system_info.get("rows", [])
+    row_origin_y: int = panel.y + 72
+    row_stride: int = 22
+    label_x: int = sys_x + 22
+    value_right_x: int = panel.right - inner_pad
+    for index, row in enumerate(rows):
+        row_y: int = row_origin_y + index * row_stride
+        icon_path: Path = UI_ICONS_DIR / f"{row['icon']}.svg"
+        parts.append(embed_icon(icon_path, x=sys_x, y=row_y - 12, size=14))
+        parts.append(
+            f'<text x="{label_x}" y="{row_y}" font-family="monospace" '
+            f'font-size="12" fill="{L.ACCENT}">{row["label"]}</text>'
+        )
+        if row.get("flag") == "CA":
+            parts.append(_canada_flag(x=value_right_x - 18, y=row_y - 9, width=16, height=11))
+            value_anchor_x: int = value_right_x - 24
+        else:
+            value_anchor_x = value_right_x
+        parts.append(
+            f'<text x="{value_anchor_x}" y="{row_y}" font-family="monospace" '
+            f'font-size="12" fill="{L.TEXT}" text-anchor="end">{row["value"]}</text>'
+        )
+    return "".join(parts)
+
+
 def compose_svg(
     about: dict[str, Any],
     system_info: dict[str, Any],
@@ -248,6 +336,7 @@ def compose_svg(
     parts.append(_cta_card())
 
     parts.append(L.panel(L.TOP_PANEL))
+    parts.append(_top_panel(about, system_info))
     parts.append(L.panel(L.TECH_PANEL))
     parts.append(L.panel(L.STATS_GLANCE))
     parts.append(L.panel(L.STATS_CONTRIB))
