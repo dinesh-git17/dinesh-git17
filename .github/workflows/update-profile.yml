@@ -2,14 +2,18 @@ name: Update Profile
 
 on:
   schedule:
-    - cron: "0 0 * * *"
+    - cron: "0 */6 * * *"
   workflow_dispatch:
 
 permissions:
   contents: write
 
+concurrency:
+  group: update-profile
+  cancel-in-progress: true
+
 jobs:
-  update-profile:
+  update:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -20,8 +24,12 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Patch SVG uptime
-        run: python3 scripts/update_uptime.py
+      - name: Refresh dashboard
+        env:
+          GH_USER_LOGIN: dinesh-git17
+          READMEDASH_TOKEN: ${{ secrets.READMEDASH_TOKEN }}
+          WAKATIME_API_KEY: ${{ secrets.WAKATIME_API_KEY }}
+        run: python -m scripts.update_dashboard
 
       - name: Commit and push if changed
         run: |
@@ -31,6 +39,6 @@ jobs:
           if git diff --cached --quiet; then
             echo "No changes - skipping commit."
           else
-            git commit -m "chore: refresh profile ($(date -u +'%Y-%m-%d'))"
+            git commit -m "chore: refresh dashboard ($(date -u +'%Y-%m-%dT%H:%MZ'))"
             git push
           fi
