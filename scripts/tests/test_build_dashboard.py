@@ -154,3 +154,29 @@ def test_compose_svg_animates_streak_numbers() -> None:
         idx = svg.index(f"<!-- {marker}_START -->")
         surrounding = svg[max(0, idx - 400) : idx + 400]
         assert 'attributeName="opacity"' in surrounding, f"missing opacity for {marker}"
+
+
+def test_compose_svg_wraps_each_lang_bar_in_animated_group() -> None:
+    svg = compose_svg(*_minimal_inputs())
+    for index in range(1, 6):
+        bar_marker = f'id="lang-{index}-bar"'
+        bar_idx = svg.index(bar_marker)
+        surrounding = svg[max(0, bar_idx - 300) : bar_idx + 600]
+        assert "<animateTransform " in surrounding, (
+            f"lang-{index}-bar missing transform animation"
+        )
+        assert 'type="scale"' in surrounding
+        assert 'from="0 1"' in surrounding
+        assert 'to="1 1"' in surrounding
+
+
+def test_compose_svg_keeps_lang_bars_patchable_by_id() -> None:
+    svg = compose_svg(*_minimal_inputs())
+    for index in range(1, 6):
+        assert f'id="lang-{index}-bar"' in svg
+        bar_idx = svg.index(f'id="lang-{index}-bar"')
+        next_close = svg.index("/>", bar_idx)
+        bar_tag = svg[bar_idx:next_close]
+        assert ' width="' in bar_tag, (
+            f"lang-{index}-bar must keep a width attribute for patching"
+        )

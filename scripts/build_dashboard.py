@@ -811,6 +811,15 @@ def _stats_langs() -> str:
         gradient_id: str = (
             "bar-fade-accent" if bar_fill == dl.ACCENT else "bar-fade-accent-dim"
         )
+        row_begin_s: float = anim.BOOT_STATS_BEGIN_S + index * anim.BOOT_STATS_STAGGER_S
+        row_anim: str = anim.boot_animate(
+            attribute="opacity",
+            from_value="0",
+            to_value="1",
+            begin_s=row_begin_s,
+            dur_s=anim.BOOT_STATS_DUR_S,
+        )
+        parts.append(f'<g opacity="1">{row_anim}')
         parts.append(
             f'<text x="{label_x}" y="{row_y + 9}" font-family="monospace" '
             f'font-size="12" fill="{dl.TEXT}">'
@@ -821,16 +830,27 @@ def _stats_langs() -> str:
             f'rx="{bar_radius}" fill="{dl.TRACK}"/>'
         )
         bar_id: str = f"{key.lower().replace('_', '-')}-bar"
+        bar_grow: str = anim.boot_transform(
+            transform_type="scale",
+            from_value="0 1",
+            to_value="1 1",
+            begin_s=row_begin_s,
+            dur_s=anim.BOOT_STATS_DUR_S,
+        )
         parts.append(
-            f'<rect id="{bar_id}" x="{track_x}" y="{row_y}" '
+            f'<g transform="translate({track_x} {row_y})">'
+            f'<rect id="{bar_id}" x="0" y="0" '
             f'width="{scaled_bar_w}" height="{bar_height}" '
             f'rx="{bar_radius}" fill="url(#{gradient_id})"/>'
+            f"{bar_grow}"
+            f"</g>"
         )
         parts.append(
             f'<text x="{value_x}" y="{row_y + 9}" font-family="monospace" '
             f'font-size="11" fill="{dl.TEXT_MUTED}" text-anchor="end">'
             f"<!-- {key}_VALUE_START -->{value}<!-- {key}_VALUE_END --></text>"
         )
+        parts.append("</g>")
     return "".join(parts)
 
 
