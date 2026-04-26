@@ -70,5 +70,61 @@ def streak_dasharray(*, current: int, longest: int) -> str:
 
 
 def catalogue() -> list[PatchEntry]:
-    """Return the full patch catalogue. Defined in Task 7 Layer 2."""
-    raise NotImplementedError("Layer 2")
+    """Return the full patch catalogue.
+
+    Each entry's ``value_fn`` accepts a ``dict[str, Any]`` keyed by source
+    name (``"github_stats"``, ``"grade"``, ``"github_contrib"``, ``"wakatime"``,
+    ``"uptime"``) and returns the string to write into the SVG.
+    """
+    entries: list[PatchEntry] = []
+
+    entries.append(PatchEntry("github_stats", "marker", "STARS", None,
+        lambda r: r["github_stats"].stars_display))
+    entries.append(PatchEntry("github_stats", "marker", "COMMITS", None,
+        lambda r: r["github_stats"].commits_display))
+    entries.append(PatchEntry("github_stats", "marker", "PRS", None,
+        lambda r: r["github_stats"].prs_display))
+    entries.append(PatchEntry("github_stats", "marker", "ISSUES", None,
+        lambda r: r["github_stats"].issues_display))
+    entries.append(PatchEntry("github_stats", "marker", "CONTRIB_TO", None,
+        lambda r: r["github_stats"].contributed_to_display))
+
+    entries.append(PatchEntry("grade", "marker", "GRADE_LETTER", None,
+        lambda r: r["grade"].letter))
+    entries.append(PatchEntry("grade", "attribute", "grade-ring", "stroke-dasharray",
+        lambda r: grade_dasharray(percentile=r["grade"].percentile)))
+
+    entries.append(PatchEntry("github_contrib", "marker", "TOTAL_CONTRIB", None,
+        lambda r: r["github_contrib"].total_display))
+    entries.append(PatchEntry("github_contrib", "marker", "TOTAL_CONTRIB_RANGE", None,
+        lambda r: r["github_contrib"].total_range_label))
+    entries.append(PatchEntry("github_contrib", "marker", "CURRENT_STREAK", None,
+        lambda r: str(r["github_contrib"].current_streak_days)))
+    entries.append(PatchEntry("github_contrib", "marker", "CURRENT_STREAK_RANGE", None,
+        lambda r: r["github_contrib"].current_streak_range_label))
+    entries.append(PatchEntry("github_contrib", "marker", "LONGEST_STREAK", None,
+        lambda r: str(r["github_contrib"].longest_streak_days)))
+    entries.append(PatchEntry("github_contrib", "marker", "LONGEST_STREAK_RANGE", None,
+        lambda r: r["github_contrib"].longest_streak_range_label))
+    entries.append(PatchEntry("github_contrib", "attribute", "streak-ring", "stroke-dasharray",
+        lambda r: streak_dasharray(
+            current=r["github_contrib"].current_streak_days,
+            longest=r["github_contrib"].longest_streak_days,
+        )))
+
+    for i in range(5):
+        idx: int = i + 1
+        entries.append(PatchEntry("wakatime", "marker", f"LANG_{idx}_NAME", None,
+            lambda r, _i=i: r["wakatime"].languages[_i].name if _i < len(r["wakatime"].languages) else ""))
+        entries.append(PatchEntry("wakatime", "marker", f"LANG_{idx}_VALUE", None,
+            lambda r, _i=i: r["wakatime"].languages[_i].text if _i < len(r["wakatime"].languages) else ""))
+        entries.append(PatchEntry("wakatime", "attribute", f"lang-{idx}-bar", "width",
+            lambda r, _i=i: str(bar_scale(
+                top_seconds=r["wakatime"].languages[0].total_seconds if r["wakatime"].languages else 0.0,
+                my_seconds=r["wakatime"].languages[_i].total_seconds if _i < len(r["wakatime"].languages) else 0.0,
+            ))))
+
+    entries.append(PatchEntry("uptime", "marker", "UPTIME", None,
+        lambda r: r["uptime"].value))
+
+    return entries
