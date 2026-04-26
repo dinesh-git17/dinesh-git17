@@ -208,11 +208,13 @@ def test_compose_svg_pulses_name_prompt_cursor() -> None:
 
 def test_compose_svg_pulses_brain_image_when_present() -> None:
     svg = compose_svg(*_minimal_inputs())
-    if "brain-ai-card" not in svg:
+    brain_token = 'opacity="0.3" href="data:image/png'  # noqa: S105
+    if brain_token not in svg:
         return
-    brain_idx = svg.index("brain-ai-card")
-    surrounding = svg[max(0, brain_idx - 600) : brain_idx + 600]
+    brain_idx = svg.index(brain_token)
+    surrounding = svg[max(0, brain_idx - 600) : brain_idx + 200]
     assert 'repeatCount="indefinite"' in surrounding
+    assert "0.3;0.42;0.3" in surrounding
 
 
 def test_compose_svg_glows_quote_glyph() -> None:
