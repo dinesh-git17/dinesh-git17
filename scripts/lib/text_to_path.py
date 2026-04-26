@@ -44,7 +44,8 @@ def outline(text: str, font_path: Path, size_px: int) -> str:
             font.
     """
     if not font_path.exists():
-        raise FileNotFoundError(f"font file not found: {font_path}")
+        msg = f"font file not found: {font_path}"
+        raise FileNotFoundError(msg)
 
     font: TTFont = TTFont(str(font_path))
     cmap: dict[int, str] = font.getBestCmap()
@@ -69,7 +70,7 @@ def outline(text: str, font_path: Path, size_px: int) -> str:
         glyph.draw(tp)
         cursor_x += glyph.width * scale
 
-    return pen.getCommands()
+    return str(pen.getCommands())
 
 
 def measure(text: str, font_path: Path, size_px: int) -> float:
@@ -79,7 +80,8 @@ def measure(text: str, font_path: Path, size_px: int) -> float:
     is exact for any string the function would render.
     """
     if not font_path.exists():
-        raise FileNotFoundError(f"font file not found: {font_path}")
+        msg = f"font file not found: {font_path}"
+        raise FileNotFoundError(msg)
     font: TTFont = TTFont(str(font_path))
     cmap: dict[int, str] = font.getBestCmap()
     glyph_set = font.getGlyphSet()

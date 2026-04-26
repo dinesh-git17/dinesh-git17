@@ -18,7 +18,7 @@ from typing import Any
 
 import yaml
 
-from scripts.lib import dashboard_layout as L
+from scripts.lib import dashboard_layout as dl
 from scripts.lib.svg_primitives import embed_icon
 from scripts.lib.text_to_path import measure, outline
 
@@ -27,6 +27,7 @@ CONTENT_DIR: Path = REPO_ROOT / "content"
 ASSETS_DIR: Path = REPO_ROOT / "assets"
 TECH_ICONS_DIR: Path = ASSETS_DIR / "icons" / "tech"
 UI_ICONS_DIR: Path = ASSETS_DIR / "icons" / "ui"
+_MIN_LEADER_PX: int = 16
 PORTRAIT_PATH: Path = ASSETS_DIR / "portrait-card-2.png"
 BRAIN_CARD_PATH: Path = ASSETS_DIR / "brain-ai-card.png"
 OUTPUT_PATH: Path = ASSETS_DIR / "dashboard.svg"
@@ -35,7 +36,9 @@ INTER_MEDIUM: Path = REPO_ROOT / "scripts" / "fonts" / "Inter" / "Inter-Medium.o
 INTER_REGULAR: Path = REPO_ROOT / "scripts" / "fonts" / "Inter" / "Inter-Regular.otf"
 
 
-def _outlined_text(text: str, font: Path, size_px: int, x: int, y: int, fill: str) -> str:
+def _outlined_text(
+    text: str, font: Path, size_px: int, x: int, y: int, fill: str
+) -> str:
     """Return a ``<g>`` containing ``text`` outlined as a path at (``x``, ``y``).
 
     The translation uses ``y`` as the baseline; outlined glyphs extend
@@ -66,12 +69,14 @@ def _section_header(text: str, x: int, y: int, icon: str | None = None) -> str:
                 x=x,
                 y=y - 13,
                 size=15,
-                stroke=L.TEXT,
-                fill=L.TEXT,
+                stroke=dl.TEXT,
+                fill=dl.TEXT,
             )
         )
         text_x = x + 22
-    parts.append(_outlined_text(text, INTER_BOLD, size_px=13, x=text_x, y=y, fill=L.TEXT))
+    parts.append(
+        _outlined_text(text, INTER_BOLD, size_px=13, x=text_x, y=y, fill=dl.TEXT)
+    )
     return "".join(parts)
 
 
@@ -83,7 +88,7 @@ def _portrait_card() -> str:
     The photo image carries its own badge / headline / grid overlay.
     """
     parts: list[str] = []
-    card: L.Rect = L.PORTRAIT_CARD
+    card: dl.Rect = dl.PORTRAIT_CARD
     name_x: int = card.x + 20
     name_y: int = card.y + 36
     name_size: int = 20
@@ -94,20 +99,22 @@ def _portrait_card() -> str:
             size_px=name_size,
             x=name_x,
             y=name_y,
-            fill=L.TEXT,
+            fill=dl.TEXT,
         )
     )
     name_w: float = measure("Dinesh Dawonauth", INTER_BOLD, size_px=name_size)
     prompt_x: int = name_x + int(name_w) + 8
     parts.append(
-        _outlined_text(">_", INTER_BOLD, size_px=name_size, x=prompt_x, y=name_y, fill=L.ACCENT)
+        _outlined_text(
+            ">_", INTER_BOLD, size_px=name_size, x=prompt_x, y=name_y, fill=dl.ACCENT
+        )
     )
     role_y: int = name_y + 20
     parts.append(
         f'<text x="{name_x}" y="{role_y}" font-family="monospace" font-size="11">'
-        f'<tspan fill="{L.ACCENT}">AI Engineer</tspan>'
-        f'<tspan fill="{L.TEXT_MUTED}"> · Developer · Builder</tspan>'
-        f'</text>'
+        f'<tspan fill="{dl.ACCENT}">AI Engineer</tspan>'
+        f'<tspan fill="{dl.TEXT_MUTED}"> · Developer · Builder</tspan>'
+        f"</text>"
     )
 
     photo_pad: int = 16
@@ -125,7 +132,7 @@ def _portrait_card() -> str:
     else:
         parts.append(
             f'<rect x="{photo_x}" y="{photo_y}" width="{photo_w}" height="{photo_h}" '
-            f'fill="{L.SURFACE_2}" stroke="{L.BORDER}"/>'
+            f'fill="{dl.SURFACE_2}" stroke="{dl.BORDER}"/>'
         )
     return "".join(parts)
 
@@ -138,7 +145,7 @@ def _quote_card() -> str:
     fit the remaining width.
     """
     parts: list[str] = []
-    card: L.Rect = L.QUOTE_CARD
+    card: dl.Rect = dl.QUOTE_CARD
     glyph_size: int = 28
     glyph_x: int = card.x + 16
     glyph_y: int = card.y + 16
@@ -158,9 +165,9 @@ def _quote_card() -> str:
     line_stride: int = 22
     line1_y: int = card.y + 38
     lines: tuple[tuple[tuple[str, str], ...], ...] = (
-        ((L.TEXT, "The most important use of a tool"),),
-        ((L.TEXT, "as powerful as "), (L.ACCENT, "AI"), (L.TEXT, " is to augment")),
-        ((L.TEXT, "humanity, not to replace it."),),
+        ((dl.TEXT, "The most important use of a tool"),),
+        ((dl.TEXT, "as powerful as "), (dl.ACCENT, "AI"), (dl.TEXT, " is to augment")),
+        ((dl.TEXT, "humanity, not to replace it."),),
     )
     for index, segments in enumerate(lines):
         line_y: int = line1_y + index * line_stride
@@ -179,17 +186,17 @@ def _connect_card(connect: dict[str, Any]) -> str:
 
     Header is a quiet muted-grey label (no leading icon) sitting above
     four icon+label rows in white. Brand glyphs (linkedin, discord) and
-    Lucide outlines (mail, globe) are recoloured to ``L.TEXT`` via
+    Lucide outlines (mail, globe) are recoloured to ``dl.TEXT`` via
     ``embed_icon`` overrides so the row reads as a single typographic unit.
     """
     parts: list[str] = []
-    card: L.Rect = L.CONNECT_CARD
+    card: dl.Rect = dl.CONNECT_CARD
     header_x: int = card.x + 20
     header_y: int = card.y + 32
     parts.append(
         f'<text x="{header_x}" y="{header_y}" font-family="monospace" '
         f'font-size="12" font-weight="bold" letter-spacing="2" '
-        f'fill="{L.TEXT_MUTED}">CONNECT</text>'
+        f'fill="{dl.TEXT_MUTED}">CONNECT</text>'
     )
     rows: list[dict[str, str]] = connect.get("rows", [])
     row_origin_y: int = card.y + 70
@@ -204,13 +211,13 @@ def _connect_card(connect: dict[str, Any]) -> str:
                 x=header_x,
                 y=row_y - 14,
                 size=icon_size,
-                stroke=L.TEXT,
-                fill=L.TEXT,
+                stroke=dl.TEXT,
+                fill=dl.TEXT,
             )
         )
         parts.append(
             f'<text x="{header_x + 30}" y="{row_y}" font-family="monospace" '
-            f'font-size="13" fill="{L.TEXT}">{row["label"]}</text>'
+            f'font-size="13" fill="{dl.TEXT}">{row["label"]}</text>'
         )
     return "".join(parts)
 
@@ -224,7 +231,7 @@ def _cta_card() -> str:
     the bottom of the card. No header, no trailing collaborations line.
     """
     parts: list[str] = []
-    card: L.Rect = L.CTA_CARD
+    card: dl.Rect = dl.CTA_CARD
     prompt_x: int = card.x + 22
     text_x: int = prompt_x + 22
     line1_y: int = card.y + 56
@@ -234,33 +241,33 @@ def _cta_card() -> str:
     parts.append(
         f'<text x="{prompt_x}" y="{line1_y}" font-family="monospace" '
         f'font-size="{body_size}" font-weight="bold" '
-        f'fill="{L.ACCENT}">&gt;</text>'
+        f'fill="{dl.ACCENT}">&gt;</text>'
     )
     parts.append(
         f'<text x="{text_x}" y="{line1_y}" font-family="monospace" '
-        f'font-size="{body_size}" fill="{L.TEXT}">Let’s build something</text>'
+        f'font-size="{body_size}" fill="{dl.TEXT}">'
+        f"Let's build something</text>"
     )
     parts.append(
         f'<text x="{text_x}" y="{line2_y}" font-family="monospace" '
         f'font-size="{body_size}">'
-        f'<tspan fill="{L.ACCENT}">meaningful</tspan>'
-        f'<tspan fill="{L.TEXT}"> together.</tspan>'
-        f'</text>'
+        f'<tspan fill="{dl.ACCENT}">meaningful</tspan>'
+        f'<tspan fill="{dl.TEXT}"> together.</tspan>'
+        f"</text>"
     )
 
     rain_x_start: int = card.x + 16
     rain_x_end: int = card.right - 16
     rain_bottom_y: int = card.bottom - 14
-    rng: random.Random = random.Random(0xC7A0)
+    rng: random.Random = random.Random(0xC7A0)  # noqa: S311 (visual jitter, not security)
     densities: tuple[float, ...] = (0.70, 0.50, 0.34, 0.20, 0.10)
     for row_index, density in enumerate(densities):
         row_y: int = rain_bottom_y - row_index * 7
-        for px in range(rain_x_start, rain_x_end, 4):
-            if rng.random() < density:
-                parts.append(
-                    f'<circle cx="{px}" cy="{row_y}" r="1" '
-                    f'fill="{L.ACCENT_DIM}"/>'
-                )
+        parts.extend(
+            f'<circle cx="{px}" cy="{row_y}" r="1" fill="{dl.ACCENT_DIM}"/>'
+            for px in range(rain_x_start, rain_x_end, 4)
+            if rng.random() < density
+        )
     return "".join(parts)
 
 
@@ -291,11 +298,11 @@ def _canada_flag(x: int, y: int, width: int, height: int) -> str:
         f'<g transform="translate({x},{y}) scale({sx},{sy})">'
         f'<path fill="#D52B1E" d="{_CANADA_RED_PATH}"/>'
         f'<path fill="#FFFFFF" d="{_CANADA_WHITE_PATH}"/>'
-        f'</g>'
+        f"</g>"
     )
 
 
-def _top_panel(about: dict[str, Any], system_info: dict[str, Any]) -> str:
+def _top_panel(about: dict[str, Any], system_info: dict[str, Any]) -> str:  # noqa: PLR0915 (layout-driven; splits would fragment one cohesive panel)
     """Render the top panel: ABOUT ME on the left, SYSTEM INFO on the right.
 
     Mirrors the mockup pixel by pixel: large user icon header, sans-serif
@@ -304,13 +311,13 @@ def _top_panel(about: dict[str, Any], system_info: dict[str, Any]) -> str:
     olive plus dotted leaders to monospace right-aligned values.
     """
     parts: list[str] = []
-    panel: L.Rect = L.TOP_PANEL
+    panel: dl.Rect = dl.TOP_PANEL
     inner_pad: int = 28
     divider_x: int = panel.cx
     parts.append(
         f'<line x1="{divider_x}" y1="{panel.y + inner_pad}" '
         f'x2="{divider_x}" y2="{panel.bottom - inner_pad}" '
-        f'stroke="{L.BORDER}"/>'
+        f'stroke="{dl.BORDER}"/>'
     )
 
     about_x: int = panel.x + inner_pad
@@ -332,7 +339,7 @@ def _top_panel(about: dict[str, Any], system_info: dict[str, Any]) -> str:
             size_px=15,
             x=header_text_x,
             y=header_icon_y + 19,
-            fill=L.TEXT,
+            fill=dl.TEXT,
         )
     )
 
@@ -354,7 +361,14 @@ def _top_panel(about: dict[str, Any], system_info: dict[str, Any]) -> str:
     for index, line in enumerate(bio_lines):
         line_y: int = bio_origin_y + index * bio_line_h
         parts.append(
-            _outlined_text(line, INTER_REGULAR, size_px=bio_size_px, x=about_x, y=line_y, fill=L.TEXT)
+            _outlined_text(
+                line,
+                INTER_REGULAR,
+                size_px=bio_size_px,
+                x=about_x,
+                y=line_y,
+                fill=dl.TEXT,
+            )
         )
 
     pills: list[dict[str, str]] = about.get("trait_pills", [])
@@ -371,8 +385,9 @@ def _top_panel(about: dict[str, Any], system_info: dict[str, Any]) -> str:
         for index, pill in enumerate(pills):
             px: int = about_x + index * (pill_w + pill_gap_x)
             parts.append(
-                f'<rect x="{px}" y="{pill_origin_y}" width="{pill_w}" height="{pill_h}" '
-                f'rx="8" fill="none" stroke="{L.BORDER}"/>'
+                f'<rect x="{px}" y="{pill_origin_y}" '
+                f'width="{pill_w}" height="{pill_h}" '
+                f'rx="8" fill="none" stroke="{dl.BORDER}"/>'
             )
             parts.append(
                 embed_icon(
@@ -391,7 +406,7 @@ def _top_panel(about: dict[str, Any], system_info: dict[str, Any]) -> str:
                     size_px=pill_text_size,
                     x=text_x,
                     y=text_baseline_y,
-                    fill=L.TEXT,
+                    fill=dl.TEXT,
                 )
             )
 
@@ -416,7 +431,7 @@ def _top_panel(about: dict[str, Any], system_info: dict[str, Any]) -> str:
                 x=sys_x,
                 y=row_y - icon_size + 4,
                 size=icon_size,
-                stroke=L.TEXT,
+                stroke=dl.TEXT,
             )
         )
         parts.append(
@@ -426,7 +441,7 @@ def _top_panel(about: dict[str, Any], system_info: dict[str, Any]) -> str:
                 size_px=label_size_px,
                 x=label_x,
                 y=row_y,
-                fill=L.ACCENT,
+                fill=dl.ACCENT,
             )
         )
         if row.get("flag") == "CA":
@@ -438,16 +453,16 @@ def _top_panel(about: dict[str, Any], system_info: dict[str, Any]) -> str:
             value_anchor_x = value_right_x
         parts.append(
             f'<text x="{value_anchor_x}" y="{row_y}" font-family="monospace" '
-            f'font-size="13" fill="{L.TEXT}" text-anchor="end">{row["value"]}</text>'
+            f'font-size="13" fill="{dl.TEXT}" text-anchor="end">{row["value"]}</text>'
         )
         label_w: float = measure(row["label"], INTER_BOLD, size_px=label_size_px)
         leader_start: int = label_x + int(label_w) + leader_pad
         leader_end: int = value_anchor_x - leader_pad
-        if leader_end - leader_start > 16:
+        if leader_end - leader_start > _MIN_LEADER_PX:
             parts.append(
                 f'<line x1="{leader_start}" y1="{row_y - 5}" '
                 f'x2="{leader_end}" y2="{row_y - 5}" '
-                f'stroke="{L.TEXT_MUTED}" stroke-width="1.2" stroke-opacity="0.55" '
+                f'stroke="{dl.TEXT_MUTED}" stroke-width="1.2" stroke-opacity="0.55" '
                 f'stroke-dasharray="0.1 6" stroke-linecap="round"/>'
             )
     return "".join(parts)
@@ -462,7 +477,7 @@ def _tech_strip(tech_stack: dict[str, Any]) -> str:
     spanning the icon-and-label band.
     """
     parts: list[str] = []
-    panel: L.Rect = L.TECH_PANEL
+    panel: dl.Rect = dl.TECH_PANEL
     inner_pad: int = 24
     parts.append(
         _section_header(
@@ -489,7 +504,7 @@ def _tech_strip(tech_stack: dict[str, Any]) -> str:
         parts.append(
             f'<line x1="{divider_x:g}" y1="{divider_top}" '
             f'x2="{divider_x:g}" y2="{divider_bottom}" '
-            f'stroke="{L.BORDER}"/>'
+            f'stroke="{dl.BORDER}"/>'
         )
 
     for index, icon_info in enumerate(icons):
@@ -499,34 +514,37 @@ def _tech_strip(tech_stack: dict[str, Any]) -> str:
         parts.append(embed_icon(icon_path, x=icon_x, y=icons_top, size=icon_size))
         parts.append(
             f'<text x="{slot_cx:g}" y="{label_y}" font-family="monospace" '
-            f'font-size="11" fill="{L.TEXT}" text-anchor="middle">{icon_info["label"]}</text>'
+            f'font-size="11" fill="{dl.TEXT}" text-anchor="middle">'
+            f"{icon_info['label']}</text>"
         )
     return "".join(parts)
 
 
 _GLANCE_ROWS: tuple[tuple[str, str, str], ...] = (
-    ("Total Stars Earned",        "STARS",        "116"),
-    ("Total Commits (last year)", "COMMITS",      "3.8k"),
-    ("Total PRs",                 "PRS",          "818"),
-    ("Total Issues",              "ISSUES",       "36"),
-    ("Contributed to (last year)", "CONTRIB_TO",  "3"),
+    ("Total Stars Earned", "STARS", "116"),
+    ("Total Commits (last year)", "COMMITS", "3.8k"),
+    ("Total PRs", "PRS", "818"),
+    ("Total Issues", "ISSUES", "36"),
+    ("Contributed to (last year)", "CONTRIB_TO", "3"),
 )
 
 _LANG_ROWS: tuple[tuple[str, str, str, int, str], ...] = (
-    ("LANG_1", "Python",     "30 hrs",         180, L.ACCENT),
-    ("LANG_2", "Other",      "9 hrs 35 mins",   58, L.ACCENT_DIM),
-    ("LANG_3", "JavaScript", "3 hrs 9 mins",    19, L.ACCENT_DIM),
-    ("LANG_4", "YAML",       "1 hr 25 mins",     8, L.ACCENT_DIM),
-    ("LANG_5", "Bash",       "1 hr 24 mins",     8, L.ACCENT_DIM),
+    ("LANG_1", "Python", "30 hrs", 180, dl.ACCENT),
+    ("LANG_2", "Other", "9 hrs 35 mins", 58, dl.ACCENT_DIM),
+    ("LANG_3", "JavaScript", "3 hrs 9 mins", 19, dl.ACCENT_DIM),
+    ("LANG_4", "YAML", "1 hr 25 mins", 8, dl.ACCENT_DIM),
+    ("LANG_5", "Bash", "1 hr 24 mins", 8, dl.ACCENT_DIM),
 )
 
 
 def _stats_glance() -> str:
     """Render the GITHUB AT A GLANCE card with 5 metric rows + grade ring."""
     parts: list[str] = []
-    card: L.Rect = L.STATS_GLANCE
+    card: dl.Rect = dl.STATS_GLANCE
     parts.append(
-        _section_header("GITHUB AT A GLANCE", x=card.x + 20, y=card.y + 32, icon="github")
+        _section_header(
+            "GITHUB AT A GLANCE", x=card.x + 20, y=card.y + 32, icon="github"
+        )
     )
     label_x: int = card.x + 20
     value_x: int = card.x + 235
@@ -536,12 +554,12 @@ def _stats_glance() -> str:
         row_y: int = row_origin_y + index * row_stride
         parts.append(
             f'<text x="{label_x}" y="{row_y}" font-family="monospace" '
-            f'font-size="12" fill="{L.TEXT}">{label}</text>'
+            f'font-size="12" fill="{dl.TEXT}">{label}</text>'
         )
         parts.append(
             f'<text x="{value_x}" y="{row_y}" font-family="monospace" '
-            f'font-size="12" fill="{L.TEXT}" text-anchor="end">'
-            f'<!-- {key}_START -->{value}<!-- {key}_END --></text>'
+            f'font-size="12" fill="{dl.TEXT}" text-anchor="end">'
+            f"<!-- {key}_START -->{value}<!-- {key}_END --></text>"
         )
 
     ring_cx: int = card.right - 60
@@ -551,22 +569,24 @@ def _stats_glance() -> str:
     arc_len: int = round(ring_circumference * 0.75)
     parts.append(
         f'<circle cx="{ring_cx}" cy="{ring_cy}" r="{ring_r}" fill="none" '
-        f'stroke="{L.TRACK}" stroke-width="6"/>'
+        f'stroke="{dl.TRACK}" stroke-width="6"/>'
     )
     parts.append(
-        f'<circle id="grade-ring" cx="{ring_cx}" cy="{ring_cy}" r="{ring_r}" fill="none" '
-        f'stroke="{L.ACCENT}" stroke-width="6" stroke-dasharray="{arc_len} {ring_circumference}" '
+        f'<circle id="grade-ring" cx="{ring_cx}" cy="{ring_cy}" '
+        f'r="{ring_r}" fill="none" stroke="{dl.ACCENT}" stroke-width="6" '
+        f'stroke-dasharray="{arc_len} {ring_circumference}" '
         f'stroke-dashoffset="0" transform="rotate(-90 {ring_cx} {ring_cy})" '
         f'stroke-linecap="round"/>'
     )
     parts.append(
         f'<text x="{ring_cx}" y="{ring_cy + 8}" font-family="monospace" font-size="22" '
-        f'font-weight="bold" fill="{L.TEXT}" text-anchor="middle">'
-        f'<!-- GRADE_LETTER_START -->A<!-- GRADE_LETTER_END --></text>'
+        f'font-weight="bold" fill="{dl.TEXT}" text-anchor="middle">'
+        f"<!-- GRADE_LETTER_START -->A<!-- GRADE_LETTER_END --></text>"
     )
     parts.append(
-        f'<text x="{ring_cx}" y="{ring_cy + ring_r + 30}" font-family="monospace" font-size="11" '
-        f'fill="{L.TEXT_MUTED}" text-anchor="middle">Overall Grade</text>'
+        f'<text x="{ring_cx}" y="{ring_cy + ring_r + 30}" '
+        f'font-family="monospace" font-size="11" '
+        f'fill="{dl.TEXT_MUTED}" text-anchor="middle">Overall Grade</text>'
     )
     return "".join(parts)
 
@@ -574,9 +594,11 @@ def _stats_glance() -> str:
 def _stats_contrib() -> str:
     """Render the CONTRIBUTION OVERVIEW card: total + current + longest streak."""
     parts: list[str] = []
-    card: L.Rect = L.STATS_CONTRIB
+    card: dl.Rect = dl.STATS_CONTRIB
     parts.append(
-        _section_header("CONTRIBUTION OVERVIEW", x=card.x + 20, y=card.y + 32, icon="calendar")
+        _section_header(
+            "CONTRIBUTION OVERVIEW", x=card.x + 20, y=card.y + 32, icon="calendar"
+        )
     )
     col_w: int = card.w // 3
     col_centres: list[int] = [card.x + col_w // 2 + i * col_w for i in range(3)]
@@ -586,8 +608,9 @@ def _stats_contrib() -> str:
     for i in range(1, 3):
         divider_x: int = card.x + i * col_w
         parts.append(
-            f'<line x1="{divider_x}" y1="{divider_top}" x2="{divider_x}" y2="{divider_bottom}" '
-            f'stroke="{L.BORDER}" stroke-width="1"/>'
+            f'<line x1="{divider_x}" y1="{divider_top}" '
+            f'x2="{divider_x}" y2="{divider_bottom}" '
+            f'stroke="{dl.BORDER}" stroke-width="1"/>'
         )
 
     number_y: int = card.y + 132
@@ -597,17 +620,19 @@ def _stats_contrib() -> str:
     total_cx: int = col_centres[0]
     parts.append(
         f'<text x="{total_cx}" y="{number_y}" font-family="monospace" font-size="30" '
-        f'font-weight="bold" fill="{L.TEXT}" text-anchor="middle">'
-        f'<!-- TOTAL_CONTRIB_START -->5,981<!-- TOTAL_CONTRIB_END --></text>'
+        f'font-weight="bold" fill="{dl.TEXT}" text-anchor="middle">'
+        f"<!-- TOTAL_CONTRIB_START -->5,981<!-- TOTAL_CONTRIB_END --></text>"
     )
     parts.append(
         f'<text x="{total_cx}" y="{label_y}" font-family="monospace" font-size="9" '
-        f'fill="{L.TEXT_MUTED}" text-anchor="middle">Total Contributions</text>'
+        f'fill="{dl.TEXT_MUTED}" text-anchor="middle">Total Contributions</text>'
     )
     parts.append(
         f'<text x="{total_cx}" y="{date_y}" font-family="monospace" font-size="8" '
-        f'fill="{L.TEXT_MUTED}" text-anchor="middle">'
-        f'<!-- TOTAL_CONTRIB_RANGE_START -->Jan 1, 2025 - Present<!-- TOTAL_CONTRIB_RANGE_END --></text>'
+        f'fill="{dl.TEXT_MUTED}" text-anchor="middle">'
+        f"<!-- TOTAL_CONTRIB_RANGE_START -->"
+        f"Jan 1, 2025 - Present"
+        f"<!-- TOTAL_CONTRIB_RANGE_END --></text>"
     )
 
     streak_cx: int = col_centres[1]
@@ -616,43 +641,51 @@ def _stats_contrib() -> str:
     streak_circumference: int = round(2 * 3.14159 * streak_r)
     parts.append(
         f'<circle cx="{streak_cx}" cy="{streak_cy}" r="{streak_r}" fill="none" '
-        f'stroke="{L.TRACK}" stroke-width="6"/>'
+        f'stroke="{dl.TRACK}" stroke-width="6"/>'
     )
     parts.append(
-        f'<circle id="streak-ring" cx="{streak_cx}" cy="{streak_cy}" r="{streak_r}" fill="none" '
-        f'stroke="{L.ACCENT}" stroke-width="6" stroke-dasharray="{streak_circumference} {streak_circumference}" '
+        f'<circle id="streak-ring" cx="{streak_cx}" cy="{streak_cy}" '
+        f'r="{streak_r}" fill="none" stroke="{dl.ACCENT}" stroke-width="6" '
+        f'stroke-dasharray="{streak_circumference} {streak_circumference}" '
         f'stroke-dashoffset="0" transform="rotate(-90 {streak_cx} {streak_cy})" '
         f'stroke-linecap="round"/>'
     )
     parts.append(
-        f'<text x="{streak_cx}" y="{streak_cy + 11}" font-family="monospace" font-size="30" '
-        f'font-weight="bold" fill="{L.TEXT}" text-anchor="middle">'
-        f'<!-- CURRENT_STREAK_START -->85<!-- CURRENT_STREAK_END --></text>'
+        f'<text x="{streak_cx}" y="{streak_cy + 11}" '
+        f'font-family="monospace" font-size="30" font-weight="bold" '
+        f'fill="{dl.TEXT}" text-anchor="middle">'
+        f"<!-- CURRENT_STREAK_START -->85<!-- CURRENT_STREAK_END --></text>"
     )
     parts.append(
-        f'<text x="{streak_cx}" y="{streak_cy + streak_r + 28}" font-family="monospace" font-size="9" '
-        f'fill="{L.TEXT_MUTED}" text-anchor="middle">Current Streak</text>'
+        f'<text x="{streak_cx}" y="{streak_cy + streak_r + 28}" '
+        f'font-family="monospace" font-size="9" '
+        f'fill="{dl.TEXT_MUTED}" text-anchor="middle">Current Streak</text>'
     )
     parts.append(
-        f'<text x="{streak_cx}" y="{streak_cy + streak_r + 46}" font-family="monospace" font-size="8" '
-        f'fill="{L.TEXT_MUTED}" text-anchor="middle">'
-        f'<!-- CURRENT_STREAK_RANGE_START -->Jan 31 - Apr 25<!-- CURRENT_STREAK_RANGE_END --></text>'
+        f'<text x="{streak_cx}" y="{streak_cy + streak_r + 46}" '
+        f'font-family="monospace" font-size="8" '
+        f'fill="{dl.TEXT_MUTED}" text-anchor="middle">'
+        f"<!-- CURRENT_STREAK_RANGE_START -->"
+        f"Jan 31 - Apr 25"
+        f"<!-- CURRENT_STREAK_RANGE_END --></text>"
     )
 
     longest_cx: int = col_centres[2]
     parts.append(
         f'<text x="{longest_cx}" y="{number_y}" font-family="monospace" font-size="30" '
-        f'font-weight="bold" fill="{L.TEXT}" text-anchor="middle">'
-        f'<!-- LONGEST_STREAK_START -->85<!-- LONGEST_STREAK_END --></text>'
+        f'font-weight="bold" fill="{dl.TEXT}" text-anchor="middle">'
+        f"<!-- LONGEST_STREAK_START -->85<!-- LONGEST_STREAK_END --></text>"
     )
     parts.append(
         f'<text x="{longest_cx}" y="{label_y}" font-family="monospace" font-size="9" '
-        f'fill="{L.TEXT_MUTED}" text-anchor="middle">Longest Streak</text>'
+        f'fill="{dl.TEXT_MUTED}" text-anchor="middle">Longest Streak</text>'
     )
     parts.append(
         f'<text x="{longest_cx}" y="{date_y}" font-family="monospace" font-size="8" '
-        f'fill="{L.TEXT_MUTED}" text-anchor="middle">'
-        f'<!-- LONGEST_STREAK_RANGE_START -->Jan 31 - Apr 25<!-- LONGEST_STREAK_RANGE_END --></text>'
+        f'fill="{dl.TEXT_MUTED}" text-anchor="middle">'
+        f"<!-- LONGEST_STREAK_RANGE_START -->"
+        f"Jan 31 - Apr 25"
+        f"<!-- LONGEST_STREAK_RANGE_END --></text>"
     )
     return "".join(parts)
 
@@ -660,7 +693,7 @@ def _stats_contrib() -> str:
 def _stats_langs() -> str:
     """Render the TOP LANGUAGES (BY HOURS) card with 5 bar rows + tracks."""
     parts: list[str] = []
-    card: L.Rect = L.STATS_LANGS
+    card: dl.Rect = dl.STATS_LANGS
     header_x: int = card.x + 20
     header_y: int = card.y + 32
     parts.append(
@@ -669,7 +702,7 @@ def _stats_langs() -> str:
             x=header_x,
             y=header_y - 13,
             size=15,
-            stroke=L.ACCENT,
+            stroke=dl.ACCENT,
         )
     )
     parts.append(
@@ -679,28 +712,28 @@ def _stats_langs() -> str:
             size_px=13,
             x=header_x + 22,
             y=header_y,
-            fill=L.TEXT,
+            fill=dl.TEXT,
         )
     )
     title_w: float = measure("TOP LANGUAGES", INTER_BOLD, size_px=13)
     suffix_x: float = header_x + 22 + title_w + 8
     parts.append(
         f'<text x="{suffix_x:g}" y="{header_y}" font-family="monospace" '
-        f'font-size="10" fill="{L.TEXT_MUTED}">(BY HOURS)</text>'
+        f'font-size="10" fill="{dl.TEXT_MUTED}">(BY HOURS)</text>'
     )
     parts.append(
-        '<defs>'
+        "<defs>"
         f'<linearGradient id="bar-fade-accent" x1="0" y1="0" x2="1" y2="0">'
-        f'<stop offset="0" stop-color="{L.ACCENT}" stop-opacity="1"/>'
-        f'<stop offset="0.78" stop-color="{L.ACCENT}" stop-opacity="1"/>'
-        f'<stop offset="1" stop-color="{L.ACCENT}" stop-opacity="0"/>'
-        f'</linearGradient>'
+        f'<stop offset="0" stop-color="{dl.ACCENT}" stop-opacity="1"/>'
+        f'<stop offset="0.78" stop-color="{dl.ACCENT}" stop-opacity="1"/>'
+        f'<stop offset="1" stop-color="{dl.ACCENT}" stop-opacity="0"/>'
+        f"</linearGradient>"
         f'<linearGradient id="bar-fade-accent-dim" x1="0" y1="0" x2="1" y2="0">'
-        f'<stop offset="0" stop-color="{L.ACCENT_DIM}" stop-opacity="1"/>'
-        f'<stop offset="0.78" stop-color="{L.ACCENT_DIM}" stop-opacity="1"/>'
-        f'<stop offset="1" stop-color="{L.ACCENT_DIM}" stop-opacity="0"/>'
-        f'</linearGradient>'
-        '</defs>'
+        f'<stop offset="0" stop-color="{dl.ACCENT_DIM}" stop-opacity="1"/>'
+        f'<stop offset="0.78" stop-color="{dl.ACCENT_DIM}" stop-opacity="1"/>'
+        f'<stop offset="1" stop-color="{dl.ACCENT_DIM}" stop-opacity="0"/>'
+        f"</linearGradient>"
+        "</defs>"
     )
     label_x: int = card.x + 20
     track_x: int = card.x + 100
@@ -714,24 +747,28 @@ def _stats_langs() -> str:
     for index, (key, name, value, bar_w, bar_fill) in enumerate(_LANG_ROWS):
         row_y: int = row_origin_y + index * row_stride
         scaled_bar_w: int = max(2, round(bar_w * track_w / legacy_max))
-        gradient_id: str = "bar-fade-accent" if bar_fill == L.ACCENT else "bar-fade-accent-dim"
+        gradient_id: str = (
+            "bar-fade-accent" if bar_fill == dl.ACCENT else "bar-fade-accent-dim"
+        )
         parts.append(
             f'<text x="{label_x}" y="{row_y + 9}" font-family="monospace" '
-            f'font-size="12" fill="{L.TEXT}">'
-            f'<!-- {key}_NAME_START -->{name}<!-- {key}_NAME_END --></text>'
+            f'font-size="12" fill="{dl.TEXT}">'
+            f"<!-- {key}_NAME_START -->{name}<!-- {key}_NAME_END --></text>"
         )
         parts.append(
             f'<rect x="{track_x}" y="{row_y}" width="{track_w}" height="{bar_height}" '
-            f'rx="{bar_radius}" fill="{L.TRACK}"/>'
+            f'rx="{bar_radius}" fill="{dl.TRACK}"/>'
         )
+        bar_id: str = f"{key.lower().replace('_', '-')}-bar"
         parts.append(
-            f'<rect id="{key.lower().replace("_", "-")}-bar" x="{track_x}" y="{row_y}" '
-            f'width="{scaled_bar_w}" height="{bar_height}" rx="{bar_radius}" fill="url(#{gradient_id})"/>'
+            f'<rect id="{bar_id}" x="{track_x}" y="{row_y}" '
+            f'width="{scaled_bar_w}" height="{bar_height}" '
+            f'rx="{bar_radius}" fill="url(#{gradient_id})"/>'
         )
         parts.append(
             f'<text x="{value_x}" y="{row_y + 9}" font-family="monospace" '
-            f'font-size="11" fill="{L.TEXT_MUTED}" text-anchor="end">'
-            f'<!-- {key}_VALUE_START -->{value}<!-- {key}_VALUE_END --></text>'
+            f'font-size="11" fill="{dl.TEXT_MUTED}" text-anchor="end">'
+            f"<!-- {key}_VALUE_START -->{value}<!-- {key}_VALUE_END --></text>"
         )
     return "".join(parts)
 
@@ -744,7 +781,7 @@ def _enjoy_strip(enjoy: dict[str, Any]) -> str:
     All inside the single ``ENJOY_PANEL`` rect.
     """
     parts: list[str] = []
-    panel: L.Rect = L.ENJOY_PANEL
+    panel: dl.Rect = dl.ENJOY_PANEL
     inner_pad: int = 24
     header_x: int = panel.x + inner_pad
     header_y: int = panel.y + 32
@@ -754,7 +791,7 @@ def _enjoy_strip(enjoy: dict[str, Any]) -> str:
             x=header_x,
             y=header_y - 13,
             size=15,
-            stroke=L.ACCENT,
+            stroke=dl.ACCENT,
         )
     )
     parts.append(
@@ -764,7 +801,7 @@ def _enjoy_strip(enjoy: dict[str, Any]) -> str:
             size_px=13,
             x=header_x + 22,
             y=header_y,
-            fill=L.TEXT,
+            fill=dl.TEXT,
         )
     )
     cards: list[dict[str, Any]] = enjoy.get("cards", [])
@@ -781,7 +818,7 @@ def _enjoy_strip(enjoy: dict[str, Any]) -> str:
             parts.append(
                 f'<line x1="{divider_x:g}" y1="{card_top - 4}" '
                 f'x2="{divider_x:g}" y2="{card_bottom + 4}" '
-                f'stroke="{L.BORDER}" stroke-width="1"/>'
+                f'stroke="{dl.BORDER}" stroke-width="1"/>'
             )
         for index, card in enumerate(cards):
             cx: float = inner_left + index * (card_w + card_gap)
@@ -792,7 +829,7 @@ def _enjoy_strip(enjoy: dict[str, Any]) -> str:
                     x=cx,
                     y=card_top + 6,
                     size=icon_size,
-                    stroke=L.ACCENT,
+                    stroke=dl.ACCENT,
                 )
             )
             parts.append(
@@ -802,17 +839,17 @@ def _enjoy_strip(enjoy: dict[str, Any]) -> str:
                     size_px=15,
                     x=int(text_x),
                     y=card_top + 24,
-                    fill=L.ACCENT,
+                    fill=dl.ACCENT,
                 )
             )
             for line_index, line in enumerate(card.get("description", [])):
                 line_y: int = card_top + 46 + line_index * 16
                 parts.append(
                     f'<text x="{text_x:g}" y="{line_y}" font-family="monospace" '
-                    f'font-size="10" fill="{L.TEXT_MUTED}">{line}</text>'
+                    f'font-size="10" fill="{dl.TEXT_MUTED}">{line}</text>'
                 )
 
-    rng: random.Random = random.Random(0xE301)
+    rng: random.Random = random.Random(0xE301)  # noqa: S311 (visual jitter, not security)
     rain_left: int = panel.x + inner_pad
     rain_right: int = panel.right - inner_pad
     rain_w: int = rain_right - rain_left
@@ -823,20 +860,21 @@ def _enjoy_strip(enjoy: dict[str, Any]) -> str:
     for row_i in range(rain_rows):
         row_y: int = rain_top + row_i * row_stride
         density: float = densities[row_i]
-        for x_i in range(0, rain_w, 4):
-            if rng.random() < density:
-                parts.append(
-                    f'<circle cx="{rain_left + x_i}" cy="{row_y}" r="1" fill="{L.ACCENT_DIM}"/>'
-                )
+        parts.extend(
+            f'<circle cx="{rain_left + x_i}" cy="{row_y}" '
+            f'r="1" fill="{dl.ACCENT_DIM}"/>'
+            for x_i in range(0, rain_w, 4)
+            if rng.random() < density
+        )
 
     closing_y: int = panel.bottom - 8
     parts.append(
         f'<text x="{panel.cx}" y="{closing_y}" font-family="monospace" font-size="13" '
-        f'fill="{L.TEXT_MUTED}" text-anchor="middle">'
-        f'<tspan>Thanks for stopping by! Let’s </tspan>'
-        f'<tspan fill="{L.ACCENT}">build the future</tspan>'
-        f'<tspan> together.</tspan>'
-        f'</text>'
+        f'fill="{dl.TEXT_MUTED}" text-anchor="middle">'
+        f"<tspan>Thanks for stopping by! Let's </tspan>"
+        f'<tspan fill="{dl.ACCENT}">build the future</tspan>'
+        f"<tspan> together.</tspan>"
+        f"</text>"
     )
     return "".join(parts)
 
@@ -861,30 +899,30 @@ def compose_svg(
         A complete SVG document string.
     """
     parts: list[str] = []
-    parts.append(L.svg_open())
-    parts.append(L.canvas_background())
-    parts.append(L.outer_frame())
+    parts.append(dl.svg_open())
+    parts.append(dl.canvas_background())
+    parts.append(dl.outer_frame())
 
-    parts.append(L.panel(L.PORTRAIT_CARD))
+    parts.append(dl.panel(dl.PORTRAIT_CARD))
     parts.append(_portrait_card())
-    parts.append(L.panel(L.QUOTE_CARD))
+    parts.append(dl.panel(dl.QUOTE_CARD))
     parts.append(_quote_card())
-    parts.append(L.panel(L.CONNECT_CARD))
+    parts.append(dl.panel(dl.CONNECT_CARD))
     parts.append(_connect_card(connect))
-    parts.append(L.panel(L.CTA_CARD))
+    parts.append(dl.panel(dl.CTA_CARD))
     parts.append(_cta_card())
 
-    parts.append(L.panel(L.TOP_PANEL))
+    parts.append(dl.panel(dl.TOP_PANEL))
     parts.append(_top_panel(about, system_info))
-    parts.append(L.panel(L.TECH_PANEL))
+    parts.append(dl.panel(dl.TECH_PANEL))
     parts.append(_tech_strip(tech_stack))
-    parts.append(L.panel(L.STATS_GLANCE))
+    parts.append(dl.panel(dl.STATS_GLANCE))
     parts.append(_stats_glance())
-    parts.append(L.panel(L.STATS_CONTRIB))
+    parts.append(dl.panel(dl.STATS_CONTRIB))
     parts.append(_stats_contrib())
-    parts.append(L.panel(L.STATS_LANGS))
+    parts.append(dl.panel(dl.STATS_LANGS))
     parts.append(_stats_langs())
-    parts.append(L.panel(L.ENJOY_PANEL))
+    parts.append(dl.panel(dl.ENJOY_PANEL))
     parts.append(_enjoy_strip(enjoy))
 
     parts.append("</svg>")
@@ -893,7 +931,8 @@ def compose_svg(
 
 def _read_yaml(path: Path) -> dict[str, Any]:
     """Read and parse a YAML file."""
-    return yaml.safe_load(path.read_text(encoding="utf-8"))
+    parsed: dict[str, Any] = yaml.safe_load(path.read_text(encoding="utf-8"))
+    return parsed
 
 
 def main() -> int:

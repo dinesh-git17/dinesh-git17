@@ -3,9 +3,6 @@
 from pathlib import Path
 from typing import Any
 
-import pytest
-
-from scripts import update_dashboard
 from scripts.update_dashboard import Source, run
 
 
@@ -18,16 +15,27 @@ class _Stub:
 def _good_results() -> dict[str, Any]:
     return {
         "github_stats": _Stub(
-            stars_display="116", commits_display="3.8k", prs_display="818",
-            issues_display="36", contributed_to_display="3",
-            stars=116, commits=3800, prs=818, issues=36, reviews=10, followers=20,
+            stars_display="116",
+            commits_display="3.8k",
+            prs_display="818",
+            issues_display="36",
+            contributed_to_display="3",
+            stars=116,
+            commits=3800,
+            prs=818,
+            issues=36,
+            reviews=10,
+            followers=20,
         ),
         "grade": _Stub(letter="A", percentile=25.0),
         "github_contrib": _Stub(
-            total_count=5_981, total_display="5,981",
+            total_count=5_981,
+            total_display="5,981",
             total_range_label="Jan 1, 2026 - Present",
-            current_streak_days=85, current_streak_range_label="Jan 31 - Apr 25",
-            longest_streak_days=85, longest_streak_range_label="Jan 31 - Apr 25",
+            current_streak_days=85,
+            current_streak_range_label="Jan 31 - Apr 25",
+            longest_streak_days=85,
+            longest_streak_range_label="Jan 31 - Apr 25",
         ),
         "wakatime": _Stub(
             languages=[
@@ -62,7 +70,9 @@ def _all_good_sources(results: dict[str, Any]) -> list[Source]:
     ]
 
 
-def test_run_applies_all_patches_when_every_source_succeeds(repo_root: Path, tmp_path: Path) -> None:
+def test_run_applies_all_patches_when_every_source_succeeds(
+    repo_root: Path, tmp_path: Path
+) -> None:
     svg = _copy_svg(repo_root, tmp_path)
     results = _good_results()
     exit_code = run(svg_path=svg, sources=_all_good_sources(results))
@@ -73,12 +83,15 @@ def test_run_applies_all_patches_when_every_source_succeeds(repo_root: Path, tmp
     assert "<!-- UPTIME_START -->2 years, 7 months<!-- UPTIME_END -->" in content
 
 
-def test_run_skips_failed_source_patches_keeps_others(repo_root: Path, tmp_path: Path) -> None:
+def test_run_skips_failed_source_patches_keeps_others(
+    repo_root: Path, tmp_path: Path
+) -> None:
     svg = _copy_svg(repo_root, tmp_path)
     results = _good_results()
 
     def boom() -> Any:
-        raise RuntimeError("wakatime down")
+        msg = "wakatime down"
+        raise RuntimeError(msg)
 
     sources: list[Source] = [
         Source("uptime", lambda: results["uptime"]),
@@ -91,8 +104,12 @@ def test_run_skips_failed_source_patches_keeps_others(repo_root: Path, tmp_path:
     post = svg.read_text(encoding="utf-8")
     assert exit_code == 0
     assert "<!-- STARS_START -->116<!-- STARS_END -->" in post
-    pre_lang_value = pre.split("LANG_1_NAME_START -->")[1].split("<!-- LANG_1_NAME_END")[0]
-    post_lang_value = post.split("LANG_1_NAME_START -->")[1].split("<!-- LANG_1_NAME_END")[0]
+    pre_lang_value = pre.split("LANG_1_NAME_START -->")[1].split(
+        "<!-- LANG_1_NAME_END"
+    )[0]
+    post_lang_value = post.split("LANG_1_NAME_START -->")[1].split(
+        "<!-- LANG_1_NAME_END"
+    )[0]
     assert post_lang_value == pre_lang_value
 
 
@@ -100,7 +117,8 @@ def test_run_returns_one_when_all_sources_fail(repo_root: Path, tmp_path: Path) 
     svg = _copy_svg(repo_root, tmp_path)
 
     def boom() -> Any:
-        raise RuntimeError("everything is broken")
+        msg = "everything is broken"
+        raise RuntimeError(msg)
 
     sources: list[Source] = [
         Source("uptime", boom),
@@ -115,7 +133,9 @@ def test_run_returns_one_when_all_sources_fail(repo_root: Path, tmp_path: Path) 
     assert pre == post
 
 
-def test_run_does_not_rewrite_when_values_already_match(repo_root: Path, tmp_path: Path) -> None:
+def test_run_does_not_rewrite_when_values_already_match(
+    repo_root: Path, tmp_path: Path
+) -> None:
     svg = _copy_svg(repo_root, tmp_path)
     results = _good_results()
     run(svg_path=svg, sources=_all_good_sources(results))

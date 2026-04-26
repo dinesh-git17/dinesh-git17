@@ -1,16 +1,12 @@
 """Tests for the patch catalogue and helpers."""
 
 from pathlib import Path
+from typing import Any
 
-import pytest
-
-from scripts.lib import patches
 from scripts.lib.patches import (
     GRADE_RING_RADIUS,
-    STREAK_RING_RADIUS,
     LANG_BAR_CAP,
-    LANG_BAR_TRACK,
-    PatchEntry,
+    STREAK_RING_RADIUS,
     bar_scale,
     catalogue,
     grade_dasharray,
@@ -36,8 +32,12 @@ def test_bar_scale_zero_top_returns_floor() -> None:
 
 
 def test_ring_circumference_uses_drawn_radius() -> None:
-    assert ring_circumference(GRADE_RING_RADIUS) == round(2 * 3.141592653589793 * GRADE_RING_RADIUS)
-    assert ring_circumference(STREAK_RING_RADIUS) == round(2 * 3.141592653589793 * STREAK_RING_RADIUS)
+    assert ring_circumference(GRADE_RING_RADIUS) == round(
+        2 * 3.141592653589793 * GRADE_RING_RADIUS
+    )
+    assert ring_circumference(STREAK_RING_RADIUS) == round(
+        2 * 3.141592653589793 * STREAK_RING_RADIUS
+    )
 
 
 def test_grade_dasharray_low_percentile_long_arc() -> None:
@@ -98,44 +98,124 @@ def test_catalogue_covers_all_documented_targets() -> None:
     entries = catalogue()
     marker_ids = {e.target_id for e in entries if e.target_kind == "marker"}
     expected_markers: set[str] = {
-        "STARS", "COMMITS", "PRS", "ISSUES", "CONTRIB_TO",
+        "STARS",
+        "COMMITS",
+        "PRS",
+        "ISSUES",
+        "CONTRIB_TO",
         "GRADE_LETTER",
-        "TOTAL_CONTRIB", "TOTAL_CONTRIB_RANGE",
-        "CURRENT_STREAK", "CURRENT_STREAK_RANGE",
-        "LONGEST_STREAK", "LONGEST_STREAK_RANGE",
-        "LANG_1_NAME", "LANG_2_NAME", "LANG_3_NAME", "LANG_4_NAME", "LANG_5_NAME",
-        "LANG_1_VALUE", "LANG_2_VALUE", "LANG_3_VALUE", "LANG_4_VALUE", "LANG_5_VALUE",
+        "TOTAL_CONTRIB",
+        "TOTAL_CONTRIB_RANGE",
+        "CURRENT_STREAK",
+        "CURRENT_STREAK_RANGE",
+        "LONGEST_STREAK",
+        "LONGEST_STREAK_RANGE",
+        "LANG_1_NAME",
+        "LANG_2_NAME",
+        "LANG_3_NAME",
+        "LANG_4_NAME",
+        "LANG_5_NAME",
+        "LANG_1_VALUE",
+        "LANG_2_VALUE",
+        "LANG_3_VALUE",
+        "LANG_4_VALUE",
+        "LANG_5_VALUE",
         "UPTIME",
     }
     assert expected_markers.issubset(marker_ids)
     attr_ids = {e.target_id for e in entries if e.target_kind == "attribute"}
-    assert {"grade-ring", "streak-ring", "lang-1-bar", "lang-2-bar", "lang-3-bar", "lang-4-bar", "lang-5-bar"}.issubset(attr_ids)
+    assert {
+        "grade-ring",
+        "streak-ring",
+        "lang-1-bar",
+        "lang-2-bar",
+        "lang-3-bar",
+        "lang-4-bar",
+        "lang-5-bar",
+    }.issubset(attr_ids)
 
 
 def test_value_fns_handle_real_shaped_inputs() -> None:
     entries = catalogue()
-    fake_results: dict = {
-        "github_stats": type("GS", (), {
-            "stars_display": "116", "commits_display": "3.8k",
-            "prs_display": "818", "issues_display": "36",
-            "contributed_to_display": "3",
-        })(),
+    fake_results: dict[str, Any] = {
+        "github_stats": type(
+            "GS",
+            (),
+            {
+                "stars_display": "116",
+                "commits_display": "3.8k",
+                "prs_display": "818",
+                "issues_display": "36",
+                "contributed_to_display": "3",
+            },
+        )(),
         "grade": type("GR", (), {"letter": "A", "percentile": 25.0})(),
-        "github_contrib": type("GC", (), {
-            "total_count": 5_981, "total_display": "5,981",
-            "total_range_label": "Jan 1, 2026 - Present",
-            "current_streak_days": 85, "current_streak_range_label": "Jan 31 - Apr 25",
-            "longest_streak_days": 85, "longest_streak_range_label": "Jan 31 - Apr 25",
-        })(),
-        "wakatime": type("WT", (), {
-            "languages": [
-                type("L", (), {"name": "Python", "text": "30 hrs", "total_seconds": 108_000.0})(),
-                type("L", (), {"name": "Other", "text": "9 hrs 35 mins", "total_seconds": 34_500.0})(),
-                type("L", (), {"name": "JavaScript", "text": "3 hrs 9 mins", "total_seconds": 11_340.0})(),
-                type("L", (), {"name": "YAML", "text": "1 hr 25 mins", "total_seconds": 5_100.0})(),
-                type("L", (), {"name": "Bash", "text": "1 hr 24 mins", "total_seconds": 5_040.0})(),
-            ],
-        })(),
+        "github_contrib": type(
+            "GC",
+            (),
+            {
+                "total_count": 5_981,
+                "total_display": "5,981",
+                "total_range_label": "Jan 1, 2026 - Present",
+                "current_streak_days": 85,
+                "current_streak_range_label": "Jan 31 - Apr 25",
+                "longest_streak_days": 85,
+                "longest_streak_range_label": "Jan 31 - Apr 25",
+            },
+        )(),
+        "wakatime": type(
+            "WT",
+            (),
+            {
+                "languages": [
+                    type(
+                        "L",
+                        (),
+                        {
+                            "name": "Python",
+                            "text": "30 hrs",
+                            "total_seconds": 108_000.0,
+                        },
+                    )(),
+                    type(
+                        "L",
+                        (),
+                        {
+                            "name": "Other",
+                            "text": "9 hrs 35 mins",
+                            "total_seconds": 34_500.0,
+                        },
+                    )(),
+                    type(
+                        "L",
+                        (),
+                        {
+                            "name": "JavaScript",
+                            "text": "3 hrs 9 mins",
+                            "total_seconds": 11_340.0,
+                        },
+                    )(),
+                    type(
+                        "L",
+                        (),
+                        {
+                            "name": "YAML",
+                            "text": "1 hr 25 mins",
+                            "total_seconds": 5_100.0,
+                        },
+                    )(),
+                    type(
+                        "L",
+                        (),
+                        {
+                            "name": "Bash",
+                            "text": "1 hr 24 mins",
+                            "total_seconds": 5_040.0,
+                        },
+                    )(),
+                ],
+            },
+        )(),
         "uptime": type("UT", (), {"value": "2 years, 7 months"})(),
     }
     for entry in entries:

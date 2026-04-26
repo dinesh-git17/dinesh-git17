@@ -39,18 +39,22 @@ class Rect(NamedTuple):
 
     @property
     def right(self) -> int:
+        """Right edge x-coordinate."""
         return self.x + self.w
 
     @property
     def bottom(self) -> int:
+        """Bottom edge y-coordinate."""
         return self.y + self.h
 
     @property
     def cx(self) -> int:
+        """Horizontal centre x-coordinate."""
         return self.x + self.w // 2
 
     @property
     def cy(self) -> int:
+        """Vertical centre y-coordinate."""
         return self.y + self.h // 2
 
 
@@ -59,7 +63,9 @@ CONTENT_Y: int = OUTER_PAD + INNER_PAD
 CONTENT_W: int = CANVAS_W - 2 * (OUTER_PAD + INNER_PAD)
 CONTENT_H: int = CANVAS_H - 2 * (OUTER_PAD + INNER_PAD)
 
-OUTER_FRAME: Rect = Rect(OUTER_PAD, OUTER_PAD, CANVAS_W - 2 * OUTER_PAD, CANVAS_H - 2 * OUTER_PAD)
+OUTER_FRAME: Rect = Rect(
+    OUTER_PAD, OUTER_PAD, CANVAS_W - 2 * OUTER_PAD, CANVAS_H - 2 * OUTER_PAD
+)
 
 PORTRAIT_H: int = 420
 QUOTE_H: int = 120
@@ -86,8 +92,12 @@ ENJOY_PANEL: Rect = Rect(RIGHT_X, STATS_ROW.bottom + GUTTER, RIGHT_W, ENJOY_PANE
 
 STATS_CARD_W: int = (RIGHT_W - 2 * GUTTER) // 3
 STATS_GLANCE: Rect = Rect(RIGHT_X, STATS_ROW.y, STATS_CARD_W, STATS_ROW_H)
-STATS_CONTRIB: Rect = Rect(STATS_GLANCE.right + GUTTER, STATS_ROW.y, STATS_CARD_W, STATS_ROW_H)
-STATS_LANGS: Rect = Rect(STATS_CONTRIB.right + GUTTER, STATS_ROW.y, STATS_CARD_W, STATS_ROW_H)
+STATS_CONTRIB: Rect = Rect(
+    STATS_GLANCE.right + GUTTER, STATS_ROW.y, STATS_CARD_W, STATS_ROW_H
+)
+STATS_LANGS: Rect = Rect(
+    STATS_CONTRIB.right + GUTTER, STATS_ROW.y, STATS_CARD_W, STATS_ROW_H
+)
 
 
 def panel(
@@ -140,4 +150,6 @@ def canvas_background() -> str:
 
 def svg_open() -> str:
     """Return the opening ``<svg>`` tag with the canvas viewBox."""
-    return f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {CANVAS_W} {CANVAS_H}">'
+    return (
+        f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 {CANVAS_W} {CANVAS_H}">'
+    )

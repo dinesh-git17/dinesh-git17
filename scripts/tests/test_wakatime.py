@@ -15,7 +15,11 @@ def _canned_response() -> dict[str, Any]:
             "languages": [
                 {"name": "Python", "text": "30 hrs", "total_seconds": 108_000.0},
                 {"name": "Other", "text": "9 hrs 35 mins", "total_seconds": 34_500.0},
-                {"name": "JavaScript", "text": "3 hrs 9 mins", "total_seconds": 11_340.0},
+                {
+                    "name": "JavaScript",
+                    "text": "3 hrs 9 mins",
+                    "total_seconds": 11_340.0,
+                },
                 {"name": "YAML", "text": "1 hr 25 mins", "total_seconds": 5_100.0},
                 {"name": "Bash", "text": "1 hr 24 mins", "total_seconds": 5_040.0},
                 {"name": "Markdown", "text": "30 mins", "total_seconds": 1_800.0},
@@ -25,7 +29,9 @@ def _canned_response() -> dict[str, Any]:
 
 
 def test_fetch_returns_top_five_languages(monkeypatch: pytest.MonkeyPatch) -> None:
-    monkeypatch.setattr(http, "get_json", lambda url, headers, timeout=30: _canned_response())
+    monkeypatch.setattr(
+        http, "get_json", lambda url, headers, timeout=30: _canned_response()
+    )
 
     result = wakatime.fetch(username="dinbuilds")
 
@@ -39,7 +45,9 @@ def test_fetch_returns_top_five_languages(monkeypatch: pytest.MonkeyPatch) -> No
 
 
 def test_fetch_preserves_api_sort_order(monkeypatch: pytest.MonkeyPatch) -> None:
-    monkeypatch.setattr(http, "get_json", lambda url, headers, timeout=30: _canned_response())
+    monkeypatch.setattr(
+        http, "get_json", lambda url, headers, timeout=30: _canned_response()
+    )
 
     result = wakatime.fetch(username="dinbuilds")
 
@@ -47,7 +55,9 @@ def test_fetch_preserves_api_sort_order(monkeypatch: pytest.MonkeyPatch) -> None
     assert seconds == sorted(seconds, reverse=True)
 
 
-def test_fetch_handles_fewer_than_five_languages(monkeypatch: pytest.MonkeyPatch) -> None:
+def test_fetch_handles_fewer_than_five_languages(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
     response = {
         "data": {
             "languages": [
@@ -62,10 +72,14 @@ def test_fetch_handles_fewer_than_five_languages(monkeypatch: pytest.MonkeyPatch
     assert len(result.languages) == 2
 
 
-def test_fetch_sends_no_auth_when_api_key_missing(monkeypatch: pytest.MonkeyPatch) -> None:
+def test_fetch_sends_no_auth_when_api_key_missing(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
     captured: dict[str, Any] = {}
 
-    def fake_get_json(url: str, headers: dict[str, str], timeout: int = 30) -> dict[str, Any]:
+    def fake_get_json(
+        url: str, headers: dict[str, str], timeout: int = 30
+    ) -> dict[str, Any]:
         captured["url"] = url
         captured["headers"] = headers
         return _canned_response()
@@ -75,13 +89,20 @@ def test_fetch_sends_no_auth_when_api_key_missing(monkeypatch: pytest.MonkeyPatc
     wakatime.fetch(username="dinbuilds", api_key=None)
 
     assert "Authorization" not in captured["headers"]
-    assert captured["url"] == "https://wakatime.com/api/v1/users/dinbuilds/stats/last_7_days"
+    assert (
+        captured["url"]
+        == "https://wakatime.com/api/v1/users/dinbuilds/stats/last_7_days"
+    )
 
 
-def test_fetch_sends_basic_auth_when_api_key_present(monkeypatch: pytest.MonkeyPatch) -> None:
+def test_fetch_sends_basic_auth_when_api_key_present(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
     captured: dict[str, Any] = {}
 
-    def fake_get_json(url: str, headers: dict[str, str], timeout: int = 30) -> dict[str, Any]:
+    def fake_get_json(
+        url: str, headers: dict[str, str], timeout: int = 30
+    ) -> dict[str, Any]:
         captured["headers"] = headers
         return _canned_response()
 

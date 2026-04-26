@@ -1,14 +1,23 @@
 """Tests for the unified dashboard build script."""
 
-from pathlib import Path
+from typing import Any
 
 from scripts.build_dashboard import compose_svg
-from scripts.lib import dashboard_layout as L
+from scripts.lib import dashboard_layout as dl
 
 
-def _minimal_inputs() -> tuple[dict, dict, dict, dict, dict]:
+def _minimal_inputs() -> tuple[
+    dict[str, Any],
+    dict[str, Any],
+    dict[str, Any],
+    dict[str, Any],
+    dict[str, Any],
+]:
     return (
-        {"bio": ["line one"], "trait_pills": [{"icon": "lightbulb", "label": "Solver"}]},
+        {
+            "bio": ["line one"],
+            "trait_pills": [{"icon": "lightbulb", "label": "Solver"}],
+        },
         {
             "rows": [
                 {
@@ -34,7 +43,7 @@ def _minimal_inputs() -> tuple[dict, dict, dict, dict, dict]:
 def test_compose_svg_returns_complete_document() -> None:
     svg = compose_svg(*_minimal_inputs())
     assert svg.startswith("<svg")
-    assert f'viewBox="0 0 {L.CANVAS_W} {L.CANVAS_H}"' in svg
+    assert f'viewBox="0 0 {dl.CANVAS_W} {dl.CANVAS_H}"' in svg
     assert svg.endswith("</svg>")
 
 
@@ -46,11 +55,18 @@ def test_compose_svg_preserves_uptime_marker() -> None:
 def test_compose_svg_emits_every_stats_text_marker() -> None:
     svg = compose_svg(*_minimal_inputs())
     expected_text_keys: list[str] = [
-        "STARS", "COMMITS", "PRS", "ISSUES", "CONTRIB_TO",
+        "STARS",
+        "COMMITS",
+        "PRS",
+        "ISSUES",
+        "CONTRIB_TO",
         "GRADE_LETTER",
-        "TOTAL_CONTRIB", "TOTAL_CONTRIB_RANGE",
-        "CURRENT_STREAK", "CURRENT_STREAK_RANGE",
-        "LONGEST_STREAK", "LONGEST_STREAK_RANGE",
+        "TOTAL_CONTRIB",
+        "TOTAL_CONTRIB_RANGE",
+        "CURRENT_STREAK",
+        "CURRENT_STREAK_RANGE",
+        "LONGEST_STREAK",
+        "LONGEST_STREAK_RANGE",
     ]
     for key in expected_text_keys:
         assert f"<!-- {key}_START -->" in svg, f"missing {key}_START marker"

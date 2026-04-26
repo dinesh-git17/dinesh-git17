@@ -1,7 +1,7 @@
 """GitHub contribution source: calendar-year total + all-time streaks."""
 
 from dataclasses import dataclass
-from datetime import date, datetime, timedelta, timezone
+from datetime import UTC, date, datetime, timedelta
 from typing import Any
 
 from scripts.lib.http import post_json
@@ -58,7 +58,7 @@ class GithubContribResult:
 
 
 def compute_streaks(calendar: list[tuple[date, int]], *, today: date) -> StreakStats:
-    """Walk a chronological list of ``(date, contribution_count)`` and return the streaks.
+    """Walk a chronological ``(date, contribution_count)`` list and return streaks.
 
     The walker applies today-zero grace: when today has zero contributions but
     yesterday is non-zero, the current streak still ends at yesterday rather
@@ -129,8 +129,10 @@ def year_windows(account_epoch: date, today: date) -> list[tuple[datetime, datet
     datetimes are UTC-aware and the windows do not overlap.
     """
     windows: list[tuple[datetime, datetime]] = []
-    cursor: datetime = datetime.combine(account_epoch, datetime.min.time(), tzinfo=timezone.utc)
-    end: datetime = datetime.combine(today, datetime.max.time().replace(microsecond=0), tzinfo=timezone.utc)
+    cursor: datetime = datetime.combine(account_epoch, datetime.min.time(), tzinfo=UTC)
+    end: datetime = datetime.combine(
+        today, datetime.max.time().replace(microsecond=0), tzinfo=UTC
+    )
     while cursor < end:
         next_cursor: datetime = cursor + timedelta(days=365)
         windows.append((cursor, min(next_cursor, end)))
@@ -140,7 +142,7 @@ def year_windows(account_epoch: date, today: date) -> list[tuple[datetime, datet
 
 def _today_utc() -> date:
     """Return today's date in UTC. Override target in tests."""
-    return datetime.now(timezone.utc).date()
+    return datetime.now(UTC).date()
 
 
 def fetch(*, login: str, token: str) -> GithubContribResult:
@@ -159,8 +161,10 @@ def fetch(*, login: str, token: str) -> GithubContribResult:
         "User-Agent": "dinesh-git17-dashboard",
     }
     today: date = _today_utc()
-    year_start: datetime = datetime(today.year, 1, 1, tzinfo=timezone.utc)
-    now: datetime = datetime.combine(today, datetime.max.time().replace(microsecond=0), tzinfo=timezone.utc)
+    year_start: datetime = datetime(today.year, 1, 1, tzinfo=UTC)
+    now: datetime = datetime.combine(
+        today, datetime.max.time().replace(microsecond=0), tzinfo=UTC
+    )
 
     total_response: dict[str, Any] = post_json(
         _GRAPHQL_ENDPOINT,
@@ -174,7 +178,9 @@ def fetch(*, login: str, token: str) -> GithubContribResult:
             },
         },
     )
-    total_count: int = total_response["data"]["user"]["contributionsCollection"]["contributionCalendar"]["totalContributions"]
+    total_count: int = total_response["data"]["user"]["contributionsCollection"][
+        "contributionCalendar"
+    ]["totalContributions"]
 
     by_date: dict[date, int] = {}
     for window_from, window_to in year_windows(_ACCOUNT_EPOCH, today):
@@ -190,7 +196,9 @@ def fetch(*, login: str, token: str) -> GithubContribResult:
                 },
             },
         )
-        weeks: list[dict[str, Any]] = response["data"]["user"]["contributionsCollection"]["contributionCalendar"]["weeks"]
+        weeks: list[dict[str, Any]] = response["data"]["user"][
+            "contributionsCollection"
+        ]["contributionCalendar"]["weeks"]
         for week in weeks:
             for day in week["contributionDays"]:
                 day_date: date = date.fromisoformat(day["date"])

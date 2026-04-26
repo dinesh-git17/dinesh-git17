@@ -39,10 +39,14 @@ def _build_default_sources() -> list[Source]:
     waka_key: str | None = os.environ.get("WAKATIME_API_KEY") or None
 
     return [
-        Source("uptime", lambda: uptime.fetch()),
+        Source("uptime", uptime.fetch),
         Source("github_stats", lambda: github_stats.fetch(login=login, token=gh_token)),
-        Source("github_contrib", lambda: github_contrib.fetch(login=login, token=gh_token)),
-        Source("wakatime", lambda: wakatime.fetch(username="dinbuilds", api_key=waka_key)),
+        Source(
+            "github_contrib", lambda: github_contrib.fetch(login=login, token=gh_token)
+        ),
+        Source(
+            "wakatime", lambda: wakatime.fetch(username="dinbuilds", api_key=waka_key)
+        ),
     ]
 
 
@@ -96,10 +100,11 @@ def run(*, svg_path: Path, sources: list[Source]) -> int:
             svg_markers.patch_marker(svg_path, entry.target_id, value)
         else:
             if entry.attribute_name is None:
-                raise RuntimeError(
-                    f"catalogue entry for {entry.target_id} has target_kind='attribute' "
-                    f"but attribute_name is None"
+                msg = (
+                    f"catalogue entry for {entry.target_id} "
+                    f"has target_kind='attribute' but attribute_name is None"
                 )
+                raise RuntimeError(msg)
             svg_markers.patch_element_attribute(
                 svg_path, entry.target_id, entry.attribute_name, value
             )

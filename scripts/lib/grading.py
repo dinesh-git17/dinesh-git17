@@ -44,7 +44,7 @@ class GradeResult:
 
 def _exponential_cdf(x: float) -> float:
     """Return ``1 - 2 ** -x``. Ranges from 0 (x=0) to 1 (x=infinity)."""
-    return 1.0 - 2.0 ** (-x)
+    return float(1.0 - 2.0 ** (-x))
 
 
 def _log_normal_cdf(x: float) -> float:

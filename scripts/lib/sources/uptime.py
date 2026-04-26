@@ -1,7 +1,7 @@
 """Uptime source: years-and-months elapsed since EPOCH."""
 
 from dataclasses import dataclass
-from datetime import date
+from datetime import UTC, date, datetime
 
 EPOCH: date = date(2023, 9, 1)
 
@@ -17,7 +17,7 @@ def fetch(*, today: date | None = None) -> UptimeResult:
     """Return the elapsed time between EPOCH and today as ``"N years, M months"``.
 
     Args:
-        today: Reference date. Defaults to ``date.today()`` when omitted.
+        today: Reference date. Defaults to today's date in UTC when omitted.
 
     Returns:
         The formatted result.
@@ -25,7 +25,7 @@ def fetch(*, today: date | None = None) -> UptimeResult:
     Raises:
         ValueError: If ``today`` is earlier than EPOCH.
     """
-    today = today if today is not None else date.today()
+    today = today if today is not None else datetime.now(tz=UTC).date()
     if today < EPOCH:
         msg = f"today ({today}) is earlier than epoch ({EPOCH})"
         raise ValueError(msg)
