@@ -169,14 +169,14 @@ def compose_svg(
     parts.append(f'<rect x="0" y="0" width="1500" height="880" fill="{BG}"/>')
 
     # Hero strip (outlined headline + role tags + lime cursor)
-    headline_d: str = outline("Dinesh Dawonauth", INTER_BOLD, size_px=48)
+    headline_d: str = outline("Dinesh Dawonauth", INTER_BOLD, size_px=36)
     parts.append(
         f'<g transform="translate(30,68)" fill="{TEXT}">'
         f'<path d="{headline_d}"/>'
         f'</g>'
     )
     parts.append(
-        f'<text x="490" y="58" font-family="monospace" font-size="32" fill="{ACCENT}">&gt;_</text>'
+        f'<text x="380" y="64" font-family="monospace" font-size="28" fill="{ACCENT}">&gt;_</text>'
     )
     role_d: str = outline("AI Engineer · Developer · Builder", INTER_MEDIUM, size_px=16)
     parts.append(
@@ -257,10 +257,16 @@ def _about_panel(about: dict[str, Any]) -> str:
             f'<text x="460" y="{line_y}" font-family="monospace" '
             f'font-size="13" fill="{TEXT}">{line}</text>'
         )
-    pill_y: int = 180 + len(about.get("bio", [])) * 22 + 30
-    pill_x: int = 460
-    for pill in about.get("trait_pills", []):
-        pill_width: int = 140
+    pill_origin_y: int = 180 + len(about.get("bio", [])) * 22 + 30
+    pill_origin_x: int = 460
+    pill_width: int = 140
+    pill_x_stride: int = pill_width + 12
+    pill_row_stride: int = 30
+    for pill_index, pill in enumerate(about.get("trait_pills", [])):
+        col: int = pill_index % 2
+        row: int = pill_index // 2
+        pill_x: int = pill_origin_x + col * pill_x_stride
+        pill_y: int = pill_origin_y + row * pill_row_stride
         parts.append(
             f'<rect x="{pill_x}" y="{pill_y - 16}" width="{pill_width}" height="26" '
             f'rx="13" fill="{SURFACE}" stroke="{BORDER}"/>'
@@ -271,7 +277,6 @@ def _about_panel(about: dict[str, Any]) -> str:
             f'<text x="{pill_x + 28}" y="{pill_y + 1}" font-family="monospace" '
             f'font-size="11" fill="{TEXT}">{pill["label"]}</text>'
         )
-        pill_x += pill_width + 12
     return "".join(parts)
 
 
