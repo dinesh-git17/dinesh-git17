@@ -645,10 +645,19 @@ def _stats_contrib() -> str:
     date_y: int = card.y + 186
 
     total_cx: int = col_centres[0]
+    total_anim: str = anim.boot_animate(
+        attribute="opacity",
+        from_value="0",
+        to_value="1",
+        begin_s=anim.BOOT_STATS_BEGIN_S,
+        dur_s=anim.BOOT_NUMBER_DUR_S,
+    )
     parts.append(
+        f'<g opacity="1">{total_anim}'
         f'<text x="{total_cx}" y="{number_y}" font-family="monospace" font-size="30" '
         f'font-weight="bold" fill="{dl.TEXT}" text-anchor="middle">'
         f"<!-- TOTAL_CONTRIB_START -->5,981<!-- TOTAL_CONTRIB_END --></text>"
+        f"</g>"
     )
     parts.append(
         f'<text x="{total_cx}" y="{label_y}" font-family="monospace" font-size="9" '
@@ -670,18 +679,34 @@ def _stats_contrib() -> str:
         f'<circle cx="{streak_cx}" cy="{streak_cy}" r="{streak_r}" fill="none" '
         f'stroke="{dl.TRACK}" stroke-width="6"/>'
     )
+    streak_ring_anim: str = anim.boot_animate(
+        attribute="stroke-dashoffset",
+        from_value=str(streak_circumference),
+        to_value="0",
+        begin_s=anim.BOOT_STATS_BEGIN_S + 0.05,
+        dur_s=anim.BOOT_RING_DUR_S,
+    )
     parts.append(
         f'<circle id="streak-ring" cx="{streak_cx}" cy="{streak_cy}" '
         f'r="{streak_r}" fill="none" stroke="{dl.ACCENT}" stroke-width="6" '
         f'stroke-dasharray="{streak_circumference} {streak_circumference}" '
         f'stroke-dashoffset="0" transform="rotate(-90 {streak_cx} {streak_cy})" '
-        f'stroke-linecap="round"/>'
+        f'stroke-linecap="round">{streak_ring_anim}</circle>'
+    )
+    current_anim: str = anim.boot_animate(
+        attribute="opacity",
+        from_value="0",
+        to_value="1",
+        begin_s=anim.BOOT_STATS_BEGIN_S + 0.3,
+        dur_s=anim.BOOT_NUMBER_DUR_S,
     )
     parts.append(
+        f'<g opacity="1">{current_anim}'
         f'<text x="{streak_cx}" y="{streak_cy + 11}" '
         f'font-family="monospace" font-size="30" font-weight="bold" '
         f'fill="{dl.TEXT}" text-anchor="middle">'
         f"<!-- CURRENT_STREAK_START -->85<!-- CURRENT_STREAK_END --></text>"
+        f"</g>"
     )
     parts.append(
         f'<text x="{streak_cx}" y="{streak_cy + streak_r + 28}" '
@@ -698,10 +723,19 @@ def _stats_contrib() -> str:
     )
 
     longest_cx: int = col_centres[2]
+    longest_anim: str = anim.boot_animate(
+        attribute="opacity",
+        from_value="0",
+        to_value="1",
+        begin_s=anim.BOOT_STATS_BEGIN_S + 0.45,
+        dur_s=anim.BOOT_NUMBER_DUR_S,
+    )
     parts.append(
+        f'<g opacity="1">{longest_anim}'
         f'<text x="{longest_cx}" y="{number_y}" font-family="monospace" font-size="30" '
         f'font-weight="bold" fill="{dl.TEXT}" text-anchor="middle">'
         f"<!-- LONGEST_STREAK_START -->85<!-- LONGEST_STREAK_END --></text>"
+        f"</g>"
     )
     parts.append(
         f'<text x="{longest_cx}" y="{label_y}" font-family="monospace" font-size="9" '

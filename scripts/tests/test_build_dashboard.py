@@ -122,3 +122,35 @@ def test_compose_svg_animates_grade_letter_group() -> None:
     surrounding = svg[max(0, idx - 400) : idx + 400]
     assert "<g" in surrounding
     assert 'attributeName="opacity"' in surrounding
+
+
+def test_compose_svg_animates_streak_ring_dashoffset() -> None:
+    svg = compose_svg(*_minimal_inputs())
+    streak_tag_start = svg.index('id="streak-ring"')
+    next_close = svg.index(">", streak_tag_start)
+    after_ring = svg[next_close : next_close + 600]
+    assert 'attributeName="stroke-dashoffset"' in after_ring
+    assert 'to="0"' in after_ring
+
+
+def test_compose_svg_keeps_streak_ring_static_dashoffset_zero() -> None:
+    svg = compose_svg(*_minimal_inputs())
+    streak_tag_start = svg.index('id="streak-ring"')
+    streak_tag_end = svg.index(">", streak_tag_start)
+    streak_tag = svg[streak_tag_start:streak_tag_end]
+    assert 'stroke-dashoffset="0"' in streak_tag
+
+
+def test_compose_svg_animates_total_contrib_number() -> None:
+    svg = compose_svg(*_minimal_inputs())
+    idx = svg.index("<!-- TOTAL_CONTRIB_START -->")
+    surrounding = svg[max(0, idx - 400) : idx + 400]
+    assert 'attributeName="opacity"' in surrounding
+
+
+def test_compose_svg_animates_streak_numbers() -> None:
+    svg = compose_svg(*_minimal_inputs())
+    for marker in ("CURRENT_STREAK", "LONGEST_STREAK"):
+        idx = svg.index(f"<!-- {marker}_START -->")
+        surrounding = svg[max(0, idx - 400) : idx + 400]
+        assert 'attributeName="opacity"' in surrounding, f"missing opacity for {marker}"
