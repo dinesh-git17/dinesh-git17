@@ -1,11 +1,11 @@
 bio:
-  - "AI engineer with a passion for building"
-  - "intelligent systems that solve real problems."
-  - "Specializing in AI, machine learning, and"
-  - "scalable production systems."
+  - "AI engineer. Spend half my day teaching"
+  - "models to be useful, and the other half"
+  - "explaining why they aren't yet. Both"
+  - "halves are funnier than they sound."
 
 trait_pills:
-  - { icon: lightbulb, label: "Problem Solver" }
-  - { icon: eye,       label: "Detail Oriented" }
-  - { icon: users,     label: "Team Player" }
-  - { icon: sparkles,  label: "Lifelong Learner" }
+  - { icon: lightbulb, label: "Snack Driven" }
+  - { icon: eye,       label: "Log Reader" }
+  - { icon: users,     label: "Rubber Duck" }
+  - { icon: sparkles,  label: "Recovering YAGNI" }

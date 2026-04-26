@@ -190,9 +190,13 @@ def _quote_card() -> str:
     line_stride: int = 22
     line1_y: int = card.y + 38
     lines: tuple[tuple[tuple[str, str], ...], ...] = (
-        ((dl.TEXT, "The most important use of a tool"),),
-        ((dl.TEXT, "as powerful as "), (dl.ACCENT, "AI"), (dl.TEXT, " is to augment")),
-        ((dl.TEXT, "humanity, not to replace it."),),
+        (
+            (dl.TEXT, "If you're not having "),
+            (dl.ACCENT, "fun"),
+            (dl.TEXT, " building"),
+        ),
+        ((dl.TEXT, "it, the people using it probably"),),
+        ((dl.TEXT, "won't have much fun either."),),
     )
     for index, segments in enumerate(lines):
         line_y: int = line1_y + index * line_stride
