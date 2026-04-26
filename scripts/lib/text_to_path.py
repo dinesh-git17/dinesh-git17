@@ -20,9 +20,12 @@ def outline(text: str, font_path: Path, size_px: int) -> str:
 
     Glyphs are positioned left-to-right starting at the SVG origin, with
     each glyph's advance width applied as horizontal offset. The y-axis is
-    flipped from the font's y-up coordinate system to SVG's y-down system,
-    with the baseline placed at ``size_px``. The returned ``d`` attribute
-    value can be embedded directly into a ``<path>`` element.
+    flipped from the font's y-up coordinate system to SVG's y-down system
+    with the baseline at local ``y = 0``. As a result, capital letters
+    occupy roughly ``[-size_px, 0]`` in local coordinates and descenders
+    extend slightly below ``y = 0``. Embedding the returned path inside
+    ``<g transform="translate(x, baseline_y)">`` therefore places the
+    baseline of the rendered text at canvas ``y = baseline_y``.
 
     Args:
         text: The string to outline. Must contain only glyphs present in
@@ -59,9 +62,9 @@ def outline(text: str, font_path: Path, size_px: int) -> str:
             raise ValueError(msg)
         glyph_name: str = cmap[codepoint]
         glyph = glyph_set[glyph_name]
-        # Transform: scale x, flip y (font is y-up; SVG is y-down), offset x.
-        # Baseline is placed at size_px so glyphs appear in positive y space.
-        transform = (scale, 0, 0, -scale, cursor_x, float(size_px))
+        # Flip y (font is y-up, SVG is y-down) with baseline at local y=0;
+        # callers pin the baseline by translating the consuming <g>.
+        transform = (scale, 0, 0, -scale, cursor_x, 0.0)
         tp = TransformPen(pen, transform)
         glyph.draw(tp)
         cursor_x += glyph.width * scale
