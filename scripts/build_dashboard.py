@@ -302,6 +302,40 @@ def _top_panel(about: dict[str, Any], system_info: dict[str, Any]) -> str:
     return "".join(parts)
 
 
+def _tech_strip(tech_stack: dict[str, Any]) -> str:
+    """Render the TECH I WORK WITH strip panel.
+
+    Header row at the top of the panel; below it, a single horizontal row
+    of icons with a small label under each. Icons are evenly distributed
+    across the panel's inner width.
+    """
+    parts: list[str] = []
+    panel: L.Rect = L.TECH_PANEL
+    inner_pad: int = 24
+    parts.append(
+        _section_header("TECH I WORK WITH", x=panel.x + inner_pad, y=panel.y + 36, icon="terminal")
+    )
+    icons: list[dict[str, str]] = tech_stack.get("icons", [])
+    if not icons:
+        return "".join(parts)
+    icon_size: int = 48
+    label_y: int = panel.bottom - 26
+    icons_top: int = panel.y + 64
+    inner_left: int = panel.x + inner_pad
+    inner_w: int = panel.w - 2 * inner_pad
+    column_w: float = inner_w / len(icons)
+    for index, icon_info in enumerate(icons):
+        slot_cx: float = inner_left + (index + 0.5) * column_w
+        icon_x: float = slot_cx - icon_size / 2
+        icon_path: Path = TECH_ICONS_DIR / icon_info["file"]
+        parts.append(embed_icon(icon_path, x=icon_x, y=icons_top, size=icon_size))
+        parts.append(
+            f'<text x="{slot_cx:g}" y="{label_y}" font-family="monospace" '
+            f'font-size="11" fill="{L.TEXT_MUTED}" text-anchor="middle">{icon_info["label"]}</text>'
+        )
+    return "".join(parts)
+
+
 def compose_svg(
     about: dict[str, Any],
     system_info: dict[str, Any],
@@ -338,6 +372,7 @@ def compose_svg(
     parts.append(L.panel(L.TOP_PANEL))
     parts.append(_top_panel(about, system_info))
     parts.append(L.panel(L.TECH_PANEL))
+    parts.append(_tech_strip(tech_stack))
     parts.append(L.panel(L.STATS_GLANCE))
     parts.append(L.panel(L.STATS_CONTRIB))
     parts.append(L.panel(L.STATS_LANGS))
